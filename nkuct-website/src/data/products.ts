@@ -110,7 +110,7 @@ export const productsData: Product[] = [
     ],
     specs: [
       { label: '적용분야', value: '전기반, 소형 장비 내부' },
-      { label: '형태', 소화약제: '가스계' }
+      { label: '형태', value: '가스계' }
     ]
   },
   
