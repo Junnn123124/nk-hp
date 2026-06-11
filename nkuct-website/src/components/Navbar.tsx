@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className="container-custom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
         {/* Logo */}
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-          <img src="/logo.png" alt="NK UCT Logo" style={{ height: '75px', width: 'auto' }} />
+          <img src="/logo.svg" alt="NK UCT Logo" style={{ height: '75px', width: 'auto' }} />
         </Link>
 
         {/* Desktop Nav */}
