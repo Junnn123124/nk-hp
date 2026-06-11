@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-              <img src="/logo.png" alt="NK UCT Logo" style={{ height: '40px', width: 'auto' }} />
+              <img src="/logo.svg" alt="NK UCT Logo" style={{ height: '40px', width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
               반도체·디스플레이 전문<br />
