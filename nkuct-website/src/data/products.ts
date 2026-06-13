@@ -27,7 +27,7 @@ export const productsData: Product[] = [
     category: '자동소화설비', 
     name: 'CABINEX-EN2', 
     desc: '공작 기계 및 반도체 제조 장비 등 각종 산업 기계 설비에 최적화된 자동 소화 시스템.', 
-    badges: ['FM', 'KFI'], 
+    badges: ['FM'], 
     image: '/products/cabinex.jpg',
     overview: '공작 기계, 반도체 장비 등 화재 위험이 있는 산업 기계 설비를 보호하기 위한 맞춤형 패키지 소화 시스템입니다. 소형이면서도 강력한 화재 진압 능력을 갖추고 있습니다.',
     features: [
@@ -35,7 +35,7 @@ export const productsData: Product[] = [
       { title: '신속한 감지 및 소화', description: '전용 감지기와 연동하여 화재 발생 즉시 소화 약제를 방출합니다.' }
     ],
     specs: [
-      { label: '인증', value: 'FM Approved, KFI' },
+      { label: '인증', value: 'FM Approved' },
       { label: '소화약제', value: '이산화탄소 (CO2)' },
       { label: '작동방식', value: '자동 감지 및 수동 조작' }
     ]
@@ -45,7 +45,7 @@ export const productsData: Product[] = [
     category: '자동소화설비', 
     name: 'CABINEX-KZ', 
     desc: '국소 방출 방식의 고성능 소화 시스템으로 화재 발생 시 신속하게 대응합니다.', 
-    badges: ['KFI'], 
+    badges: [], 
     image: '/products/cabinex.jpg',
     overview: '특정 방호 구역에 국소 방출 방식으로 소화약제를 집중 투입하여 화재를 빠르고 효과적으로 진압하는 시스템입니다.',
     features: [
@@ -53,7 +53,7 @@ export const productsData: Product[] = [
       { title: '안전 설계', description: '인체 및 환경에 미치는 영향을 최소화하는 설계가 적용되었습니다.' }
     ],
     specs: [
-      { label: '인증', value: 'KFI' },
+      { label: '인증', value: '없음' },
       { label: '적용분야', value: '위험물 취급소, 전기실' }
     ]
   },
@@ -62,7 +62,7 @@ export const productsData: Product[] = [
     category: '자동소화설비', 
     name: 'CABINEX-EWT / EWTⅡ', 
     desc: '반도체 및 디스플레이 제조 장비의 화재 특성에 맞춘 초고속 맞춤형 소화 시스템.', 
-    badges: ['FM', 'UL', 'KFI'], 
+    badges: ['FM', 'UL', 'CE'], 
     image: '/products/cabinex-ewt.jpg',
     overview: 'FM 요구 기준을 만족하는 CO2 소화 가스를 사용하여, 클린룸 및 반도체 장비 내 화재를 잔여물 없이 안전하고 완벽하게 진압하는 최고 성능의 시스템입니다.',
     features: [
@@ -84,7 +84,7 @@ export const productsData: Product[] = [
     category: '자동소화설비', 
     name: '알고나이트 CABINEX', 
     desc: '친환경 불활성 가스(IG-55)를 사용하여 잔여물이 남지 않는 친환경 자동 소화 시스템.', 
-    badges: ['KFI'], 
+    badges: [], 
     image: '/products/cabinex.jpg',
     overview: '대기 중에 존재하는 자연 가스(질소 50%, 아르곤 50%)를 혼합한 IG-55를 사용하여, 소화 후에도 독성 물질이나 잔여물을 남기지 않는 친환경 시스템입니다.',
     features: [
@@ -101,7 +101,7 @@ export const productsData: Product[] = [
     category: '자동소화설비', 
     name: 'ing24Ⅱ', 
     desc: '설치 공간을 최소화한 컴팩트한 디자인의 산업용 자동 소화 시스템.', 
-    badges: ['KFI'], 
+    badges: [], 
     image: '/products/ing24.jpg',
     overview: '산업 설비 내부나 좁은 공간에 쉽게 장착할 수 있도록 고안된 소형 패키지 소화 장치입니다.',
     features: [
@@ -155,7 +155,7 @@ export const productsData: Product[] = [
     category: '감지기 및 센서', 
     name: '3파장 적외선식 불꽃 감지기', 
     desc: '3개의 다른 적외선 파장을 분석하여 비화재보(오작동)를 최소화하고 정확하게 화재를 감지합니다.', 
-    badges: ['FM', 'KFI'], 
+    badges: ['FM'], 
     image: '/products/sensors.jpg',
     overview: '최첨단 3파장 적외선(IR3) 센서 기술을 적용하여 장거리에서도 불꽃을 정확히 인식하며, 용접 불꽃이나 직사광선 등에 의한 오작동을 원천 차단합니다.',
     features: [
@@ -163,7 +163,7 @@ export const productsData: Product[] = [
       { title: '초고속 반응', description: '불꽃 발생 후 0.3초 이내에 경보를 출력합니다.' }
     ],
     specs: [
-      { label: '인증', value: 'FM, KFI' },
+      { label: '인증', value: 'FM' },
       { label: '감지거리', value: '최대 60m' },
       { label: '감지시야각', value: '90도' }
     ]
@@ -173,7 +173,7 @@ export const productsData: Product[] = [
     category: '감지기 및 센서', 
     name: '서미스터형 열 감지기', 
     desc: '미세한 온도 변화를 빠르고 정밀하게 감지하여 화재 초기 단계에서 경보를 발령합니다.', 
-    badges: ['KFI'], 
+    badges: [], 
     image: '/products/sensors.jpg',
     overview: '반도체 공정 장비 등 미세한 열 변화에도 민감한 환경에 적용되는 고정밀 열 감지기로, 설정된 위험 온도 도달 시 즉시 동작합니다.',
     features: [
@@ -181,7 +181,7 @@ export const productsData: Product[] = [
       { title: '내구성', description: '부식성 가스나 분진이 있는 공장 환경에서도 높은 내구성을 발휘합니다.' }
     ],
     specs: [
-      { label: '인증', value: 'KFI' },
+      { label: '인증', value: '없음' },
       { label: '감지방식', value: '서미스터 (Thermistor)' }
     ]
   },
@@ -190,7 +190,7 @@ export const productsData: Product[] = [
     category: '감지기 및 센서', 
     name: '연기 및 가연성 가스 감지 장치', 
     desc: '화재로 인한 연기와 가연성 가스 누출을 동시에 감지하는 복합형 조기 경보 센서.', 
-    badges: ['KFI'], 
+    badges: [], 
     image: '/products/sensors.jpg',
     overview: '연기와 폭발성 가연성 가스를 하나의 유닛에서 동시에 감지함으로써, 화재 위험뿐만 아니라 가스 폭발 위험까지 사전에 차단하는 복합 안전 장치입니다.',
     features: [
@@ -198,7 +198,7 @@ export const productsData: Product[] = [
       { title: '빠른 유지보수', description: '센서 모듈 교체가 용이하게 설계되었습니다.' }
     ],
     specs: [
-      { label: '인증', value: 'KFI' },
+      { label: '인증', value: '없음' },
       { label: '감지대상', value: '연기, 가연성 가스 (H2, CH4 등)' }
     ]
   }

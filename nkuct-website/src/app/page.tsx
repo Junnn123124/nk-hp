@@ -23,7 +23,7 @@ export default function Home() {
                 반도체·디스플레이 FAB 전용 자동소화 시스템
               </p>
               <p className="text-lg mb-8 max-w-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
-                FM, KFI, UL 인증을 보유한 글로벌 수준의 화재 안전 기술. 70년 전통의 Hatsuta 기술력으로 당신의 소중한 자산과 생명을 보호합니다.
+                FM, CE, UL 인증을 보유한 글로벌 수준의 화재 안전 기술. 70년 전통의 Hatsuta 기술력으로 당신의 소중한 자산과 생명을 보호합니다.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/solutions" className="btn-primary">
@@ -54,7 +54,7 @@ export default function Home() {
                   </div>
                   <div className="mt-6 flex justify-center gap-2">
                     <span className="badge badge-fm">FM Approved</span>
-                    <span className="badge badge-kfi">KFI 인증</span>
+                    <span className="badge badge-ce">CE 인증</span>
                   </div>
                 </div>
               </div>
@@ -123,13 +123,13 @@ export default function Home() {
       <section className="section-padding">
         <div className="container-custom">
           <AnimateOnScroll>
-            <SectionHeader badge="PRODUCTS" title="CABINEX Series" subtitle="글로벌 인증(FM, KFI, UL)을 획득한 최고 수준의 자동소화설비 라인업" />
+            <SectionHeader badge="PRODUCTS" title="CABINEX Series" subtitle="글로벌 인증(FM, CE, UL)을 획득한 최고 수준의 자동소화설비 라인업" />
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: 'CABINEX-EWT', type: '반도체/디스플레이 맞춤형 소화설비', badges: ['FM', 'KFI', 'UL'], img: 'ewt' },
-              { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: ['FM', 'KFI'], img: 'en2' },
+              { name: 'CABINEX-EWT', type: '반도체/디스플레이 맞춤형 소화설비', badges: ['FM', 'CE', 'UL'], img: 'ewt' },
+              { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: ['FM'], img: 'en2' },
               { name: 'Smart Grid Cabi', type: 'ESS 방호 전용 시스템', badges: ['FM'], img: 'smart' },
             ].map((prod, i) => (
               <AnimateOnScroll key={i} delay={i * 150}>
@@ -141,9 +141,9 @@ export default function Home() {
                     <h3 className="text-xl font-bold mb-1">{prod.name}</h3>
                     <p className="mb-4 text-sm" style={{ color: 'var(--nk-text-muted)' }}>{prod.type}</p>
                     <div className="flex justify-center gap-2 mb-6">
-                      {prod.badges.includes('FM') && <span className="badge badge-fm">FM</span>}
-                      {prod.badges.includes('KFI') && <span className="badge badge-kfi">KFI</span>}
-                      {prod.badges.includes('UL') && <span className="badge badge-ul">UL</span>}
+                      { prod.badges.includes('FM') && <span className="badge badge-fm">FM</span> }
+                      { prod.badges.includes('CE') && <span className="badge badge-ce">CE</span> }
+                      { prod.badges.includes('UL') && <span className="badge badge-ul">UL</span> }
                     </div>
                     <Link href="/products" className="btn-secondary w-full justify-center">제품 상세정보</Link>
                   </div>

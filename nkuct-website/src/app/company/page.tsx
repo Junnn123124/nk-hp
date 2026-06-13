@@ -131,10 +131,10 @@ export default function Company() {
             <AnimateOnScroll delay={200}>
               <div className="glass-card p-8 h-full flex flex-col items-center text-center">
                 <Award size={48} className="mb-6" style={{ color: '#93C5FD' }} />
-                <h3 className="text-xl font-bold mb-3">KFI 인증</h3>
-                <span className="badge badge-kfi mb-4">국가 공인</span>
+                <h3 className="text-xl font-bold mb-3">CE 인증</h3>
+                <span className="badge badge-ce mb-4">국제 공인</span>
                 <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)' }}>
-                  한국소방산업기술원의 철저한 성능 검증을 거친 소방용품 국가 형식 승인 및 제품 검사 합격 인증입니다.
+                  유럽 연합(EU)의 엄격한 안전, 건강, 환경 규격을 충족하는 제품에 부여되는 국제 통합 인증입니다.
                 </p>
               </div>
             </AnimateOnScroll>
