@@ -44,14 +44,19 @@ export default function Products() {
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`px-4 md:px-6 py-2 md:py-3 rounded-full font-bold text-sm md:text-base transition-all duration-300 ${
+                  className={`rounded-full font-bold text-sm md:text-base transition-all duration-300 ${
                     activeCategory === category 
-                      ? 'bg-blue-500 text-white shadow-[0_0_15px_rgba(74,144,217,0.4)]' 
-                      : 'bg-transparent text-slate-400 border border-slate-700 hover:border-blue-400 hover:text-white'
+                      ? 'text-white shadow-[0_0_15px_rgba(74,144,217,0.4)]' 
+                      : 'text-slate-400 hover:border-blue-400 hover:text-white'
                   }`}
                   style={{
                     backgroundColor: activeCategory === category ? 'var(--nk-accent)' : 'transparent',
-                    borderColor: activeCategory === category ? 'var(--nk-accent)' : 'var(--nk-border)'
+                    borderColor: activeCategory === category ? 'var(--nk-accent)' : 'var(--nk-border)',
+                    padding: '0.5rem 1.5rem',
+                    whiteSpace: 'nowrap',
+                    minWidth: 'max-content',
+                    borderWidth: '1px',
+                    borderStyle: 'solid'
                   }}
                 >
                   {category}
