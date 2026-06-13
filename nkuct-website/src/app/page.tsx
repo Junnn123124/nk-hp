@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRight, Cpu, Monitor, Battery, Wind, Flame, Shield, CheckCircle, Award } from 'lucide-react';
+import { ArrowRight, Cpu, Monitor, Battery, Wind, Flame, Shield, CheckCircle, Award, Globe, Users } from 'lucide-react';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import CountUp from '@/components/ui/CountUp';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -126,7 +126,7 @@ export default function Home() {
             <SectionHeader badge="PRODUCTS" title="CABINEX Series" subtitle="글로벌 인증(FM, CE, UL)을 획득한 최고 수준의 자동소화설비 라인업" />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto" style={{ margin: '0 auto' }}>
             {[
               { name: 'CABINEX-EWT', type: '반도체/디스플레이 맞춤형 소화설비', badges: ['FM', 'CE', 'UL'], img: 'ewt' },
               { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: ['FM'], img: 'en2' },
@@ -154,8 +154,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partnership Section */}
+      {/* Global Export Section */}
       <section className="section-padding bg-section-gradient">
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <SectionHeader badge="GLOBAL EXPORT" title="해외 수출에 최적화된 자동방재 기업" subtitle="세계 최고 수준의 FM 인증 설비로 귀사의 성공적인 해외 진출을 완벽하게 지원합니다." />
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mt-8" style={{ margin: '2rem auto 0' }}>
+            <AnimateOnScroll animation="slide-in-left">
+              <div className="glass-card p-8 md:p-10 h-full">
+                <h3 className="text-2xl font-bold mb-6 text-gradient-warm">성공적인 해외 수출의 든든한 파트너</h3>
+                <p className="text-lg mb-6" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
+                  반도체 제조 장비, 디스플레이 라인, 그리고 ESS 에너지 저장장치를 해외로 수출할 때 <strong>FM 인증을 획득한 화재 방호 시스템</strong>은 선택이 아닌 필수 요구사항인 경우가 많습니다.
+                </p>
+                <p className="text-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
+                  NK UCT는 까다로운 글로벌 안전 기준을 통과한 FM 인증 자동 소화설비를 바탕으로, <strong>20년 이상 전 세계 각국에 설비를 공급해 온 수출 전문 기업</strong>입니다. 어떠한 조건과 환경에서도 완벽하게 부합하는 시스템으로 귀사의 수출 경쟁력을 한층 더 높여드립니다.
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="slide-in-right" delay={200}>
+              <div className="grid grid-cols-1 gap-6">
+                <div className="glass-panel p-6 flex gap-4 items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: 'var(--nk-accent)' }}>
+                  <div className="p-3 rounded-full bg-blue-100/50 flex-shrink-0" style={{ color: 'var(--nk-accent)' }}>
+                    <Globe size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">20년 이상의 글로벌 실적</h4>
+                    <p className="text-sm" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.6 }}>아시아, 미주, 유럽 등 세계 주요 국가의 반도체 및 디스플레이 현장에 소화 설비를 성공적으로 구축해 온 풍부한 경험을 보유하고 있습니다.</p>
+                  </div>
+                </div>
+                
+                <div className="glass-panel p-6 flex gap-4 items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: '#F59E0B' }}>
+                  <div className="p-3 rounded-full bg-yellow-100/50 text-yellow-600 flex-shrink-0">
+                    <CheckCircle size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">FM 인증 수출 전용 라인업</h4>
+                    <p className="text-sm" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.6 }}>해외 발주처의 엄격한 규격을 100% 충족하는 FM 인증 획득 제품군으로 수출 시 발생할 수 있는 규제 리스크를 사전에 차단합니다.</p>
+                  </div>
+                </div>
+
+                <div className="glass-panel p-6 flex gap-4 items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: 'var(--nk-success)' }}>
+                  <div className="p-3 rounded-full bg-green-100/50 text-green-600 flex-shrink-0">
+                    <Users size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">전 세계 현지 유지보수 네트워크</h4>
+                    <p className="text-sm" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.6 }}>세계 각국에 자동 소화설비의 전문적인 설치 및 유지보수가 가능한 탄탄한 현지 협력업체 네트워크를 구축하여 사후 관리까지 보장합니다.</p>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnership Section */}
+      <section className="section-padding">
         <div className="container-custom">
           <AnimateOnScroll>
             <SectionHeader badge="PARTNERSHIP" title="글로벌 기술 파트너십" subtitle="세계적인 기업들과의 기술 협력을 통해 시너지를 창출합니다." />
