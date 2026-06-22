@@ -161,9 +161,9 @@ export default function Home() {
             <SectionHeader badge="GLOBAL EXPORT" title="해외 수출에 최적화된 자동방재 기업" subtitle="세계 최고 수준의 FM 인증 설비로 귀사의 성공적인 해외 진출을 완벽하게 지원합니다." />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mx-auto" style={{ margin: '3rem auto 0', maxWidth: '1152px', gap: '3rem' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-center mx-auto export-grid-container">
             <AnimateOnScroll animation="slide-in-left">
-              <div className="glass-card h-full" style={{ padding: '2.5rem' }}>
+              <div className="glass-card h-full export-card-left">
                 <h3 className="text-2xl font-bold mb-6 text-gradient-warm" style={{ marginBottom: '1.5rem' }}>성공적인 해외 수출의 든든한 파트너</h3>
                 <p className="text-lg mb-6" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8, marginBottom: '1.5rem' }}>
                   반도체 제조 장비, 디스플레이 라인, 그리고 ESS 에너지 저장장치를 해외로 수출할 때 <strong>FM 인증을 획득한 화재 방호 시스템</strong>은 선택이 아닌 필수 요구사항인 경우가 많습니다.
@@ -176,7 +176,7 @@ export default function Home() {
 
             <AnimateOnScroll animation="slide-in-right" delay={200}>
               <div className="grid grid-cols-1" style={{ gap: '1.5rem' }}>
-                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: 'var(--nk-accent)', padding: '1.5rem', display: 'flex', gap: '1rem' }}>
+                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform export-card-right" style={{ borderLeftColor: 'var(--nk-accent)' }}>
                   <div className="rounded-full bg-blue-100/50 flex-shrink-0" style={{ color: 'var(--nk-accent)', padding: '0.75rem' }}>
                     <Globe size={24} />
                   </div>
@@ -186,7 +186,7 @@ export default function Home() {
                   </div>
                 </div>
                 
-                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: '#F59E0B', padding: '1.5rem', display: 'flex', gap: '1rem' }}>
+                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform export-card-right" style={{ borderLeftColor: '#F59E0B' }}>
                   <div className="rounded-full bg-yellow-100/50 text-yellow-600 flex-shrink-0" style={{ padding: '0.75rem' }}>
                     <CheckCircle size={24} />
                   </div>
@@ -196,7 +196,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform" style={{ borderLeftColor: 'var(--nk-success)', padding: '1.5rem', display: 'flex', gap: '1rem' }}>
+                <div className="glass-panel items-start border-l-4 hover:-translate-y-1 transition-transform export-card-right" style={{ borderLeftColor: 'var(--nk-success)' }}>
                   <div className="rounded-full bg-green-100/50 text-green-600 flex-shrink-0" style={{ padding: '0.75rem' }}>
                     <Users size={24} />
                   </div>

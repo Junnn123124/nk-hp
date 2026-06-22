@@ -444,6 +444,40 @@ h1, h2, h3, h4, h5, h6 {
   transform: rotate(180deg);
 }
 
+/* ===== Export Section Custom Classes ===== */
+.export-grid-container {
+  margin: 2rem auto 0;
+  max-width: 1152px;
+  gap: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .export-grid-container {
+    margin-top: 3rem;
+    gap: 3rem;
+  }
+}
+
+.export-card-left {
+  padding: 1.5rem;
+}
+@media (min-width: 768px) {
+  .export-card-left {
+    padding: 2.5rem;
+  }
+}
+
+.export-card-right {
+  padding: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+@media (min-width: 768px) {
+  .export-card-right {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .container-custom {
