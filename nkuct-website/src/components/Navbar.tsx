@@ -53,7 +53,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="hidden md:flex">
+        <div className="desktop-nav">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -82,7 +82,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className="hidden md:flex">
+        <div className="desktop-cta">
           <a
             href="tel:031-000-0000"
             style={{
@@ -108,15 +108,8 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden"
+          className="mobile-menu-btn"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: 'var(--nk-text)',
-            cursor: 'pointer',
-            padding: '0.5rem',
-          }}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

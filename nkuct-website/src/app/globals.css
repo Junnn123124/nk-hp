@@ -444,6 +444,16 @@ h1, h2, h3, h4, h5, h6 {
   transform: rotate(180deg);
 }
 
+/* ===== Mobile Text Alignment ===== */
+.text-mobile-center {
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .text-mobile-center {
+    text-align: left;
+  }
+}
+
 /* ===== Export Section Custom Classes ===== */
 .export-grid-container {
   margin: 2rem auto 0;
@@ -475,6 +485,37 @@ h1, h2, h3, h4, h5, h6 {
   .export-card-right {
     padding: 1.5rem;
     gap: 1rem;
+  }
+}
+
+/* ===== Navbar Responsive Classes ===== */
+.desktop-nav {
+  display: none !important;
+}
+.desktop-cta {
+  display: none !important;
+}
+.mobile-menu-btn {
+  display: block;
+  background: transparent;
+  border: none;
+  color: var(--nk-text);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .desktop-cta {
+    display: flex !important;
+    align-items: center;
+    gap: 1rem;
+  }
+  .mobile-menu-btn {
+    display: none !important;
   }
 }
 

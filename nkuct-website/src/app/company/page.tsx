@@ -48,7 +48,7 @@ export default function Company() {
               <div className="flex-shrink-0 w-48 h-48 rounded-full flex items-center justify-center border-4" style={{ borderColor: 'var(--nk-primary-light)', background: 'var(--nk-surface-lighter)' }}>
                 <User size={80} style={{ color: 'var(--nk-text-dim)' }} />
               </div>
-              <div>
+              <div className="text-mobile-center" style={{ width: '100%' }}>
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">CEO 인사말</h2>
                 <div className="space-y-4 mb-8" style={{ color: 'var(--nk-text-muted)' }}>
                   <p>
@@ -66,7 +66,7 @@ export default function Company() {
                     국내 전문소방업체로 ‘소방안전인식을 확산시키고 인명과 재산, 환경보존의 소중함을 최우선으로 생각한다’는 소명아래 설립이후 부단한 노력과 개발을 해 왔습니다. 이러한 마음가짐을 토대로 국내 최고의 선진소방업체로 거듭나기 위하여 더욱 노력하겠습니다.
                   </p>
                 </div>
-                <div className="text-right">
+                <div>
                   <p className="text-lg font-bold">NK UCT 대표이사</p>
                   {/* 이름은 나중에 추가 */}
                 </div>
