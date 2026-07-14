@@ -53,8 +53,9 @@ export default function Support() {
       icon: <Headphones size={32} />,
       title: '기술 문의',
       desc: '제품 사양 및 시스템 기술 관련 문의',
-      action: '031-000-0000',
-      isLink: false
+      action: '기술 문의 작성',
+      isLink: true,
+      href: '#contact-form'
     },
     {
       icon: <FileText size={32} />,
