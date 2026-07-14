@@ -8,9 +8,44 @@ import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Support() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [formData, setFormData] = useState({
+    name: '', company: '', phone: '', email: '', inquiryType: '견적 요청', message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   const toggleFaq = (index: number) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: '문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.' });
+        setFormData({ name: '', company: '', phone: '', email: '', inquiryType: '견적 요청', message: '' });
+      } else {
+        setSubmitStatus({ type: 'error', message: data.error || '발송에 실패했습니다. 관리자에게 문의해주세요.' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const supportOptions = [
@@ -162,16 +197,75 @@ export default function Support() {
               </div>
             </AnimateOnScroll>
             
-            <AnimateOnScroll delay={200} className="w-full">
-              <div className="glass-panel p-10 border border-blue-900/30 flex items-center justify-center text-center">
-                <div>
-                  <FileText size={48} className="mx-auto mb-6 opacity-50" style={{ color: 'var(--nk-text-dim)' }} />
-                  <h3 className="text-xl font-bold mb-4">온라인 견적/문의 폼</h3>
-                  <p className="mb-8 text-sm" style={{ color: 'var(--nk-text-muted)' }}>시스템 개발 중입니다. 현재는 전화나 이메일을 통해 문의해 주시면 감사하겠습니다.</p>
-                  <a href="mailto:info@nkuct.com" className="btn-primary">
-                    <Mail size={18} className="mr-2" /> 이메일 보내기
-                  </a>
-                </div>
+            <AnimateOnScroll delay={200} className="w-full lg:w-2/3 mx-auto">
+              <div className="glass-panel p-8 md:p-10 border border-blue-900/30 text-left">
+                <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
+                  <FileText size={24} style={{ color: 'var(--nk-accent)' }} /> 
+                  온라인 문의 폼
+                </h3>
+                
+                {submitStatus.type === 'success' ? (
+                  <div className="p-8 text-center bg-green-50 border border-green-200 rounded-xl">
+                    <div className="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-4">
+                      <Mail size={32} />
+                    </div>
+                    <h4 className="text-xl font-bold text-green-800 mb-2">접수 완료</h4>
+                    <p className="text-green-700">{submitStatus.message}</p>
+                    <button onClick={() => setSubmitStatus({ type: null, message: '' })} className="mt-6 btn-primary">새로운 문의 작성하기</button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="company" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>회사명 *</label>
+                        <input type="text" id="company" name="company" required value={formData.company} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" placeholder="NK UCT" style={{ borderColor: 'var(--nk-border)' }} />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="name" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>담당자 성함 *</label>
+                        <input type="text" id="name" name="name" required value={formData.name} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" placeholder="홍길동 대리" style={{ borderColor: 'var(--nk-border)' }} />
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="phone" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>연락처 *</label>
+                        <input type="tel" id="phone" name="phone" required value={formData.phone} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" placeholder="010-0000-0000" style={{ borderColor: 'var(--nk-border)' }} />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <label htmlFor="email" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>이메일 주소 *</label>
+                        <input type="email" id="email" name="email" required value={formData.email} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" placeholder="example@company.com" style={{ borderColor: 'var(--nk-border)' }} />
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="inquiryType" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>문의 유형 *</label>
+                      <select id="inquiryType" name="inquiryType" required value={formData.inquiryType} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" style={{ borderColor: 'var(--nk-border)' }}>
+                        <option value="견적 요청">견적 요청</option>
+                        <option value="기술 문의">기술 문의</option>
+                        <option value="기타 문의">기타 문의</option>
+                      </select>
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="message" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>문의 내용 *</label>
+                      <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none" placeholder="문의하실 내용을 상세히 적어주시면 더 정확한 답변이 가능합니다." style={{ borderColor: 'var(--nk-border)' }}></textarea>
+                    </div>
+
+                    {submitStatus.type === 'error' && (
+                      <div className="p-4 text-red-600 bg-red-50 border border-red-200 rounded-lg text-sm">
+                        {submitStatus.message}
+                      </div>
+                    )}
+
+                    <button type="submit" disabled={isSubmitting} className={`w-full py-4 rounded-xl font-bold text-white flex justify-center items-center gap-2 transition-all duration-300 ${isSubmitting ? 'bg-slate-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
+                      {isSubmitting ? (
+                        <>발송 중...</>
+                      ) : (
+                        <><Mail size={20} /> 문의 보내기</>
+                      )}
+                    </button>
+                  </form>
+                )}
               </div>
             </AnimateOnScroll>
           </div>
