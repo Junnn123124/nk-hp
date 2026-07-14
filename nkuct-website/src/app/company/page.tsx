@@ -7,19 +7,22 @@ import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Company() {
   const timelineEvents = [
-    { year: '1998.03', title: '엔케이 코퍼레이션(NK CORPORATION) 설립', desc: '' },
-    { year: '1998.03', title: 'HATSUTA SEISAKUSHO CO.,LTD.와 업무제휴', desc: '' },
-    { year: '1998.05', title: '팩케이지형 소화설비 부분품 수출시작', desc: '' },
-    { year: '1999.02', title: '유망중소기업체 해외인증획득 지원업체로 선정', desc: '중소기업청 주관' },
-    { year: '1999.12', title: '선박용 소화설비 수출시작', desc: '' },
-    { year: '2000.01', title: '(주)엔케이UCT(NK UCT CORPORATION) 법인전환', desc: '2000년 1월 27일' },
-    { year: '2001.11', title: '‘100만불 수출의 탑’ 대통령상 수상', desc: '' },
-    { year: '2001.12', title: '경기도 이천시 제 1공장 준공', desc: '' },
-    { year: '2002.06', title: 'HATSUTA SEISAKUSHO CO.,LTD.와 해외공동개발 합의', desc: '소화설비 부문' },
-    { year: '2002.06', title: '중국 상해시 현지 사무소 개설', desc: '' },
-    { year: '2002.07', title: '휴대용 화재감지시험기 특허취득', desc: 'FEE-FDT-119' },
-    { year: '2002.08', title: 'KSA A 9001 : 2001 / ISO 9001 : 2000', desc: '품질시스템 규격 인증' },
-    { year: '2002.11', title: '경기도 이천시 제 2공장 준공', desc: '소화기 생산라인 증축' },
+    { year: '1998.03', title: 'NK CORPORATION 설립', desc: '' },
+    { year: '2000.03', title: 'NKUCT CORPORATION 법인설립', desc: '' },
+    { year: '2003.06', title: 'SEAMLESS / WELDED STAINLESS TUBE (BA Grade) 사업 개시', desc: '' },
+    { year: '2003.07', title: '휴대용 화재감지시험기 CE 인증 취득', desc: '' },
+    { year: '2003.07', title: 'NK-HATSUTA 중국 상하이 합작법인 설립', desc: '' },
+    { year: '2003.08', title: '차세대 자동소화설비 「SUPER OWL」 실용신안 등록', desc: '' },
+    { year: '2003.10', title: 'ULTRA CLEAN TUBE E/P 생산라인 구축 (시화지점)', desc: '' },
+    { year: '2006.03', title: '소화설비 조립·수출 개시 및 금곡동 공장 이전, 생산능력 확대', desc: '' },
+    { year: '2007.04', title: '화재안전용 방열패널 생산공장 설립 (김포지점)', desc: '' },
+    { year: '2007.06', title: '첨단산업용 화재안전 솔루션 사업 고도화 및 금속화재 대응 제품군 확대', desc: '' },
+    { year: '2009.12', title: 'NK & NKT 전략적 파트너십 체결', desc: '' },
+    { year: '2013~2015', title: '중국 광저우 디스플레이 산업 프로젝트(CA, CO) 1·2차 수주 및 수행', desc: '' },
+    { year: '2021.02', title: '유럽 배터리 산업 시장 진출 및 글로벌 공급망 구축', desc: '' },
+    { year: '2022.03', title: '북미 배터리 산업 시장 진출 및 전략적 파트너십 확대', desc: '' },
+    { year: '2023.01', title: '반도체 제조설비용 자동소화설비 및 특수가스 솔루션 사업 확장', desc: '' },
+    { year: '2025.04', title: '글로벌 반도체·첨단산업 프로젝트 수행 및 전략적 해외 협력 네트워크 강화', desc: '' },
   ];
 
   return (
