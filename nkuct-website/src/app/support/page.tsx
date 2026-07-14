@@ -156,47 +156,11 @@ export default function Support() {
       <section id="contact-form" className="section-padding bg-section-gradient">
         <div className="container-custom">
           <AnimateOnScroll>
-            <SectionHeader badge="CONTACT" title="연락처 정보" />
+            <SectionHeader badge="CONTACT" title="온라인 견적/기술 문의" />
           </AnimateOnScroll>
 
           <div className="max-w-4xl mx-auto flex flex-col gap-8">
-            <AnimateOnScroll delay={100} className="w-full">
-              <div className="glass-card p-10 flex flex-col justify-center items-center text-center space-y-8">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-900/30" style={{ color: 'var(--nk-accent)' }}><Phone size={24} /></div>
-                  <div>
-                    <div className="text-sm font-semibold mb-1" style={{ color: 'var(--nk-text-dim)' }}>고객센터 전화</div>
-                    <div className="text-xl font-bold">031-000-0000</div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-900/30" style={{ color: 'var(--nk-accent)' }}><Mail size={24} /></div>
-                  <div>
-                    <div className="text-sm font-semibold mb-1" style={{ color: 'var(--nk-text-dim)' }}>이메일 문의</div>
-                    <div className="text-xl font-bold">info@nkuct.com</div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-900/30" style={{ color: 'var(--nk-accent)' }}><Clock size={24} /></div>
-                  <div>
-                    <div className="text-sm font-semibold mb-1" style={{ color: 'var(--nk-text-dim)' }}>운영 시간</div>
-                    <div className="text-lg font-bold">평일 09:00 - 18:00</div>
-                    <div className="text-sm mt-1" style={{ color: 'var(--nk-text-muted)' }}>(주말 및 공휴일 휴무)</div>
-                  </div>
-                </div>
 
-                <div className="flex flex-col items-center gap-3">
-                  <div className="p-3 rounded-xl bg-blue-900/30" style={{ color: 'var(--nk-accent)' }}><MapPin size={24} /></div>
-                  <div>
-                    <div className="text-sm font-semibold mb-1" style={{ color: 'var(--nk-text-dim)' }}>오시는 길</div>
-                    <div className="text-lg font-bold">경기도 화성시 동탄첨단산업1로 00</div>
-                  </div>
-                </div>
-              </div>
-            </AnimateOnScroll>
-            
             <AnimateOnScroll delay={200} className="w-full lg:w-2/3 mx-auto">
               <div className="glass-panel p-8 md:p-10 border border-blue-900/30 text-left">
                 <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">

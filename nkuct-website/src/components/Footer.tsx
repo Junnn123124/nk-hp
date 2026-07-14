@@ -56,24 +56,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '1.25rem', color: 'var(--nk-text)' }}>연락처</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <a href="tel:031-000-0000" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none' }}>
-                <Phone size={16} style={{ color: 'var(--nk-accent)' }} />
-                031-000-0000
-              </a>
-              <a href="mailto:info@nkuct.com" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none' }}>
-                <Mail size={16} style={{ color: 'var(--nk-accent)' }} />
-                info@nkuct.com
-              </a>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: 'var(--nk-text-muted)', fontSize: '0.85rem' }}>
-                <MapPin size={16} style={{ color: 'var(--nk-accent)', flexShrink: 0, marginTop: '2px' }} />
-                경기도 화성시 동탄첨단산업1로 00
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Bottom Bar */}

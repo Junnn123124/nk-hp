@@ -83,23 +83,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="desktop-cta">
-          <a
-            href="tel:031-000-0000"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              color: 'var(--nk-text-muted)',
-              fontSize: '0.85rem',
-              textDecoration: 'none',
-              transition: 'color 0.2s',
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--nk-accent)'}
-            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--nk-text-muted)'}
-          >
-            <Phone size={16} />
-            031-000-0000
-          </a>
+
           <Link href="/support" className="btn-primary" style={{ padding: '0.625rem 1.25rem', fontSize: '0.85rem' }}>
             <FileText size={16} />
             견적 요청
