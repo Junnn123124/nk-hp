@@ -218,7 +218,7 @@ export default function Home() {
             <SectionHeader badge="PARTNERSHIP" title="글로벌 기술 파트너십" subtitle="세계적인 기업들과의 기술 협력을 통해 시너지를 창출합니다." />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <AnimateOnScroll delay={100}>
               <div className="glass-card p-10 text-center h-full flex flex-col items-center justify-center">
                 <div className="text-3xl font-black mb-4 tracking-wider" style={{ color: '#E53E3E' }}>HATSUTA</div>
@@ -231,6 +231,13 @@ export default function Home() {
                 <div className="text-3xl font-black mb-4 tracking-wider text-gradient">NKT</div>
                 <h4 className="text-xl font-bold mb-4">NKT Engineering (Korea)</h4>
                 <p style={{ color: 'var(--nk-text-muted)' }}>반도체 라인에 특화된 엔지니어링 및 현장 맞춤형 설계 시공 전문 기업</p>
+              </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll delay={300}>
+              <div className="glass-card p-10 text-center h-full flex flex-col items-center justify-center">
+                <div className="text-3xl font-black mb-4 tracking-wider" style={{ color: 'var(--nk-primary-light)' }}>NKuct USA</div>
+                <h4 className="text-xl font-bold mb-4">NKuct America, Inc. (USA)</h4>
+                <p style={{ color: 'var(--nk-text-muted)' }}>미국 현지 법인으로 북미 시장 진출 기업에 대한 빠르고 전문적인 비즈니스 대응 및 현지 밀착 지원</p>
               </div>
             </AnimateOnScroll>
           </div>
