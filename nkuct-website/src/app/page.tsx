@@ -20,7 +20,7 @@ export default function Home() {
                 <span className="text-gradient">0.3초</span> 만에 감지합니다
               </h1>
               <p className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'var(--nk-text)' }}>
-                반도체·디스플레이 FAB 전용 자동소화 시스템
+                반도체·디스플레이 FAB 전용 자동소화장치 및 자동소화설비 시스템
               </p>
               <p className="text-lg mb-8 max-w-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
                 FM, CE, UL 인증을 보유한 글로벌 수준의 화재 안전 기술. 70년 전통의 Hatsuta 기술력으로 당신의 소중한 자산과 생명을 보호합니다.
@@ -96,11 +96,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: <Cpu />, title: '반도체 장비 소화', desc: 'CABINEX-EWT 적용을 통해 초고속 감지로 고가의 반도체 장비를 방호합니다.' },
-              { icon: <Monitor />, title: '디스플레이 라인 방호', desc: 'CABINEX-EN2 등 대면적 패널 공정 라인에 특화된 화재 방호 시스템입니다.' },
-              { icon: <Battery />, title: 'ESS 화재 방호', desc: 'Smart Grid Cabi 시스템으로 배터리 열폭주를 감지하고 화재 확산을 억제합니다.' },
-              { icon: <Wind />, title: '클린룸 통합 방재', desc: '친환경 알고나이트 소화약제를 적용하여 클린룸 환경에 최적화된 시스템입니다.' },
-              { icon: <Flame />, title: '배기덕트 소화', desc: '특수 서미스터형 열 감지기로 배기덕트 구간의 화재를 조기 감지하고 차단합니다.' },
+              { icon: <Cpu />, title: '반도체 장비 자동소화설비', desc: 'CABINEX-EWT 적용을 통해 초고속 감지로 고가의 반도체 장비를 방호하는 자동소화설비입니다.' },
+              { icon: <Monitor />, title: '디스플레이 라인 자동소화장치', desc: 'CABINEX-EN2 등 대면적 패널 공정 라인에 특화된 화재 방호 전용 자동소화장치입니다.' },
+              { icon: <Battery />, title: 'ESS 자동소화장치', desc: 'Smart Grid Cabi 자동소화장치로 배터리 열폭주를 감지하고 화재 확산을 억제합니다.' },
+              { icon: <Wind />, title: '클린룸 통합 자동소화설비', desc: '친환경 알고나이트 소화약제를 적용하여 클린룸 환경에 최적화된 통합 자동소화설비입니다.' },
+              { icon: <Flame />, title: '배기덕트 자동소화설비', desc: '특수 서미스터형 열 감지기로 배기덕트 구간의 화재를 조기 감지하고 차단하는 자동소화설비입니다.' },
             ].map((sol, i) => (
               <AnimateOnScroll key={i} delay={i * 100}>
                 <Link href="/solutions" className="glass-card p-8 h-full flex flex-col group block text-inherit no-underline">
@@ -128,7 +128,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto" style={{ margin: '0 auto' }}>
             {[
-              { name: 'CABINEX-EWT', type: '반도체/디스플레이 맞춤형 소화설비', badges: ['FM', 'CE', 'UL'], img: 'ewt' },
+              { name: 'CABINEX-EWT', type: '반도체/디스플레이 맞춤형 자동소화설비', badges: ['FM', 'CE', 'UL'], img: 'ewt' },
               { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: ['FM'], img: 'en2' },
               { name: 'Smart Grid Cabi', type: 'ESS 방호 전용 시스템', badges: ['FM'], img: 'smart' },
             ].map((prod, i) => (
