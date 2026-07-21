@@ -30,12 +30,17 @@ export default function Footer() {
           <div>
             <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '1.25rem', color: 'var(--nk-text)' }}>회사소개</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {['CEO 인사말', '회사 연혁', '파트너십', '인증 현황'].map((item) => (
-                <Link key={item} href="/company" style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
+              {[
+                { label: 'CEO 인사말', href: '/company#ceo' },
+                { label: '회사 연혁', href: '/company#history' },
+                { label: '파트너십', href: '/#partnership' },
+                { label: '인증 현황', href: '/company#certifications' }
+              ].map((item) => (
+                <Link key={item.label} href={item.href} style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => e.currentTarget.style.color = 'var(--nk-accent)'}
                   onMouseLeave={(e) => e.currentTarget.style.color = 'var(--nk-text-muted)'}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -45,12 +50,18 @@ export default function Footer() {
           <div>
             <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '1.25rem', color: 'var(--nk-text)' }}>솔루션</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {['반도체 장비 소화', '디스플레이 라인', 'ESS 화재 방호', '클린룸 통합 방재', '배기덕트 소화'].map((item) => (
-                <Link key={item} href="/solutions" style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
+              {[
+                { label: '반도체 장비 소화', href: '/solutions#semiconductor' },
+                { label: '디스플레이 라인', href: '/solutions#display' },
+                { label: 'ESS 화재 방호', href: '/solutions#ess' },
+                { label: '클린룸 통합 방재', href: '/solutions#cleanroom' },
+                { label: '배기덕트 소화', href: '/solutions#exhaust' }
+              ].map((item) => (
+                <Link key={item.label} href={item.href} style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => e.currentTarget.style.color = 'var(--nk-accent)'}
                   onMouseLeave={(e) => e.currentTarget.style.color = 'var(--nk-text-muted)'}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>

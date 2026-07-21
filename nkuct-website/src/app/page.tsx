@@ -212,7 +212,7 @@ export default function Home() {
       </section>
 
       {/* Partnership Section */}
-      <section className="section-padding">
+      <section id="partnership" className="section-padding">
         <div className="container-custom">
           <AnimateOnScroll>
             <SectionHeader badge="PARTNERSHIP" title="글로벌 기술 파트너십" subtitle="세계적인 기업들과의 기술 협력을 통해 시너지를 창출합니다." />

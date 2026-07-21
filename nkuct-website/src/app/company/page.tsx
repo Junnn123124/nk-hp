@@ -44,7 +44,7 @@ export default function Company() {
       </section>
 
       {/* CEO Message Section */}
-      <section className="section-padding">
+      <section id="ceo" className="section-padding">
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="glass-card p-8 md:p-12 max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-center">
@@ -80,7 +80,7 @@ export default function Company() {
       </section>
 
       {/* History Timeline */}
-      <section className="section-padding bg-section-gradient relative">
+      <section id="history" className="section-padding bg-section-gradient relative">
         <div className="container-custom relative">
           <AnimateOnScroll>
             <SectionHeader badge="HISTORY" title="회사 연혁" subtitle="지속적인 혁신과 도전의 발자취" />
@@ -113,7 +113,7 @@ export default function Company() {
       </section>
 
       {/* Certifications Section */}
-      <section className="section-padding">
+      <section id="certifications" className="section-padding">
         <div className="container-custom">
           <AnimateOnScroll>
             <SectionHeader badge="CERTIFICATIONS" title="인증 현황" subtitle="글로벌 표준을 충족하는 최고의 품질과 안전성" />
