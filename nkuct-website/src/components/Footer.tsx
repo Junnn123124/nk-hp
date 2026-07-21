@@ -67,6 +67,26 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Support Links */}
+          <div>
+            <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '1.25rem', color: 'var(--nk-text)' }}>고객지원</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {[
+                { label: '기술 문의', href: '/support#contact-form' },
+                { label: '견적 요청', href: '/support#contact-form' },
+                { label: '자료 다운로드', href: '/support#downloads' },
+                { label: 'FAQ', href: '/support#faq' }
+              ].map((item) => (
+                <Link key={item.label} href={item.href} style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--nk-accent)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--nk-text-muted)'}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
         </div>
 
         {/* Bottom Bar */}
