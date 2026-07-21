@@ -134,8 +134,18 @@ export default function Home() {
             ].map((prod, i) => (
               <AnimateOnScroll key={i} delay={i * 150}>
                 <div className="glass-card overflow-hidden">
-                  <div className="h-48 flex items-center justify-center" style={{ background: 'rgba(0, 27, 94, 0.5)' }}>
-                    <div className="text-4xl font-black text-white/10">{prod.name}</div>
+                  <div className="h-48 relative flex items-center justify-center overflow-hidden" style={{ background: 'rgba(0, 27, 94, 0.7)' }}>
+                    {prod.img === 'ewt' ? (
+                      <>
+                        <img src="/semi-chip.jpg" alt="반도체 특화 자동소화설비" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, mixBlendMode: 'overlay' }} />
+                        <div className="relative z-10 text-center flex flex-col items-center">
+                          <div className="text-xs font-bold px-3 py-1 mb-2 rounded-full tracking-wide shadow-sm" style={{ background: 'var(--nk-accent)', color: '#fff' }}>반도체 특화 소화기</div>
+                          <div className="text-3xl font-black text-white drop-shadow-md">{prod.name}</div>
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-4xl font-black text-white/10">{prod.name}</div>
+                    )}
                   </div>
                   <div className="p-6 text-center">
                     <h3 className="text-xl font-bold mb-1">{prod.name}</h3>
