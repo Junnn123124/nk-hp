@@ -72,8 +72,7 @@ export default function Footer() {
             <h4 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '1.25rem', color: 'var(--nk-text)' }}>고객지원</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {[
-                { label: '기술 문의', href: '/support#contact-form' },
-                { label: '견적 요청', href: '/support#contact-form' },
+                { label: '견적/기술 문의', href: '/support#contact-form' },
                 { label: '자료 다운로드', href: '/support#downloads' },
                 { label: 'FAQ', href: '/support#faq' }
               ].map((item) => (
