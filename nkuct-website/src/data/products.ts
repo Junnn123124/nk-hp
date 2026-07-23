@@ -18,27 +18,50 @@ export interface Product {
   overview: string; // long description
   features: ProductFeature[];
   specs: ProductSpec[];
+  underRevision?: boolean; // Added for products under revision
 }
 
 export const productsData: Product[] = [
   // 자동소화설비
   { 
+    id: 'cabinex-ewt', 
+    category: '자동소화설비', 
+    name: 'CABINEX-EWT2', 
+    desc: '반도체, 디스플레이, ESS, 배터리 등 제조 장비 화재 특성에 맞춘 초고속 맞춤형 자동소화 시스템.', 
+    badges: ['FM', 'CE'], 
+    image: '/products/cabinex-ewt.jpg',
+    overview: 'FM 요구 기준을 만족하는 CO2 소화 가스를 사용하여, 클린룸 및 반도체 장비 내 화재를 잔여물 없이 안전하고 완벽하게 진압하는 최고 성능의 시스템입니다.',
+    features: [
+      { title: '0.3초 초고속 감지', description: '특수 센서를 통해 화재를 0.3초 이내에 감지하고 즉각 대응합니다.' },
+      { title: '개별 방호 제어', description: '최대 18개 그룹의 개별 방호가 가능하여 화재 구역만 타겟팅합니다.' },
+      { title: '네트워크 감시', description: 'Modbus/TCP 통신을 지원하여 실시간 모니터링 및 이력 관리가 가능합니다.' },
+      { title: '범용 방호 솔루션', description: '이산화탄소를 사용하여 반도체, 디스플레이뿐만 아니라 배기덕트 및 ESS 화재까지 전천후 대응이 가능합니다.' }
+    ],
+    specs: [
+      { label: '소화약제', value: '이산화탄소 (CO2) 22.7kg / 45.4kg' },
+      { label: '사용온도', value: '0℃ ~ 40℃' },
+      { label: '소비전력', value: '105W Max.' },
+      { label: '입력전원', value: 'AC100~120V / 187~240V, 50/60Hz' },
+      { label: '규격 (W×H×D)', value: 'COX-50EWT2 기준 500×1530×370 mm' }
+    ]
+  },
+  { 
     id: 'cabinex-en2', 
     category: '자동소화설비', 
     name: 'CABINEX-EN2', 
-    desc: '공작 기계 및 반도체 제조 장비 등 각종 산업 기계 설비에 최적화된 자동 소화 시스템.', 
-    badges: ['FM'], 
+    desc: '공작 기계 및 각종 산업 기계 설비에 최적화된 자동 소화 시스템.', 
+    badges: [], 
     image: '/products/cabinex.jpg',
-    overview: '공작 기계, 반도체 장비 등 화재 위험이 있는 산업 기계 설비를 보호하기 위한 맞춤형 패키지 소화 시스템입니다. 소형이면서도 강력한 화재 진압 능력을 갖추고 있습니다.',
+    overview: '공작 기계, 산업 기계 등 화재 위험이 있는 설비를 보호하기 위한 맞춤형 패키지 소화 시스템입니다.',
     features: [
       { title: '뛰어난 공간 효율성', description: '컴팩트한 디자인으로 좁은 공간이나 기계 내부에도 설치가 용이합니다.' },
       { title: '신속한 감지 및 소화', description: '전용 감지기와 연동하여 화재 발생 즉시 소화 약제를 방출합니다.' }
     ],
     specs: [
-      { label: '인증', value: 'FM Approved' },
       { label: '소화약제', value: '이산화탄소 (CO2)' },
       { label: '작동방식', value: '자동 감지 및 수동 조작' }
-    ]
+    ],
+    underRevision: true
   },
   { 
     id: 'cabinex-kz', 
@@ -55,29 +78,8 @@ export const productsData: Product[] = [
     specs: [
       { label: '인증', value: '없음' },
       { label: '적용분야', value: '위험물 취급소, 전기실' }
-    ]
-  },
-  { 
-    id: 'cabinex-ewt', 
-    category: '자동소화설비', 
-    name: 'CABINEX-EWT / EWTⅡ', 
-    desc: '반도체 및 디스플레이 제조 장비의 화재 특성에 맞춘 초고속 맞춤형 소화 시스템.', 
-    badges: ['FM', 'UL', 'CE'], 
-    image: '/products/cabinex-ewt.jpg',
-    overview: 'FM 요구 기준을 만족하는 CO2 소화 가스를 사용하여, 클린룸 및 반도체 장비 내 화재를 잔여물 없이 안전하고 완벽하게 진압하는 최고 성능의 시스템입니다.',
-    features: [
-      { title: '0.3초 초고속 감지', description: '특수 센서를 통해 화재를 0.3초 이내에 감지하고 즉각 대응합니다.' },
-      { title: '개별 방호 제어', description: '최대 18개 그룹의 개별 방호가 가능하여 화재 구역만 타겟팅합니다.' },
-      { title: '네트워크 감시', description: 'Modbus/TCP 통신을 지원하여 실시간 모니터링 및 이력 관리가 가능합니다.' },
-      { title: '클린 소화', description: '고품질 이산화탄소를 사용하여 소화 후 잔여물 및 환경 오염이 없습니다.' }
     ],
-    specs: [
-      { label: '소화약제', value: '이산화탄소 (CO2) 22.7kg / 45.4kg' },
-      { label: '사용온도', value: '0℃ ~ 40℃' },
-      { label: '소비전력', value: '105W Max.' },
-      { label: '입력전원', value: 'AC100~120V / 187~240V, 50/60Hz' },
-      { label: '규격 (W×H×D)', value: 'COX-50EWTⅡ 기준 500×1530×370 mm' }
-    ]
+    underRevision: true
   },
   { 
     id: 'cabinex-argonite', 
@@ -94,7 +96,8 @@ export const productsData: Product[] = [
     specs: [
       { label: '소화약제', value: 'IG-55 (질소 50%, 아르곤 50%)' },
       { label: '작동방식', value: '자동 감지 및 수동 조작' }
-    ]
+    ],
+    underRevision: true
   },
   { 
     id: 'ing24-2', 
@@ -111,7 +114,8 @@ export const productsData: Product[] = [
     specs: [
       { label: '적용분야', value: '전기반, 소형 장비 내부' },
       { label: '형태', value: '가스계' }
-    ]
+    ],
+    underRevision: true
   },
   
   // 신에너지용
@@ -129,14 +133,15 @@ export const productsData: Product[] = [
     ],
     specs: [
       { label: '적용분야', value: '풍력 발전기 나셀 내부' }
-    ]
+    ],
+    underRevision: true
   },
   { 
     id: 'smart-grid-cabi', 
     category: '신에너지용', 
     name: 'Smart Grid Cabi', 
     desc: '리튬이온 배터리를 사용하는 ESS(에너지 저장 장치) 및 스마트 그리드 시설 전용 방호 시스템.', 
-    badges: ['FM'], 
+    badges: [], 
     image: '/products/new-energy.jpg',
     overview: '최근 화재 이슈가 급증하고 있는 ESS 배터리 시설에 최적화되어, 열폭주 현상을 조기에 감지하고 억제하는 스마트그리드 전용 시스템입니다.',
     features: [
@@ -144,12 +149,13 @@ export const productsData: Product[] = [
       { title: '강력한 냉각 효과', description: '배터리 화재에 특화된 소화약제를 적용하여 재발화율을 낮춥니다.' }
     ],
     specs: [
-      { label: '인증', value: 'FM Approved' },
+      { label: '인증', value: '없음' },
       { label: '적용분야', value: '리튬이온 배터리 랙, ESS 컨테이너' }
-    ]
+    ],
+    underRevision: true
   },
   
-  // 감지기 및 센서
+  // 감지기 및 센서 (이부분은 수정중이라고 안했으므로 그대로 유지)
   { 
     id: 'sensor-sx', 
     category: '감지기 및 센서', 

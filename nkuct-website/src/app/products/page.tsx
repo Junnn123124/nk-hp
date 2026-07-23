@@ -98,9 +98,15 @@ export default function Products() {
                         ))}
                       </div>
                       
-                      <Link href={`/products/${product.id}`} className="flex items-center justify-center text-sm font-bold w-full transition-colors group-hover:text-blue-400" style={{ color: 'var(--nk-text)' }}>
-                        자세히 보기 <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
-                      </Link>
+                      {product.underRevision ? (
+                        <div className="flex items-center justify-center text-sm font-bold w-full" style={{ color: 'var(--nk-text-muted)' }}>
+                          <span className="badge badge-ce" style={{ background: 'var(--nk-border-light)', color: 'var(--nk-text-dim)', border: 'none' }}>수정 중</span>
+                        </div>
+                      ) : (
+                        <Link href={`/products/${product.id}`} className="flex items-center justify-center text-sm font-bold w-full transition-colors group-hover:text-blue-400" style={{ color: 'var(--nk-text)' }}>
+                          자세히 보기 <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-2 transition-transform" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

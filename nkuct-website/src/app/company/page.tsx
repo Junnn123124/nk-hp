@@ -23,6 +23,7 @@ export default function Company() {
     { year: '2022.03', title: '북미 배터리 산업 시장 진출 및 전략적 파트너십 확대', desc: '' },
     { year: '2023.01', title: '반도체 제조설비용 자동소화설비 및 특수가스 솔루션 사업 확장', desc: '' },
     { year: '2025.04', title: '글로벌 반도체·첨단산업 프로젝트 수행 및 전략적 해외 협력 네트워크 강화', desc: '' },
+    { year: '2026.06', title: '마이크론(Micron) 싱가포르 방호설비 수출 및 자동소화설비 납품', desc: '' },
   ];
 
   return (

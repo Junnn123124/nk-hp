@@ -67,6 +67,18 @@ export default function References() {
         { label: '납품 시작', value: '2012년' },
         { label: '국가', value: '한국' }
       ]
+    },
+    {
+      name: '마이크론',
+      nameEn: 'Micron',
+      icon: <Globe size={32} />,
+      desc: '글로벌 주요 반도체 생산 라인 방호 설비 수출 및 현지 구축',
+      location: '싱가포르 캠퍼스',
+      stats: [
+        { label: '라인 수', value: '5+' },
+        { label: '납품 시작', value: '2026년' },
+        { label: '국가', value: '싱가포르' }
+      ]
     }
   ];
 
@@ -101,7 +113,7 @@ export default function References() {
               <div className="stat-label">주요 고객사</div>
             </div>
             <div className="stat-card">
-              <CountUp end={3} suffix="개국" className="stat-value" />
+              <CountUp end={5} suffix="개국" className="stat-value" />
               <div className="stat-label">납품 국가</div>
             </div>
             <div className="stat-card">

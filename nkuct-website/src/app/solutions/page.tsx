@@ -11,11 +11,11 @@ export default function Solutions() {
       id: 'semiconductor',
       icon: <Cpu size={40} />,
       title: '반도체 장비 소화 시스템',
-      desc: 'CABINEX-EWT 시리즈를 적용하여 CVD, Etcher, Implanter 등 반도체 핵심 생산 장비 내부의 화재를 초기에 감지하고 진압하는 맞춤형 소화 시스템입니다.',
+      desc: 'CABINEX-EWT2를 적용하여 CVD, Etcher, Implanter 등 반도체 핵심 생산 장비 내부의 화재를 초기에 감지하고 진압하는 맞춤형 소화 시스템입니다.',
       features: [
-        '0.3초 이내 초고속 화재 감지 및 소화약제 방사',
-        '장비별 독립적 개별 방호 시스템 구축 (CABINEX-EWT 적용)',
-        '생산 중단을 최소화하는 국소 방출 방식 (CABINEX-KZ 활용)',
+        '0.3초 이내 초고속 화재 감지 및 이산화탄소(CO2) 소화약제 방사',
+        '장비별 독립적 개별 방호 시스템 구축 (CABINEX-EWT2 적용)',
+        '생산 중단을 최소화하는 국소 방출 방식',
         '장비 Interlock(인터록) 연동으로 즉각적인 장비 정지'
       ],
       stats: [
@@ -28,11 +28,11 @@ export default function Solutions() {
       id: 'display',
       icon: <Monitor size={40} />,
       title: '디스플레이 라인 방호',
-      desc: 'CABINEX-EN2 등을 활용하여 LCD, OLED 등 대면적 패널 공정 라인의 고온 환경과 유기용제 사용에 특화된 화재 방호 시스템입니다.',
+      desc: 'CABINEX-EWT2를 활용하여 LCD, OLED 등 대면적 패널 공정 라인의 고온 환경과 유기용제 사용에 특화된 화재 방호 시스템입니다.',
       features: [
         '최대 50m² 대면적 장비 커버리지 확보',
         '200°C 이상 고온 공정 환경 내열성 검증',
-        '유기용제 및 화학물질 화재 특화 소화약제 적용',
+        '유기용제 및 화학물질 화재 특화 CO2 소화약제 적용',
         '오염을 최소화하는 클린 소화 방식'
       ],
       stats: [
@@ -45,11 +45,11 @@ export default function Solutions() {
       id: 'ess',
       icon: <Battery size={40} />,
       title: 'ESS 화재 방호',
-      desc: 'Smart Grid Cabi 시스템을 적용하여 리튬이온 배터리 에너지저장장치(ESS)의 열폭주를 조기에 감지하고 화재 확산을 원천적으로 억제합니다.',
+      desc: 'CABINEX-EWT2 시스템을 적용하여 리튬이온 배터리 에너지저장장치(ESS)의 열폭주를 조기에 감지하고 화재 확산을 원천적으로 억제합니다.',
       features: [
-        'Smart Grid Cabi를 통한 배터리 랙 단위 정밀 온도 및 가스 감지',
+        '배터리 랙 단위 정밀 온도 및 가스 감지',
         '열폭주 이전 단계 조기 감지 알람 전송',
-        '자동 소화 연동 및 인접 랙 확산 방지 냉각',
+        '자동 소화 연동 및 인접 랙 확산 방지 냉각 (CO2 적용)',
         '24/7 원격 모니터링 시스템 지원'
       ],
       stats: [
@@ -61,10 +61,10 @@ export default function Solutions() {
     {
       id: 'cleanroom',
       icon: <Wind size={40} />,
-      title: '클린룸 통합 방재',
-      desc: '알고나이트 CABINEX 등 친환경 소화약제를 사용하여 Class 1~100 수준의 엄격한 클린룸 환경에 최적화된 고청정 통합 방재 시스템입니다.',
+      title: '클린룸 특화 방재',
+      desc: 'CABINEX-EWT2와 친환경 이산화탄소(CO2) 소화약제를 사용하여 Class 1~100 수준의 엄격한 클린룸 환경에 최적화된 고청정 방재 시스템입니다.',
       features: [
-        '알고나이트(IG-55) 방사 시 클린룸 청정도 완벽 유지',
+        'CO2 방사 시 클린룸 청정도 완벽 유지',
         'HEPA 필터 및 FFU 시스템 연동 차단',
         '공기 흐름을 고려한 최적의 3파장 적외선 감지기 배치 설계',
         '화학물질 증기에 의한 오감지 최소화'
@@ -79,10 +79,10 @@ export default function Solutions() {
       id: 'exhaust',
       icon: <Flame size={40} />,
       title: '배기덕트 소화 시스템',
-      desc: '반도체 공정 중 가연성 부산물이 축적되기 쉬운 배기덕트 구간의 화재를 서미스터 열 감지기로 감지하고 연기 확산을 차단합니다.',
+      desc: 'CABINEX-EWT2와 특수 서미스터 열 감지기를 연동하여 가연성 부산물이 축적되기 쉬운 배기덕트 화재를 감지하고 연기 확산을 차단합니다.',
       features: [
         '덕트 내부 기류 변화에 강인한 서미스터형 특수 감지기 적용',
-        '화재 감지 시 덕트 자동 차단 댐퍼 연동',
+        '화재 감지 시 덕트 자동 차단 댐퍼 연동 및 CO2 방사',
         '타 공정으로의 연기 및 유독가스 역류 방지',
         '내화학성 특수 코팅 노즐 및 배관 사용'
       ],

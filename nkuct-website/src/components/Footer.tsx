@@ -54,7 +54,7 @@ export default function Footer() {
                 { label: '반도체 장비 소화', href: '/solutions#semiconductor' },
                 { label: '디스플레이 라인', href: '/solutions#display' },
                 { label: 'ESS 화재 방호', href: '/solutions#ess' },
-                { label: '클린룸 통합 방재', href: '/solutions#cleanroom' },
+                { label: '클린룸 특화 자동소화설비', href: '/solutions#cleanroom' },
                 { label: '배기덕트 소화', href: '/solutions#exhaust' }
               ].map((item) => (
                 <Link key={item.label} href={item.href} style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', textDecoration: 'none', transition: 'color 0.2s' }}
