@@ -5,11 +5,11 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "NK UCT | 반도체 전문 자동소화 시스템",
-  description: "반도체·디스플레이 FAB 전문 자동소화 시스템. FM, KFI, UL 글로벌 인증. 0.3초 초고속 감지, 300+ FAB 납품실적. CABINEX 시리즈.",
-  keywords: "자동소화설비, 반도체 소화, 디스플레이 소화, FM인증, KFI인증, 클린룸 방재, CABINEX, NK UCT",
+  description: "반도체, 디스플레이, ESS, 클린룸 전문 특화 자동소화 시스템. CABINEX-EWT2 등 글로벌 인증 획득 고성능 방재 솔루션.",
+  keywords: "자동소화설비, 반도체 소화기, 디스플레이 소화설비, ESS 화재 방호, 클린룸 방재, 배기덕트 소화, CABINEX, CABINEX-EWT2, 이산화탄소 소화설비, NK UCT",
   openGraph: {
-    title: "NK UCT | 반도체 전문 자동소화 시스템",
-    description: "반도체·디스플레이 FAB 전문 자동소화 시스템. 글로벌 인증, 초고속 감지.",
+    title: "NK UCT | 첨단산업 특화 자동소화 시스템",
+    description: "반도체·디스플레이 FAB 및 ESS 전용 특화 자동소화 시스템. 글로벌 인증, 0.3초 초고속 화재 감지 및 진압.",
     type: "website",
   },
 };
