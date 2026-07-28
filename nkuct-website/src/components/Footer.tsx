@@ -22,7 +22,6 @@ export default function Footer() {
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               <span className="badge badge-fm"><Shield size={12} /> FM</span>
               <span className="badge badge-ce"><Award size={12} /> CE</span>
-              <span className="badge badge-ul"><CheckCircle size={12} /> UL</span>
             </div>
           </div>
 

@@ -81,81 +81,8 @@ export const productsData: Product[] = [
     ],
     underRevision: true
   },
-  { 
-    id: 'cabinex-argonite', 
-    category: '자동소화설비', 
-    name: '알고나이트 CABINEX', 
-    desc: '친환경 불활성 가스(IG-55)를 사용하여 잔여물이 남지 않는 친환경 자동 소화 시스템.', 
-    badges: [], 
-    image: '/products/cabinex.jpg',
-    overview: '대기 중에 존재하는 자연 가스(질소 50%, 아르곤 50%)를 혼합한 IG-55를 사용하여, 소화 후에도 독성 물질이나 잔여물을 남기지 않는 친환경 시스템입니다.',
-    features: [
-      { title: '친환경 소화약제', description: '오존층 파괴 지수(ODP) 및 지구 온난화 지수(GWP)가 0입니다.' },
-      { title: '높은 인체 안전성', description: '화재 진압 중에도 산소 농도를 일정 수준 유지하여 인체에 안전합니다.' }
-    ],
-    specs: [
-      { label: '소화약제', value: 'IG-55 (질소 50%, 아르곤 50%)' },
-      { label: '작동방식', value: '자동 감지 및 수동 조작' }
-    ],
-    underRevision: true
-  },
-  { 
-    id: 'ing24-2', 
-    category: '자동소화설비', 
-    name: 'ing24Ⅱ', 
-    desc: '설치 공간을 최소화한 컴팩트한 디자인의 산업용 자동 소화 시스템.', 
-    badges: [], 
-    image: '/products/ing24.jpg',
-    overview: '산업 설비 내부나 좁은 공간에 쉽게 장착할 수 있도록 고안된 소형 패키지 소화 장치입니다.',
-    features: [
-      { title: '공간 절약', description: '매우 콤팩트하여 설비 내 빌트인 설치가 용이합니다.' },
-      { title: '간편한 유지보수', description: '간단한 구조로 되어 있어 점검 및 유지보수가 편리합니다.' }
-    ],
-    specs: [
-      { label: '적용분야', value: '전기반, 소형 장비 내부' },
-      { label: '형태', value: '가스계' }
-    ],
-    underRevision: true
-  },
   
-  // 신에너지용
-  { 
-    id: 'wind-cabi', 
-    category: '신에너지용', 
-    name: 'Wind Cabi', 
-    desc: '해상 및 육상 풍력 발전 설비 내부의 화재를 감지하고 진압하는 전용 소화 시스템.', 
-    badges: [], 
-    image: '/products/new-energy.jpg',
-    overview: '가혹한 외부 환경에 노출되는 풍력 발전기 나셀(Nacelle) 내부의 특수한 화재 위험을 방호하기 위해 개발된 전용 소화 시스템입니다.',
-    features: [
-      { title: '극한 환경 대응', description: '진동, 극한 온도, 염분 등 해상/육상 풍력 발전의 혹독한 환경을 견딥니다.' },
-      { title: '원격 모니터링', description: '접근이 어려운 타워 상층부의 상태를 원격으로 감시합니다.' }
-    ],
-    specs: [
-      { label: '적용분야', value: '풍력 발전기 나셀 내부' }
-    ],
-    underRevision: true
-  },
-  { 
-    id: 'smart-grid-cabi', 
-    category: '신에너지용', 
-    name: 'Smart Grid Cabi', 
-    desc: '리튬이온 배터리를 사용하는 ESS(에너지 저장 장치) 및 스마트 그리드 시설 전용 방호 시스템.', 
-    badges: [], 
-    image: '/products/new-energy.jpg',
-    overview: '최근 화재 이슈가 급증하고 있는 ESS 배터리 시설에 최적화되어, 열폭주 현상을 조기에 감지하고 억제하는 스마트그리드 전용 시스템입니다.',
-    features: [
-      { title: '열폭주 사전 감지', description: '오프가스 및 열 발생을 조기에 포착하여 열폭주를 예방합니다.' },
-      { title: '강력한 냉각 효과', description: '배터리 화재에 특화된 소화약제를 적용하여 재발화율을 낮춥니다.' }
-    ],
-    specs: [
-      { label: '인증', value: '없음' },
-      { label: '적용분야', value: '리튬이온 배터리 랙, ESS 컨테이너' }
-    ],
-    underRevision: true
-  },
-  
-  // 감지기 및 센서 (이부분은 수정중이라고 안했으므로 그대로 유지)
+  // 감지기 및 센서
   { 
     id: 'sensor-sx', 
     category: '감지기 및 센서', 

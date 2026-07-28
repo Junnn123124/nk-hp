@@ -9,7 +9,7 @@ import SectionHeader from '@/components/ui/SectionHeader';import { productsData 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('전체');
 
-  const categories = ['전체', '자동소화설비', '신에너지용', '감지기 및 센서'];
+  const categories = ['전체', '자동소화설비', '감지기 및 센서'];
 
   const filteredProducts = activeCategory === '전체' 
     ? products 
@@ -27,7 +27,7 @@ export default function Products() {
               제품 <span className="text-gradient pb-2 inline-block">라인업</span>
             </h1>
             <p className="text-xl max-w-3xl mx-auto text-center" style={{ color: 'var(--nk-text-muted)' }}>
-              FM, KFI, UL 글로벌 인증을 보유한 최고의 품질. 감지부터 소화까지 완벽한 방호 시스템을 구성하는 제품들입니다.
+              FM, CE 등 글로벌 인증을 보유한 최고의 품질. 감지부터 소화까지 완벽한 방호 시스템을 구성하는 제품들입니다.
             </p>
           </AnimateOnScroll>
         </div>

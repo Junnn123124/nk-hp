@@ -96,9 +96,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: <Cpu />, title: '반도체 장비 자동소화설비', desc: 'CABINEX-EWT 적용을 통해 초고속 감지로 고가의 반도체 장비를 방호하는 자동소화설비입니다.' },
-              { icon: <Monitor />, title: '디스플레이 라인 자동소화장치', desc: 'CABINEX-EN2 등 대면적 패널 공정 라인에 특화된 화재 방호 전용 자동소화장치입니다.' },
-              { icon: <Battery />, title: 'ESS 자동소화장치', desc: 'Smart Grid Cabi 자동소화장치로 배터리 열폭주를 감지하고 화재 확산을 억제합니다.' },
+              { icon: <Cpu />, title: '반도체 장비 자동소화설비', desc: '초고속 감지로 고가의 반도체 핵심 장비를 방호하는 자동소화설비입니다.' },
+              { icon: <Monitor />, title: '디스플레이 라인 자동소화장치', desc: '대면적 패널 공정 라인의 고온 환경 및 유기용제 취급에 특화된 화재 방호 전용 자동소화장치입니다.' },
+              { icon: <Battery />, title: 'ESS 자동소화장치', desc: '배터리 랙 단위 정밀 감지로 열폭주를 조기에 감지하고 화재 확산을 효과적으로 억제합니다.' },
               { icon: <Wind />, title: '클린룸 특화 자동소화설비', desc: '이산화탄소(CO2) 소화약제를 적용하여 클린룸 환경에 최적화된 특화 자동소화설비입니다.' },
               { icon: <Flame />, title: '배기덕트 자동소화설비', desc: '특수 서미스터형 열 감지기로 배기덕트 구간의 화재를 조기 감지하고 차단하는 자동소화설비입니다.' },
             ].map((sol, i) => (
@@ -130,7 +130,7 @@ export default function Home() {
             {[
               { name: 'CABINEX-EWT2', type: '반도체/디스플레이 맞춤형 자동소화설비', badges: ['FM', 'CE'], img: 'ewt' },
               { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: [], img: 'en2' },
-              { name: 'Smart Grid Cabi', type: 'ESS 방호 전용 시스템', badges: [], img: 'smart' },
+              { name: 'CABINEX-KZ', type: '국소 방출 전용 자동소화설비', badges: [], img: 'kz' },
             ].map((prod, i) => (
               <AnimateOnScroll key={i} delay={i * 150}>
                 <div className="glass-card overflow-hidden">
@@ -153,7 +153,6 @@ export default function Home() {
                     <div className="flex justify-center gap-2 mb-6">
                       { prod.badges.includes('FM') && <span className="badge badge-fm">FM</span> }
                       { prod.badges.includes('CE') && <span className="badge badge-ce">CE</span> }
-                      { prod.badges.includes('UL') && <span className="badge badge-ul">UL</span> }
                     </div>
                     <Link href="/products" className="btn-secondary w-full justify-center">제품 상세정보</Link>
                   </div>
