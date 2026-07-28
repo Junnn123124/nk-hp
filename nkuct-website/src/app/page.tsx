@@ -23,7 +23,7 @@ export default function Home() {
                 반도체·디스플레이 FAB 전용 자동소화장치 및 자동소화설비 시스템
               </p>
               <p className="text-lg mb-8 max-w-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
-                FM, CE, UL 인증을 보유한 글로벌 수준의 화재 안전 기술. 70년 전통의 Hatsuta 기술력으로 당신의 소중한 자산과 생명을 보호합니다.
+                FM, CE 인증을 보유한 글로벌 수준의 화재 안전 기술. 70년 전통의 Hatsuta 기술력으로 당신의 소중한 자산과 생명을 보호합니다.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/solutions" className="btn-primary">
@@ -137,7 +137,7 @@ export default function Home() {
                   <div className="h-48 relative flex items-center justify-center overflow-hidden" style={{ background: 'rgba(0, 27, 94, 0.7)' }}>
                     {prod.img === 'ewt' ? (
                       <>
-                        <img src="/semi-chip.jpg" alt="반도체 특화 자동소화설비" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, mixBlendMode: 'overlay' }} />
+                        <img src="/products/cabinex-ewt.jpg" alt="반도체 특화 자동소화설비" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, mixBlendMode: 'overlay' }} />
                         <div className="relative z-10 text-center flex flex-col items-center">
                           <div className="text-xs font-bold px-3 py-1 mb-2 rounded-full tracking-wide shadow-sm" style={{ background: 'var(--nk-accent)', color: '#fff' }}>반도체 특화 소화기</div>
                           <div className="text-3xl font-black text-white drop-shadow-md">{prod.name}</div>

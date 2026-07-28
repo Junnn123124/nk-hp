@@ -280,7 +280,7 @@ export default function Support() {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* 카탈로그 1 */}
+              {/* 카탈로그 1: 국문 종합 카탈로그 */}
               <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
                 <div className="flex items-center gap-4 text-left">
                   <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
@@ -288,15 +288,31 @@ export default function Support() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">CABINEX 시리즈 종합 카탈로그</h3>
-                    <p className="text-sm text-slate-500">PDF, 3.2MB</p>
+                    <p className="text-sm text-slate-500">PDF, 9.7MB</p>
                   </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1JU90iyK_W1UPF5fAMPD9DjK2GUs6PVnN/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-secondary px-4 py-2 text-sm">
+                <a href="/downloads/cabinex-catalog-kr.pdf" download="CABINEX_시리즈_종합_카탈로그.pdf" className="btn-secondary px-4 py-2 text-sm">
+                  다운로드
+                </a>
+              </div>
+
+              {/* 카탈로그 2: 영문 종합 카탈로그 (NEW) */}
+              <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
+                    <FileText size={24} />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-lg">CABINEX 영문 카탈로그 (English)</h3>
+                    <p className="text-sm text-slate-500">PDF, 11.8MB</p>
+                  </div>
+                </div>
+                <a href="/downloads/cabinex-catalog-en.pdf" download="CABINEX_English_Catalog.pdf" className="btn-secondary px-4 py-2 text-sm">
                   다운로드
                 </a>
               </div>
               
-              {/* 카탈로그 2 */}
+              {/* 카탈로그 3: EWT2 상세 사양서 */}
               <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
                 <div className="flex items-center gap-4 text-left">
                   <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
@@ -304,42 +320,42 @@ export default function Support() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">CABINEX-EWT2 상세 사양서</h3>
-                    <p className="text-sm text-slate-500">PDF, 2.5MB</p>
+                    <p className="text-sm text-slate-500">PDF, 0.3MB</p>
                   </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1KtkIBA7CEKErkuwPaW3ArIDaSHVI6e-2/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-secondary px-4 py-2 text-sm">
+                <a href="/downloads/cabinex-ewt2-spec.pdf" download="CABINEX-EWT2_상세_사양서.pdf" className="btn-secondary px-4 py-2 text-sm">
                   다운로드
                 </a>
               </div>
 
-              {/* 카탈로그 3 */}
+              {/* 카탈로그 4: 소화기 제품 카탈로그 */}
               <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
                 <div className="flex items-center gap-4 text-left">
                   <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
                     <FileText size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">ing24 제품 매뉴얼</h3>
-                    <p className="text-sm text-slate-500">PDF, 1.8MB</p>
+                    <h3 className="font-bold text-lg">소화기 제품 카탈로그</h3>
+                    <p className="text-sm text-slate-500">PDF, 6.4MB</p>
                   </div>
                 </div>
-                <a href="https://drive.google.com/file/d/1-z6NeM-vAmM-pBYcJeq7c5LVbNYTUtQF/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-secondary px-4 py-2 text-sm">
+                <a href="/downloads/fire-extinguisher-catalog.pdf" download="소화기_제품_카탈로그.pdf" className="btn-secondary px-4 py-2 text-sm">
                   다운로드
                 </a>
               </div>
 
-              {/* 카탈로그 4 */}
-              <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
+              {/* 카탈로그 5: 자동소화설비 기술 자료 */}
+              <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors md:col-span-2">
                 <div className="flex items-center gap-4 text-left">
                   <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
                     <FileText size={24} />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg">적외선 감지기 기술 자료</h3>
-                    <p className="text-sm text-slate-500">PDF, 2.1MB</p>
+                    <h3 className="font-bold text-lg">자동소화설비 기술 자료</h3>
+                    <p className="text-sm text-slate-500">PDF, 4.0MB</p>
                   </div>
                 </div>
-                <a href="https://drive.google.com/file/d/146l-FKGwkK97hqqbTv1faPsKvH-7PJbN/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-secondary px-4 py-2 text-sm">
+                <a href="/downloads/fire-equipment-catalog.pdf" download="자동소화설비_기술_자료.pdf" className="btn-secondary px-4 py-2 text-sm">
                   다운로드
                 </a>
               </div>
