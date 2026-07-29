@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     apple: "/logo.svg",
   },
   verification: {
+    google: "d61bb0a3d7f5f8d7",
     other: {
       "naver-site-verification": "2095338126f50e1ade425147fc707a78f3a743c3",
     },
