@@ -12,6 +12,11 @@ export const metadata: Metadata = {
     description: "반도체·디스플레이 FAB 및 ESS 전용 특화 자동소화 시스템. 글로벌 인증, 0.3초 초고속 화재 감지 및 진압.",
     type: "website",
   },
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
