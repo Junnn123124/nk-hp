@@ -33,7 +33,7 @@ export const productsData: Product[] = [
     overview: 'FM 요구 기준을 만족하는 CO2 소화 가스를 사용하여, 클린룸 및 반도체 장비 내 화재를 잔여물 없이 안전하고 완벽하게 진압하는 최고 성능의 시스템입니다.',
     features: [
       { title: '0.3초 초고속 감지', description: '특수 센서를 통해 화재를 0.3초 이내에 감지하고 즉각 대응합니다.' },
-      { title: '네트워크 감시', description: 'Modbus/TCP 통신을 지원하여 실시간 모니터링 및 이력 관리가 가능합니다.' },
+      { title: '이력, 감시', description: '실시간 모니터링, 이력 관리가 가능합니다.' },
       { title: '범용 방호 솔루션', description: '이산화탄소를 사용하여 반도체, 디스플레이뿐만 아니라 배기덕트 및 ESS 화재까지 전천후 대응이 가능합니다.' }
     ],
     specs: [
