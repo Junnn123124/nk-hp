@@ -128,24 +128,17 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto" style={{ margin: '0 auto' }}>
             {[
-              { name: 'CABINEX-EWT2', type: '반도체/디스플레이 맞춤형 자동소화설비', badges: ['FM', 'CE'], img: 'ewt' },
-              { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: [], img: 'en2' },
-              { name: 'CABINEX-KZ', type: '국소 방출 전용 자동소화설비', badges: [], img: 'kz' },
+              { name: 'CABINEX-EWT2', type: '반도체, 디스플레이, ESS 맞춤형 자동소화설비', badges: ['FM', 'CE'], img: '/products/cabinex-ewt.jpg' },
+              { name: 'CABINEX-EN2', type: '산업기계 전용 자동소화설비', badges: [], img: '/products/cabinex.jpg' },
+              { name: 'CABINEX-KZ', type: '국소 방출 전용 자동소화설비', badges: [], img: '/products/cabinex.jpg' },
             ].map((prod, i) => (
               <AnimateOnScroll key={i} delay={i * 150}>
                 <div className="glass-card overflow-hidden">
                   <div className="h-48 relative flex items-center justify-center overflow-hidden" style={{ background: 'rgba(0, 27, 94, 0.7)' }}>
-                    {prod.img === 'ewt' ? (
-                      <>
-                        <img src="/products/cabinex-ewt.jpg" alt="반도체 특화 자동소화설비" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, mixBlendMode: 'overlay' }} />
-                        <div className="relative z-10 text-center flex flex-col items-center">
-                          <div className="text-xs font-bold px-3 py-1 mb-2 rounded-full tracking-wide shadow-sm" style={{ background: 'var(--nk-accent)', color: '#fff' }}>반도체 특화 소화기</div>
-                          <div className="text-3xl font-black text-white drop-shadow-md">{prod.name}</div>
-                        </div>
-                      </>
-                    ) : (
-                      <div className="text-4xl font-black text-white/10">{prod.name}</div>
-                    )}
+                    <img src={prod.img} alt={prod.name} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, mixBlendMode: 'overlay' }} />
+                    <div className="relative z-10 text-center flex flex-col items-center">
+                      <div className="text-3xl font-black text-white drop-shadow-md">{prod.name}</div>
+                    </div>
                   </div>
                   <div className="p-6 text-center">
                     <h3 className="text-xl font-bold mb-1">{prod.name}</h3>
