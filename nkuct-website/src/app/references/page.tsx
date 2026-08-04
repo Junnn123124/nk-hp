@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Building2, Monitor, Globe, MapPin, Award } from 'lucide-react';
+import { Building2, Monitor, Globe, MapPin, Award, Cpu } from 'lucide-react';
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import CountUp from '@/components/ui/CountUp';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -11,9 +11,9 @@ export default function References() {
     {
       name: '삼성전자',
       nameEn: 'Samsung Electronics',
-      icon: <Building2 size={32} />,
-      desc: '반도체(DS) 및 디스플레이 사업부 다수 FAB 공정 내 핵심 장비 자동소화 시스템 납품',
-      location: '화성, 평택, 기흥 캠퍼스',
+      icon: <Cpu size={32} />,
+      desc: '미국 오스틴 반도체 공장 내 핵심 장비 자동소화 시스템 납품',
+      location: '미국 텍사스 오스틴 공장',
       stats: [
         { label: 'FAB 수', value: '150+' },
         { label: '납품 시작', value: '2005년' },
@@ -23,7 +23,7 @@ export default function References() {
     {
       name: 'SK하이닉스',
       nameEn: 'SK Hynix',
-      icon: <Building2 size={32} />,
+      icon: <Cpu size={32} />,
       desc: '메모리 반도체 생산 라인 전역에 걸친 고신뢰성 화재 방호 시스템 구축',
       location: '이천, 청주 캠퍼스',
       stats: [
@@ -37,7 +37,7 @@ export default function References() {
       nameEn: 'LG Display',
       icon: <Monitor size={32} />,
       desc: '초대형 LCD 및 OLED 패널 생산라인 내 유기용제 특화 방호 시스템 납품',
-      location: '파주, 구미 캠퍼스',
+      location: '구미 캠퍼스',
       stats: [
         { label: '라인 수', value: '50+' },
         { label: '납품 시작', value: '2010년' },
@@ -47,7 +47,7 @@ export default function References() {
     {
       name: 'BOE Technology',
       nameEn: 'BOE',
-      icon: <Globe size={32} />,
+      icon: <Monitor size={32} />,
       desc: '중국 디스플레이 시장 점유율 1위 기업 생산라인 방호 설비 수출 및 현지 구축',
       location: '중국 내 다수 사업장',
       stats: [
@@ -59,7 +59,7 @@ export default function References() {
     {
       name: 'DB하이텍',
       nameEn: 'DB HiTek',
-      icon: <Building2 size={32} />,
+      icon: <Cpu size={32} />,
       desc: '아날로그 및 파운드리 반도체 특화 FAB 내 고정밀 장비 소화 시스템 납품',
       location: '부천 캠퍼스',
       stats: [
@@ -71,7 +71,7 @@ export default function References() {
     {
       name: '마이크론',
       nameEn: 'Micron',
-      icon: <Globe size={32} />,
+      icon: <Cpu size={32} />,
       desc: '글로벌 주요 반도체 생산 라인 방호 설비 수출 및 현지 구축',
       location: '싱가포르 캠퍼스',
       stats: [
@@ -155,18 +155,6 @@ export default function References() {
                       <div className="flex items-center justify-center gap-2 text-sm font-medium" style={{ color: 'var(--nk-accent)' }}>
                         <MapPin size={16} />
                         {client.location}
-                      </div>
-                    </div>
-                    
-                    {/* Stats Box */}
-                    <div className="w-full flex items-center justify-center">
-                      <div className="glass-panel w-full max-w-3xl p-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border border-blue-900/40">
-                        {client.stats.map((stat, idx) => (
-                          <div key={idx} className="flex flex-col justify-center items-center text-center border-b sm:border-b-0 sm:border-r last:border-0 pb-4 sm:pb-0" style={{ borderColor: 'var(--nk-border-light)' }}>
-                            <span className="text-sm font-medium mb-1" style={{ color: 'var(--nk-text-muted)' }}>{stat.label}</span>
-                            <span className="text-2xl font-bold text-gradient-warm">{stat.value}</span>
-                          </div>
-                        ))}
                       </div>
                     </div>
                   </div>
