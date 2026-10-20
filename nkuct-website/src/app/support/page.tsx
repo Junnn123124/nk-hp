@@ -9,7 +9,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 export default function Support() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [formData, setFormData] = useState({
-    name: '', company: '', phone: '', email: '', inquiryType: '견적 요청', message: ''
+    name: '', company: '', phone: '', email: '', inquiryType: '미국 진출 및 해외 수출 상담', message: '', website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
@@ -37,7 +37,7 @@ export default function Support() {
       const data = await response.json();
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: '문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.' });
-        setFormData({ name: '', company: '', phone: '', email: '', inquiryType: '견적 요청', message: '' });
+        setFormData({ name: '', company: '', phone: '', email: '', inquiryType: '미국 진출 및 해외 수출 상담', message: '', website: '' });
       } else {
         setSubmitStatus({ type: 'error', message: data.error || '발송에 실패했습니다. 관리자에게 문의해주세요.' });
       }
@@ -85,16 +85,20 @@ export default function Support() {
 
   const faqs = [
     {
+      q: '반도체 외에 광학 장비, 디스플레이, 클린룸 장비나 일반 공장의 미국 진출 시에도 도움을 받을 수 있나요?',
+      a: '네, 물론입니다! 미국은 현지 소방법규 및 보험 기준상 공장 설립이나 클린룸·공정 장비 반입 시 FM 인증(FM Approved) 소화설비가 필수입니다. NK UCT는 미국 필수 규격인 FM 인증 자동소화설비(CABINEX-EWT2)를 보유하고 있을 뿐만 아니라, 미국 현지에 전문 협력 소방회사 및 미국 법인(NKuct America, Inc.) 네트워크를 갖추고 있습니다. 반도체 장비사뿐만 아니라 광학 장비(Optical), 디스플레이, 클린룸 내 각종 공장 장비, 그리고 미국에 공장을 진출하려는 일반 기업이라도 연락 주시면 미국 시장 안착과 현지 소방 설비 구축·유지보수를 든든하게 도와드립니다.'
+    },
+    {
       q: '자동소화설비 설치에 얼마나 걸리나요?',
-      a: '일반적으로 반도체 장비 1대 기준 3~4일 정도 소요되며, 현장 실사 후 정확한 일정을 안내해 드립니다.'
+      a: '일반적으로 반도체 및 정밀 공정 장비 1대 기준 3~4일 정도 소요되며, 현장 실사 후 정확한 일정을 안내해 드립니다.'
     },
     {
       q: 'FM 인증이란 무엇인가요?',
-      a: 'FM(Factory Mutual) 인증은 세계적으로 가장 권위 있는 미국 화재 예방 및 안전 규격 인증으로, 엄격한 품질 평가와 실제 화재 테스트를 통과한 방호 설비에만 부여됩니다. FM 인증 제품을 도입할 경우 설비의 국제적인 안전성 확보는 물론, 글로벌 재물보험사로부터 보험료 할인 등의 다양한 혜택을 받으실 수 있습니다. NK UCT의 주요 제품은 FM 인증을 보유하여 세계 최고 수준의 화재 안전성을 입증하고 있습니다.'
+      a: 'FM(Factory Mutual) 인증은 세계적으로 가장 권위 있는 미국 화재 예방 및 안전 규격 인증으로, 엄격한 품질 평가와 실제 화재 테스트를 통과한 방호 설비에만 부여됩니다. FM 인증 제품을 도입할 경우 설비의 국제적인 안전성 확보는 물론, 미국 공장 진출 시 인허가 통과 및 글로벌 재물보험사로부터 보험료 할인 등의 혜택을 받으실 수 있습니다. NK UCT의 주력 제품(CABINEX-EWT2)은 FM 인증을 보유하여 세계 최고 수준의 화재 안전성을 입증하고 있습니다.'
     },
     {
-      q: '견적은 어떻게 받을 수 있나요?',
-      a: '견적 및 기술 문의는 웹사이트 내 "온라인 견적·기술 문의" 폼으로 문의해 주시면 감사하겠습니다. 전문 엔지니어가 도면 검토 및 현장 조사를 진행한 후 맞춤형 견적서를 신속하게 제공해 드립니다.'
+      q: '견적 및 미국 진출 상담은 어떻게 받을 수 있나요?',
+      a: '견적, 기술 문의 및 미국 진출 소방 상담은 웹사이트 내 "온라인 견적/기술 문의" 폼으로 문의해 주시면 감사하겠습니다. 전문 엔지니어가 도면 검토 및 요구 규격 분석을 진행한 후 맞춤형 솔루션과 견적서를 신속하게 제공해 드립니다.'
     }
   ];
 
@@ -117,7 +121,7 @@ export default function Support() {
       </section>
 
       {/* Options Grid */}
-      <section className="py-12 relative z-20">
+      <section className="py-16 relative z-20 bg-section-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {supportOptions.map((opt, index) => (
@@ -196,11 +200,18 @@ export default function Support() {
 
                     <div className="flex flex-col gap-2">
                       <label htmlFor="inquiryType" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>문의 유형 *</label>
-                      <select id="inquiryType" name="inquiryType" required value={formData.inquiryType} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" style={{ borderColor: 'var(--nk-border)' }}>
+                      <select id="inquiryType" name="inquiryType" required value={formData.inquiryType} onChange={handleInputChange} className="p-3 border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all" style={{ borderColor: 'var(--nk-border)' }}>
+                        <option value="미국 진출 및 해외 수출 상담">미국 진출 및 해외 수출 상담 (FM 인증·현지 소방 협력)</option>
                         <option value="견적 요청">견적 요청</option>
                         <option value="기술 문의">기술 문의</option>
                         <option value="기타 문의">기타 문의</option>
                       </select>
+                    </div>
+
+                    {/* Honeypot field for spam bot protection */}
+                    <div style={{ position: 'absolute', left: '-9999px', opacity: 0, pointerEvents: 'none' }} aria-hidden="true">
+                      <label htmlFor="website">Website</label>
+                      <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" value={formData.website} onChange={handleInputChange} />
                     </div>
 
                     <div className="flex flex-col gap-2">
@@ -230,7 +241,7 @@ export default function Support() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="section-padding">
+      <section id="faq" className="section-padding bg-section-white">
         <div className="container-custom max-w-4xl mx-auto">
           <AnimateOnScroll>
             <SectionHeader badge="FAQ" title="자주 묻는 질문" subtitle="고객님들이 주로 문의하시는 내용입니다." />

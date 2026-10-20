@@ -34,7 +34,7 @@ export default function Products() {
       </section>
 
       {/* Products Section */}
-      <section className="section-padding min-h-screen">
+      <section className="section-padding min-h-screen bg-section-white">
         <div className="container-custom">
           
           {/* Category Filter */}

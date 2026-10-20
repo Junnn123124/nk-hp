@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Shield, Award, CheckCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--nk-surface)', borderTop: '1px solid var(--nk-border)' }}>
+    <footer style={{ background: 'linear-gradient(180deg, #E3EEFC 0%, #D6E5F9 100%)', borderTop: '3px solid var(--nk-primary)' }}>
       <div className="container-custom" style={{ padding: '4rem 1.5rem 2rem' }}>
         {/* Main Footer Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
@@ -15,8 +15,8 @@ export default function Footer() {
               <img src="/logo.svg" alt="NK UCT Logo" style={{ height: '100px', width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--nk-text-muted)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-              반도체·디스플레이 전문<br />
-              자동소화 시스템 전문기업
+              반도체·디스플레이·광학·클린룸 설비 및<br />
+              미국 진출 공장 특화 자동소화 시스템 전문기업
             </p>
             {/* Certifications */}
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>

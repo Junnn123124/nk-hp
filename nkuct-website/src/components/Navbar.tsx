@@ -37,13 +37,12 @@ export default function Navbar() {
         alignItems: 'center',
         transition: 'all 0.3s ease',
         background: isScrolled
-          ? 'rgba(255, 255, 255, 0.95)'
-          : 'rgba(255, 255, 255, 0.7)',
+          ? 'rgba(255, 255, 255, 0.97)'
+          : 'rgba(255, 255, 255, 0.90)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: isScrolled
-          ? '1px solid rgba(0, 27, 94, 0.1)'
-          : '1px solid transparent',
+        borderBottom: '2px solid rgba(0, 27, 94, 0.16)',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 27, 94, 0.08)' : '0 2px 10px rgba(0, 27, 94, 0.04)',
       }}
     >
       <div className="container-custom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>

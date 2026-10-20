@@ -101,9 +101,17 @@ export default function References() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 border-y relative z-20" style={{ borderColor: 'var(--nk-border)', background: 'var(--nk-surface-light)' }}>
+      <section
+        className="py-12 relative z-20"
+        style={{
+          background: 'linear-gradient(90deg, #00154C 0%, #0A2B7A 50%, #00154C 100%)',
+          borderTop: '3px solid #4A90D9',
+          borderBottom: '3px solid #4A90D9',
+          boxShadow: '0 10px 30px rgba(0, 27, 94, 0.18)',
+        }}
+      >
         <div className="container-custom">
-          <div className="glass-panel grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0" style={{ borderColor: 'var(--nk-border-light)' }}>
+          <div className="glass-panel grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0" style={{ background: 'rgba(255, 255, 255, 0.96)', borderColor: 'var(--nk-border)' }}>
             <div className="stat-card">
               <CountUp end={300} suffix="+" className="stat-value" />
               <div className="stat-label">납품 FAB 수</div>
@@ -125,7 +133,7 @@ export default function References() {
       </section>
 
       {/* Clients Grid */}
-      <section className="section-padding min-h-screen">
+      <section className="section-padding min-h-screen bg-section-white">
         <div className="container-custom">
           
           <div className="space-y-12 max-w-5xl mx-auto">
@@ -165,7 +173,7 @@ export default function References() {
             <AnimateOnScroll delay={500} className="text-center pt-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border bg-blue-900/10" style={{ borderColor: 'var(--nk-border-light)' }}>
                 <Award size={20} style={{ color: 'var(--nk-accent)' }} />
-                <span className="text-sm font-medium" style={{ color: 'var(--nk-text-muted)' }}>이 외에도 다수의 국내외 반도체 장비 제조사(OEM)에 납품 중입니다.</span>
+                <span className="text-sm font-medium" style={{ color: 'var(--nk-text-muted)' }}>이 외에도 다수의 국내외 반도체·광학·디스플레이·클린룸 공정 장비 제조사(OEM) 및 미국 진출 공장에 납품 중입니다.</span>
               </div>
             </AnimateOnScroll>
           </div>

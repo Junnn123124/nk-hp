@@ -1,14 +1,122 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Simple in-memory rate limiter per IP (max 5 requests per 10 minutes)
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const MAX_REQUESTS_PER_WINDOW = 5;
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+const ALLOWED_INQUIRY_TYPES = [
+  '미국 진출 및 해외 수출 상담',
+  '견적 요청',
+  '기술 문의',
+  '기타 문의',
+];
+
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeHeader(str: string): string {
+  return str.replace(/[\r\n\0"%<>]/g, ' ').trim();
+}
+
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email) && email.length <= 200;
+}
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return true;
+  }
+
+  if (entry.count >= MAX_REQUESTS_PER_WINDOW) {
+    return false;
+  }
+
+  entry.count += 1;
+  return true;
+}
+
 export async function POST(req: Request) {
   try {
+    // 1. Rate Limiting Check
+    const forwardedFor = req.headers.get('x-forwarded-for');
+    const clientIp = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+
+    if (!checkRateLimit(clientIp)) {
+      return NextResponse.json(
+        { error: '요청이 너무 많습니다. 잠시 후 다시 시도해 주세요.' },
+        { status: 429 }
+      );
+    }
+
     const data = await req.json();
-    const { name, company, phone, email, inquiryType, message } = data;
+
+    // 2. Honeypot Anti-Bot Check (hidden field 'website')
+    if (data.website && String(data.website).trim().length > 0) {
+      return NextResponse.json(
+        { success: true, message: '이메일이 성공적으로 전송되었습니다.' },
+        { status: 200 }
+      );
+    }
+
+    const name = typeof data.name === 'string' ? data.name.trim() : '';
+    const company = typeof data.company === 'string' ? data.company.trim() : '';
+    const phone = typeof data.phone === 'string' ? data.phone.trim() : '';
+    const email = typeof data.email === 'string' ? data.email.trim() : '';
+    const inquiryType = typeof data.inquiryType === 'string' ? data.inquiryType.trim() : '';
+    const message = typeof data.message === 'string' ? data.message.trim() : '';
+
+    // 3. Input Validation & Length Limits
+    if (!name || !company || !phone || !email || !inquiryType || !message) {
+      return NextResponse.json(
+        { error: '모든 필수 항목을 입력해 주세요.' },
+        { status: 400 }
+      );
+    }
+
+    if (
+      name.length > 100 ||
+      company.length > 150 ||
+      phone.length > 50 ||
+      email.length > 200 ||
+      inquiryType.length > 100 ||
+      message.length > 5000
+    ) {
+      return NextResponse.json(
+        { error: '입력된 글자 수가 허용 범위를 초과했습니다.' },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: '올바른 이메일 주소를 입력해 주세요.' },
+        { status: 400 }
+      );
+    }
+
+    const safeInquiryType = ALLOWED_INQUIRY_TYPES.includes(inquiryType)
+      ? inquiryType
+      : '기타 문의';
 
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.error('Email credentials are not set in environment variables');
-      return NextResponse.json({ error: '서버 환경 변수 설정 오류' }, { status: 500 });
+      return NextResponse.json(
+        { error: '현재 문의 접수가 지연되고 있습니다. 잠시 후 다시 시도해 주세요.' },
+        { status: 500 }
+      );
     }
 
     const transporter = nodemailer.createTransport({
@@ -19,15 +127,25 @@ export async function POST(req: Request) {
       },
     });
 
+    // 4. Sanitize Headers & Escape HTML to prevent XSS / Header Injection
+    const safeHeaderName = sanitizeHeader(name);
+    const safeHeaderCompany = sanitizeHeader(company);
+    const safeHtmlName = escapeHtml(name);
+    const safeHtmlCompany = escapeHtml(company);
+    const safeHtmlPhone = escapeHtml(phone);
+    const safeHtmlEmail = escapeHtml(email);
+    const safeHtmlInquiryType = escapeHtml(safeInquiryType);
+    const safeHtmlMessage = escapeHtml(message);
+
     const mailOptions = {
-      from: `"${name} (${company})" <${process.env.EMAIL_USER}>`,
-      replyTo: email,
+      from: `"${safeHeaderName} (${safeHeaderCompany})" <${process.env.EMAIL_USER}>`,
+      replyTo: sanitizeHeader(email),
       to: process.env.RECEIVER_EMAIL || 'info@nkuct.com',
-      subject: `[홈페이지 문의] ${inquiryType} - ${company} ${name}`,
+      subject: `[홈페이지 문의] ${safeInquiryType} - ${safeHeaderCompany} ${safeHeaderName}`,
       text: `
 NK UCT 홈페이지에서 새로운 문의가 접수되었습니다.
 
-■ 문의 유형: ${inquiryType}
+■ 문의 유형: ${safeInquiryType}
 ■ 회사명: ${company}
 ■ 담당자 성함: ${name}
 ■ 연락처: ${phone}
@@ -37,21 +155,21 @@ NK UCT 홈페이지에서 새로운 문의가 접수되었습니다.
 ${message}
       `,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #001B5E; color: white; padding: 20px; text-align: center;">
             <h2 style="margin: 0;">새로운 고객 문의가 접수되었습니다</h2>
           </div>
           <div style="padding: 24px; background-color: #f8fafc;">
             <table style="width: 100%; border-collapse: collapse;">
-              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: bold; color: #475569;">문의 유형</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${inquiryType}</td></tr>
-              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">회사명</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${company}</td></tr>
-              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">담당자 성함</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${name}</td></tr>
-              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">연락처</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${phone}</td></tr>
-              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">이메일</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;"><a href="mailto:${email}">${email}</a></td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; width: 120px; font-weight: bold; color: #475569;">문의 유형</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${safeHtmlInquiryType}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">회사명</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${safeHtmlCompany}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">담당자 성함</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${safeHtmlName}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">연락처</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;">${safeHtmlPhone}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; font-weight: bold; color: #475569;">이메일</td><td style="padding: 8px 0; border-bottom: 1px solid #e2e8f0; color: #0f172a;"><a href="mailto:${safeHtmlEmail}">${safeHtmlEmail}</a></td></tr>
             </table>
             <div style="margin-top: 24px;">
               <h3 style="margin-top: 0; color: #475569; font-size: 16px;">문의 내용</h3>
-              <div style="background-color: white; padding: 16px; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; color: #0f172a; line-height: 1.6;">${message}</div>
+              <div style="background-color: white; padding: 16px; border: 1px solid #e2e8f0; border-radius: 4px; white-space: pre-wrap; color: #0f172a; line-height: 1.6;">${safeHtmlMessage}</div>
             </div>
           </div>
           <div style="background-color: #f1f5f9; padding: 16px; text-align: center; color: #64748b; font-size: 12px;">
@@ -63,9 +181,16 @@ ${message}
 
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json({ success: true, message: '이메일이 성공적으로 전송되었습니다.' }, { status: 200 });
+    return NextResponse.json(
+      { success: true, message: '이메일이 성공적으로 전송되었습니다.' },
+      { status: 200 }
+    );
   } catch (error) {
     console.error('Error sending email:', error);
-    return NextResponse.json({ error: '이메일 전송에 실패했습니다.' }, { status: 500 });
+    return NextResponse.json(
+      { error: '이메일 전송에 실패했습니다.' },
+      { status: 500 }
+    );
   }
 }
+

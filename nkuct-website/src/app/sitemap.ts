@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // 실제 도메인을 구매하시면 이 URL을 변경해야 합니다. (예: https://www.nkuct.com)
-  const baseUrl = 'https://nkuct-website.vercel.app'; 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.nkcorpglobal.com'; 
 
   return [
     {
@@ -43,3 +42,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   ];
 }
+
