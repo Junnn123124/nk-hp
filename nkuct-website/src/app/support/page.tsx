@@ -12,6 +12,7 @@ export default function Support() {
     name: '', company: '', phone: '', email: '', inquiryType: '미국 진출 및 해외 수출 상담', message: '', website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   const toggleFaq = (index: number) => {
@@ -32,11 +33,12 @@ export default function Support() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, privacyConsent }),
       });
       const data = await response.json();
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: '문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.' });
+        setPrivacyConsent(false);
         setFormData({ name: '', company: '', phone: '', email: '', inquiryType: '미국 진출 및 해외 수출 상담', message: '', website: '' });
       } else {
         setSubmitStatus({ type: 'error', message: data.error || '발송에 실패했습니다. 관리자에게 문의해주세요.' });
@@ -219,13 +221,31 @@ export default function Support() {
                       <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none" placeholder="문의하실 내용을 상세히 적어주시면 더 정확한 답변이 가능합니다." style={{ borderColor: 'var(--nk-border)' }}></textarea>
                     </div>
 
+                    <div className="p-4 rounded-lg border text-sm" style={{ background: 'var(--nk-surface-light)', borderColor: 'var(--nk-border)' }}>
+                      <p className="font-bold mb-2" style={{ color: 'var(--nk-text)' }}>개인정보 수집·이용 안내</p>
+                      <ul className="list-disc pl-5 mb-3" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.7 }}>
+                        <li>수집 항목: 회사명, 담당자 성함, 연락처, 이메일, 문의 내용</li>
+                        <li>이용 목적: 문의 확인 및 답변, 견적·기술 상담</li>
+                        <li>보유 기간: 문의 접수일로부터 3년 후 파기</li>
+                        <li>동의를 거부할 수 있으나, 거부 시 문의 접수가 제한됩니다.</li>
+                      </ul>
+                      <label className="flex items-start gap-2 cursor-pointer">
+                        <input type="checkbox" required checked={privacyConsent} onChange={(e) => setPrivacyConsent(e.target.checked)} className="mt-1" />
+                        <span style={{ color: 'var(--nk-text)' }}>
+                          [필수] 개인정보 수집·이용에 동의합니다. (
+                          <Link href="/privacy" target="_blank" className="underline" style={{ color: 'var(--nk-accent)' }}>개인정보처리방침 보기</Link>
+                          )
+                        </span>
+                      </label>
+                    </div>
+
                     {submitStatus.type === 'error' && (
                       <div className="p-4 text-red-600 bg-red-50 border border-red-200 rounded-lg text-sm">
                         {submitStatus.message}
                       </div>
                     )}
 
-                    <button type="submit" disabled={isSubmitting} className={`w-full py-4 rounded-xl font-bold text-white flex justify-center items-center gap-2 transition-all duration-300 ${isSubmitting ? 'bg-slate-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
+                    <button type="submit" disabled={isSubmitting || !privacyConsent} className={`w-full py-4 rounded-xl font-bold text-white flex justify-center items-center gap-2 transition-all duration-300 ${isSubmitting || !privacyConsent ? 'bg-slate-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 shadow-lg hover:shadow-xl hover:-translate-y-1'}`}>
                       {isSubmitting ? (
                         <>발송 중...</>
                       ) : (

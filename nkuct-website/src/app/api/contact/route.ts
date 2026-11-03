@@ -78,6 +78,14 @@ export async function POST(req: Request) {
     const inquiryType = typeof data.inquiryType === 'string' ? data.inquiryType.trim() : '';
     const message = typeof data.message === 'string' ? data.message.trim() : '';
 
+    // 개인정보 수집·이용 동의 확인
+    if (data.privacyConsent !== true) {
+      return NextResponse.json(
+        { error: '개인정보 수집·이용에 동의해 주세요.' },
+        { status: 400 }
+      );
+    }
+
     // 3. Input Validation & Length Limits
     if (!name || !company || !phone || !email || !inquiryType || !message) {
       return NextResponse.json(

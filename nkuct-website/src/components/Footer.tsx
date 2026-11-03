@@ -94,12 +94,12 @@ export default function Footer() {
             © {new Date().getFullYear()} NK UCT. All rights reserved.
           </p>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
-            {['개인정보처리방침', '이용약관'].map((item) => (
-              <Link key={item} href="#" style={{ color: 'var(--nk-text-dim)', fontSize: '0.8rem', textDecoration: 'none', transition: 'color 0.2s' }}
+            {[{ label: '개인정보처리방침', href: '/privacy' }, { label: '이용약관', href: '/terms' }].map((item) => (
+              <Link key={item.label} href={item.href} style={{ color: 'var(--nk-text-dim)', fontSize: '0.8rem', textDecoration: 'none', transition: 'color 0.2s' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--nk-accent)'}
                 onMouseLeave={(e) => e.currentTarget.style.color = 'var(--nk-text-dim)'}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
           </div>

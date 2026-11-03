@@ -5,6 +5,7 @@ import { ArrowRight, Cpu, Monitor, Battery, Wind, Flame, Shield, CheckCircle, Aw
 import AnimateOnScroll from '@/components/ui/AnimateOnScroll';
 import CountUp from '@/components/ui/CountUp';
 import SectionHeader from '@/components/ui/SectionHeader';
+import GlobeNetwork from '@/components/ui/GlobeNetwork';
 
 export default function Home() {
   return (
@@ -35,28 +36,11 @@ export default function Home() {
               </div>
             </AnimateOnScroll>
             
-            <AnimateOnScroll animation="slide-in-right" delay={200} className="hidden lg:block">
-              <div className="relative w-full aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/25 to-blue-400/15 rounded-full animate-pulse-glow"></div>
-                <div className="glass-card absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-8 w-full animate-float">
-                  <div className="flex items-center justify-between border-b pb-4 mb-6" style={{ borderColor: 'var(--nk-border)' }}>
-                    <div>
-                      <h3 className="font-bold text-lg">화재 감지 · CO2 소화</h3>
-                      <p className="text-sm" style={{ color: 'var(--nk-text-muted)' }}>CABINEX-EWT2 (CO2 자동소화설비)</p>
-                    </div>
-                    <div className="h-12 w-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(46, 109, 184, 0.16)', color: 'var(--nk-accent)' }}>
-                      <Flame size={24} />
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-5xl font-black text-gradient mb-2">CO2</div>
-                    <p className="text-sm font-medium" style={{ color: 'var(--nk-text-dim)' }}>이산화탄소 소화약제 방사</p>
-                  </div>
-                  <div className="mt-6 flex justify-center gap-2">
-                    <span className="badge badge-fm">FM Approved</span>
-                    <span className="badge badge-ce">CE 인증</span>
-                  </div>
-                </div>
+            <AnimateOnScroll animation="slide-in-right" delay={200}>
+              <GlobeNetwork />
+              <div className="mt-5 flex justify-center gap-2">
+                <span className="badge badge-fm">FM Approved</span>
+                <span className="badge badge-ce">CE 인증</span>
               </div>
             </AnimateOnScroll>
           </div>
