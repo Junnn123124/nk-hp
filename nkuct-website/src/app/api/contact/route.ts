@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Simple in-memory rate limiter per IP (max 5 requests per 10 minutes)
+// In-memory rate limiter per IP (max 5 requests per 10 minutes, with automatic pruning)
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 5;
+const MAX_RATE_LIMIT_ENTRIES = 2000;
+const MAX_BODY_BYTES = 20 * 1024; // 20KB payload cap
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 
 const ALLOWED_INQUIRY_TYPES = [
@@ -13,8 +15,13 @@ const ALLOWED_INQUIRY_TYPES = [
   '기타 문의',
 ];
 
+function stripControlChars(str: string): string {
+  // Strip ASCII control chars (except \n, \r, \t) and Unicode BiDi override characters
+  return str.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F\u202A-\u202E\u2066-\u2069]/g, '');
+}
+
 function escapeHtml(str: string): string {
-  return str
+  return stripControlChars(str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
@@ -23,16 +30,46 @@ function escapeHtml(str: string): string {
 }
 
 function sanitizeHeader(str: string): string {
-  return str.replace(/[\r\n\0"%<>]/g, ' ').trim();
+  return stripControlChars(str).replace(/[\r\n\0"%<>]/g, ' ').trim();
 }
 
 function isValidEmail(email: string): boolean {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email) && email.length <= 200;
+  return emailRegex.test(email) && email.length <= 200 && !email.includes('..');
+}
+
+function isValidPhone(phone: string): boolean {
+  const phoneRegex = /^[0-9+\-().\s]{7,30}$/;
+  const digitCount = (phone.match(/\d/g) || []).length;
+  return phoneRegex.test(phone) && digitCount >= 7 && digitCount <= 20;
+}
+
+function extractClientIp(req: Request): string {
+  const cfIp = req.headers.get('cf-connecting-ip');
+  if (cfIp) return cfIp.trim();
+  const realIp = req.headers.get('x-real-ip');
+  if (realIp) return realIp.trim();
+  const forwardedFor = req.headers.get('x-forwarded-for');
+  if (forwardedFor) {
+    const parts = forwardedFor.split(',').map((s) => s.trim()).filter(Boolean);
+    return parts[parts.length - 1] || 'unknown';
+  }
+  return 'unknown';
 }
 
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
+
+  if (rateLimitMap.size > MAX_RATE_LIMIT_ENTRIES) {
+    for (const [k, v] of rateLimitMap.entries()) {
+      if (now > v.resetAt) rateLimitMap.delete(k);
+    }
+    if (rateLimitMap.size > MAX_RATE_LIMIT_ENTRIES) {
+      const oldestKey = rateLimitMap.keys().next().value;
+      if (oldestKey) rateLimitMap.delete(oldestKey);
+    }
+  }
+
   const entry = rateLimitMap.get(ip);
 
   if (!entry || now > entry.resetAt) {
@@ -50,9 +87,44 @@ function checkRateLimit(ip: string): boolean {
 
 export async function POST(req: Request) {
   try {
+    // 0. Cross-Origin (CSRF) & Content-Type Protection
+    const secFetchSite = req.headers.get('sec-fetch-site');
+    if (secFetchSite === 'cross-site') {
+      return NextResponse.json(
+        { error: '허용되지 않은 외부 출처 요청입니다.' },
+        { status: 403 }
+      );
+    }
+
+    const origin = req.headers.get('origin');
+    const host = req.headers.get('host');
+    if (origin && host) {
+      try {
+        const originUrl = new URL(origin);
+        if (originUrl.host !== host) {
+          return NextResponse.json(
+            { error: '허용되지 않은 출처(Origin) 요청입니다.' },
+            { status: 403 }
+          );
+        }
+      } catch {
+        return NextResponse.json(
+          { error: '잘못된 출처(Origin) 헤더입니다.' },
+          { status: 403 }
+        );
+      }
+    }
+
+    const contentType = req.headers.get('content-type') || '';
+    if (!contentType.toLowerCase().includes('application/json')) {
+      return NextResponse.json(
+        { error: 'Content-Type은 application/json 이어야 합니다.' },
+        { status: 415 }
+      );
+    }
+
     // 1. Rate Limiting Check
-    const forwardedFor = req.headers.get('x-forwarded-for');
-    const clientIp = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+    const clientIp = extractClientIp(req);
 
     if (!checkRateLimit(clientIp)) {
       return NextResponse.json(
@@ -61,9 +133,33 @@ export async function POST(req: Request) {
       );
     }
 
-    const data = await req.json();
+    // 2. Safe Payload Size Check & JSON Parsing
+    const rawBody = await req.text();
+    if (Buffer.byteLength(rawBody, 'utf8') > MAX_BODY_BYTES) {
+      return NextResponse.json(
+        { error: '요청 데이터 크기가 허용 범위를 초과했습니다.' },
+        { status: 413 }
+      );
+    }
 
-    // 2. Honeypot Anti-Bot Check (hidden field 'website')
+    let data: Record<string, unknown>;
+    try {
+      const parsed = JSON.parse(rawBody);
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+        return NextResponse.json(
+          { error: '올바른 JSON 객체 형식이 아닙니다.' },
+          { status: 400 }
+        );
+      }
+      data = parsed as Record<string, unknown>;
+    } catch {
+      return NextResponse.json(
+        { error: '잘못된 JSON 요청 형식입니다.' },
+        { status: 400 }
+      );
+    }
+
+    // 3. Honeypot Anti-Bot Check (hidden field 'website')
     if (data.website && String(data.website).trim().length > 0) {
       return NextResponse.json(
         { success: true, message: '이메일이 성공적으로 전송되었습니다.' },
@@ -71,12 +167,12 @@ export async function POST(req: Request) {
       );
     }
 
-    const name = typeof data.name === 'string' ? data.name.trim() : '';
-    const company = typeof data.company === 'string' ? data.company.trim() : '';
-    const phone = typeof data.phone === 'string' ? data.phone.trim() : '';
-    const email = typeof data.email === 'string' ? data.email.trim() : '';
-    const inquiryType = typeof data.inquiryType === 'string' ? data.inquiryType.trim() : '';
-    const message = typeof data.message === 'string' ? data.message.trim() : '';
+    const name = typeof data.name === 'string' ? stripControlChars(data.name).trim() : '';
+    const company = typeof data.company === 'string' ? stripControlChars(data.company).trim() : '';
+    const phone = typeof data.phone === 'string' ? stripControlChars(data.phone).trim() : '';
+    const email = typeof data.email === 'string' ? stripControlChars(data.email).trim() : '';
+    const inquiryType = typeof data.inquiryType === 'string' ? stripControlChars(data.inquiryType).trim() : '';
+    const message = typeof data.message === 'string' ? stripControlChars(data.message).trim() : '';
 
     // 개인정보 수집·이용 동의 확인
     if (data.privacyConsent !== true) {
@@ -86,7 +182,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 3. Input Validation & Length Limits
+    // 4. Input Validation & Length Limits
     if (!name || !company || !phone || !email || !inquiryType || !message) {
       return NextResponse.json(
         { error: '모든 필수 항목을 입력해 주세요.' },
@@ -104,6 +200,13 @@ export async function POST(req: Request) {
     ) {
       return NextResponse.json(
         { error: '입력된 글자 수가 허용 범위를 초과했습니다.' },
+        { status: 400 }
+      );
+    }
+
+    if (!isValidPhone(phone)) {
+      return NextResponse.json(
+        { error: '올바른 연락처(전화번호) 형식을 입력해 주세요.' },
         { status: 400 }
       );
     }

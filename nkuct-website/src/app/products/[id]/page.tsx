@@ -11,16 +11,18 @@ interface ProductPageProps {
 }
 
 export function generateStaticParams() {
-  return productsData.map((product) => ({
-    id: product.id,
-  }));
+  return productsData
+    .filter((product) => !product.underRevision)
+    .map((product) => ({
+      id: product.id,
+    }));
 }
 
 export default async function ProductDetail({ params }: ProductPageProps) {
   const { id } = await params;
   const product = productsData.find((p) => p.id === id);
 
-  if (!product) {
+  if (!product || product.underRevision) {
     notFound();
   }
 
