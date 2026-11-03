@@ -18,11 +18,6 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={`${centered ? 'text-center' : ''} mb-16 ${className}`}>
-      {badge && (
-        <span className="badge-section mb-4 inline-block">
-          {badge}
-        </span>
-      )}
       <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4">
         {title}
       </h2>

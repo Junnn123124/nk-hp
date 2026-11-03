@@ -16,7 +16,6 @@ export default function Home() {
         <div className="container-custom relative z-10 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimateOnScroll animation="slide-in-left">
-              <span className="badge-section mb-6">NK UCT FIRE PROTECTION</span>
               <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
                 <span className="text-gradient">초기 화재</span> 감지·소화
               </h1>

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const EFFECTIVE_DATE = '2026년 11월 3일';
-const PRIVACY_EMAIL = 'info@nkuct.com';
+const PRIVACY_EMAIL = 'jun.jeon@nkuct.com';
 
 export default function PrivacyPolicy() {
   return (
@@ -15,7 +15,6 @@ export default function PrivacyPolicy() {
       <section className="bg-hero-gradient relative pt-32 pb-16">
         <div className="bg-grid-pattern absolute inset-0 opacity-70"></div>
         <div className="container-custom relative z-10 text-center">
-          <span className="badge-section mb-6">PRIVACY POLICY</span>
           <h1 className="text-4xl md:text-5xl font-black mb-4">개인정보처리방침</h1>
           <p className="text-lg" style={{ color: 'var(--nk-text-muted)' }}>시행일자: {EFFECTIVE_DATE}</p>
         </div>
@@ -23,7 +22,7 @@ export default function PrivacyPolicy() {
 
       <section className="section-padding bg-section-white">
         <div className="container-custom max-w-4xl">
-          <article className="glass-card p-8 md:p-12 space-y-10" style={{ lineHeight: 1.9, color: 'var(--nk-text-muted)' }}>
+          <article className="glass-card legal-doc" style={{ lineHeight: 1.9, color: 'var(--nk-text-muted)' }}>
             <p>
               NK UCT(이하 &quot;회사&quot;)는 「개인정보 보호법」 등 관련 법령을 준수하며, 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.
             </p>

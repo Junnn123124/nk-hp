@@ -111,7 +111,6 @@ export default function Support() {
         <div className="bg-grid-pattern absolute inset-0 opacity-40"></div>
         <div className="container-custom relative z-10 flex flex-col items-center text-center">
           <AnimateOnScroll className="flex flex-col items-center w-full">
-            <span className="badge-section mb-6 text-center">SUPPORT</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-snug text-center">
               무엇을 <span className="text-gradient pb-2 inline-block">도와드릴까요?</span>
             </h1>

@@ -69,7 +69,6 @@ export default function Solutions() {
         <div className="bg-grid-pattern absolute inset-0 opacity-70"></div>
         <div className="container-custom relative z-10 flex flex-col items-center text-center">
           <AnimateOnScroll className="flex flex-col items-center w-full">
-            <span className="badge-section mb-6 text-center">SOLUTIONS</span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-snug text-center">
               산업별 맞춤 <span className="text-gradient pb-2 inline-block">방재 솔루션</span>
             </h1>

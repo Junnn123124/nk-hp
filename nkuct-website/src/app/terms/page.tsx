@@ -14,7 +14,6 @@ export default function Terms() {
       <section className="bg-hero-gradient relative pt-32 pb-16">
         <div className="bg-grid-pattern absolute inset-0 opacity-70"></div>
         <div className="container-custom relative z-10 text-center">
-          <span className="badge-section mb-6">TERMS OF USE</span>
           <h1 className="text-4xl md:text-5xl font-black mb-4">이용약관</h1>
           <p className="text-lg" style={{ color: 'var(--nk-text-muted)' }}>시행일자: {EFFECTIVE_DATE}</p>
         </div>
@@ -22,7 +21,7 @@ export default function Terms() {
 
       <section className="section-padding bg-section-white">
         <div className="container-custom max-w-4xl">
-          <article className="glass-card p-8 md:p-12 space-y-10" style={{ lineHeight: 1.9, color: 'var(--nk-text-muted)' }}>
+          <article className="glass-card legal-doc" style={{ lineHeight: 1.9, color: 'var(--nk-text-muted)' }}>
             <div>
               <h2 className="text-xl font-bold mb-3" style={{ color: 'var(--nk-text)' }}>제1조 (목적)</h2>
               <p>이 약관은 NK UCT(이하 &quot;회사&quot;)가 운영하는 홈페이지(이하 &quot;사이트&quot;)에서 제공하는 정보 및 온라인 문의 서비스의 이용과 관련하여 회사와 이용자 간의 권리·의무 및 책임사항을 규정함을 목적으로 합니다.</p>

@@ -251,7 +251,7 @@ export async function POST(req: Request) {
     const mailOptions = {
       from: `"${safeHeaderName} (${safeHeaderCompany})" <${process.env.EMAIL_USER}>`,
       replyTo: sanitizeHeader(email),
-      to: process.env.RECEIVER_EMAIL || 'info@nkuct.com',
+      to: process.env.RECEIVER_EMAIL || 'jun.jeon@nkuct.com',
       subject: `[홈페이지 문의] ${safeInquiryType} - ${safeHeaderCompany} ${safeHeaderName}`,
       text: `
 NK UCT 홈페이지에서 새로운 문의가 접수되었습니다.

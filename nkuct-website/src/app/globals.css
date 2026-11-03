@@ -432,6 +432,39 @@ section {
   margin: 0;
 }
 
+/* ===== Legal Documents (Privacy Policy & Terms) ===== */
+.legal-doc {
+  padding: 2rem 1.5rem;
+}
+@media (min-width: 768px) {
+  .legal-doc {
+    padding: 3rem 3.5rem;
+  }
+}
+.legal-doc > * + * {
+  margin-top: 2rem;
+}
+.legal-doc h2 {
+  margin-bottom: 0.75rem;
+}
+.legal-doc ul,
+.legal-doc ol {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.legal-doc li {
+  margin-bottom: 0.35rem;
+}
+.legal-doc table {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.legal-doc table th,
+.legal-doc table td {
+  padding: 0.75rem 1rem;
+}
+
 /* ===== FAQ Accordion ===== */
 .faq-item {
   background: #FFFFFF;
