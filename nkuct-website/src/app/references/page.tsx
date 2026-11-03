@@ -24,7 +24,7 @@ export default function References() {
       name: 'SK하이닉스',
       nameEn: 'SK Hynix',
       icon: <Cpu size={32} />,
-      desc: '메모리 반도체 생산 라인 전역에 걸친 고신뢰성 화재 방호 시스템 구축',
+      desc: '메모리 반도체 생산 라인 내 장비 자동소화 시스템 납품',
       location: '이천, 청주 캠퍼스',
       stats: [
         { label: 'FAB 수', value: '80+' },
@@ -36,7 +36,7 @@ export default function References() {
       name: 'LG디스플레이',
       nameEn: 'LG Display',
       icon: <Monitor size={32} />,
-      desc: '초대형 LCD 및 OLED 패널 생산라인 내 유기용제 특화 방호 시스템 납품',
+      desc: 'LCD 및 OLED 패널 생산라인 내 장비 자동소화 시스템 납품',
       location: '구미 캠퍼스',
       stats: [
         { label: '라인 수', value: '50+' },
@@ -45,22 +45,10 @@ export default function References() {
       ]
     },
     {
-      name: 'BOE Technology',
-      nameEn: 'BOE',
-      icon: <Monitor size={32} />,
-      desc: '중국 디스플레이 시장 점유율 1위 기업 생산라인 방호 설비 수출 및 현지 구축',
-      location: '중국 내 다수 사업장',
-      stats: [
-        { label: '라인 수', value: '30+' },
-        { label: '납품 시작', value: '2015년' },
-        { label: '국가', value: '중국' }
-      ]
-    },
-    {
       name: 'DB하이텍',
       nameEn: 'DB HiTek',
       icon: <Cpu size={32} />,
-      desc: '아날로그 및 파운드리 반도체 특화 FAB 내 고정밀 장비 소화 시스템 납품',
+      desc: '반도체 FAB 내 장비 자동소화 시스템 납품',
       location: '부천 캠퍼스',
       stats: [
         { label: 'FAB 수', value: '10+' },
@@ -72,7 +60,7 @@ export default function References() {
       name: '마이크론',
       nameEn: 'Micron',
       icon: <Cpu size={32} />,
-      desc: '글로벌 주요 반도체 생산 라인 방호 설비 수출 및 현지 구축',
+      desc: '싱가포르 반도체 생산 라인 방호 설비 수출 및 납품',
       location: '싱가포르 캠퍼스',
       stats: [
         { label: '라인 수', value: '5+' },
@@ -94,7 +82,7 @@ export default function References() {
               주요 <span className="text-gradient pb-2 inline-block">납품실적</span>
             </h1>
             <p className="text-xl max-w-3xl mx-auto text-center" style={{ color: 'var(--nk-text-muted)' }}>
-              글로벌 최고 수준의 기술력으로 국내외 주요 반도체·디스플레이 기업에 안전을 제공하고 있습니다.
+              국내외 반도체·디스플레이 기업에 자동소화 시스템을 납품하고 있습니다.
             </p>
           </AnimateOnScroll>
         </div>
@@ -113,15 +101,15 @@ export default function References() {
         <div className="container-custom">
           <div className="glass-panel grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0" style={{ background: 'rgba(255, 255, 255, 0.96)', borderColor: 'var(--nk-border)' }}>
             <div className="stat-card">
-              <CountUp end={300} suffix="+" className="stat-value" />
-              <div className="stat-label">납품 FAB 수</div>
-            </div>
-            <div className="stat-card">
-              <CountUp end={5} suffix="개사+" className="stat-value" />
+              <CountUp end={5} suffix="개사" className="stat-value" />
               <div className="stat-label">주요 고객사</div>
             </div>
             <div className="stat-card">
-              <CountUp end={5} suffix="개국" className="stat-value" />
+              <CountUp end={2} suffix="종" className="stat-value" />
+              <div className="stat-label">보유 인증 (FM · CE)</div>
+            </div>
+            <div className="stat-card">
+              <CountUp end={3} suffix="개국" className="stat-value" />
               <div className="stat-label">납품 국가</div>
             </div>
             <div className="stat-card">
@@ -173,7 +161,7 @@ export default function References() {
             <AnimateOnScroll delay={500} className="text-center pt-8">
               <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border bg-blue-900/10" style={{ borderColor: 'var(--nk-border-light)' }}>
                 <Award size={20} style={{ color: 'var(--nk-accent)' }} />
-                <span className="text-sm font-medium" style={{ color: 'var(--nk-text-muted)' }}>이 외에도 다수의 국내외 반도체·광학·디스플레이·클린룸 공정 장비 제조사(OEM) 및 미국 진출 공장에 납품 중입니다.</span>
+                <span className="text-sm font-medium" style={{ color: 'var(--nk-text-muted)' }}>이 외에도 국내외 반도체 장비 제조사(OEM) 등에 납품한 실적이 있습니다.</span>
               </div>
             </AnimateOnScroll>
           </div>
@@ -184,9 +172,9 @@ export default function References() {
       <section className="py-20 relative overflow-hidden bg-section-gradient border-t" style={{ borderColor: 'var(--nk-border)' }}>
         <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
           <AnimateOnScroll>
-            <h2 className="text-3xl font-bold mb-6">귀사의 FAB에도 최적의 방재 시스템을 구축하세요</h2>
+            <h2 className="text-3xl font-bold mb-6">귀사의 설비에 맞는 방재 시스템을 상담해 보세요</h2>
             <p className="text-lg mb-8" style={{ color: 'var(--nk-text-muted)' }}>
-              글로벌 일류 기업들이 선택한 NK UCT의 기술력을 직접 확인해 보십시오.
+              NK UCT의 납품 실적과 솔루션을 확인해 보십시오.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/solutions" className="btn-secondary">

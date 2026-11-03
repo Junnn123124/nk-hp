@@ -133,7 +133,7 @@ export default async function ProductDetail({ params }: ProductPageProps) {
           <AnimateOnScroll>
             <h2 className="text-3xl font-bold mb-6">{product.name} 도입을 검토 중이신가요?</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: 'var(--nk-text-muted)' }}>
-              전문 엔지니어가 귀사의 현장 환경에 가장 적합한 설계 방안을 제안해 드립니다.
+              전문 엔지니어가 귀사의 현장 환경에 적합한 설계 방안을 제안해 드립니다.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/support" className="btn-primary">

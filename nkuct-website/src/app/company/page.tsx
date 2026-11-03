@@ -68,7 +68,7 @@ export default function Company() {
                     이러한 제품개발을 완료하여 시판중이며, 국내 소방안전 시스템의 초석을 다지기 위해 점차 사업 영역을 확대해 나가고 있습니다. 그의 일환으로 체계적인 품질경영관리시스템 도입의 필요성을 인식하여 2002년 8월 ‘ISO 9001 품질경영시스템’을 인증받아 해외시장 확대를 위한 기반을 구축하였습니다.
                   </p>
                   <p>
-                    국내 전문소방업체로 ‘소방안전인식을 확산시키고 인명과 재산, 환경보존의 소중함을 최우선으로 생각한다’는 소명아래 설립이후 부단한 노력과 개발을 해 왔습니다. 이러한 마음가짐을 토대로 국내 최고의 선진소방업체로 거듭나기 위하여 더욱 노력하겠습니다.
+                    국내 전문소방업체로 ‘소방안전인식을 확산시키고 인명과 재산, 환경보존의 소중함을 최우선으로 생각한다’는 소명아래 설립이후 부단한 노력과 개발을 해 왔습니다. 이러한 마음가짐을 토대로 더욱 신뢰받는 소방업체로 거듭나기 위하여 더욱 노력하겠습니다.
                   </p>
                 </div>
                 <div>
@@ -118,7 +118,7 @@ export default function Company() {
       <section id="certifications" className="section-padding bg-section-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <SectionHeader badge="CERTIFICATIONS" title="인증 현황" subtitle="글로벌 표준을 충족하는 최고의 품질과 안전성" />
+            <SectionHeader badge="CERTIFICATIONS" title="인증 현황" subtitle="보유 인증 현황" />
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -126,9 +126,9 @@ export default function Company() {
               <div className="glass-card p-8 h-full flex flex-col items-center text-center">
                 <Shield size={48} className="mb-6" style={{ color: '#FCA5A5' }} />
                 <h3 className="text-xl font-bold mb-3">FM Approved</h3>
-                <span className="badge badge-fm mb-4">국제 공인</span>
+                <span className="badge badge-fm mb-4">인증 보유</span>
                 <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)' }}>
-                  미국 Factory Mutual 사의 엄격한 테스트를 통과한 글로벌 최고 수준의 화재 안전 제품 인증. 보험료 할인 혜택이 적용됩니다.
+                  미국 Factory Mutual(FM)의 시험·평가를 통과한 제품에 부여되는 인증입니다. 인증은 일부 제품에 한하며, 보험 조건은 보험사 기준에 따릅니다.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -137,9 +137,9 @@ export default function Company() {
               <div className="glass-card p-8 h-full flex flex-col items-center text-center">
                 <Award size={48} className="mb-6" style={{ color: '#93C5FD' }} />
                 <h3 className="text-xl font-bold mb-3">CE 인증</h3>
-                <span className="badge badge-ce mb-4">국제 공인</span>
+                <span className="badge badge-ce mb-4">인증 보유</span>
                 <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)' }}>
-                  유럽 연합(EU)의 엄격한 안전, 건강, 환경 규격을 충족하는 제품에 부여되는 국제 통합 인증입니다.
+                  유럽 연합(EU) 시장에 유통되는 제품이 해당 안전·보건·환경 규정을 충족함을 나타내는 표시입니다. 적용 제품은 제품 정보를 확인해 주세요.
                 </p>
               </div>
             </AnimateOnScroll>

@@ -27,7 +27,7 @@ export default function Products() {
               제품 <span className="text-gradient pb-2 inline-block">라인업</span>
             </h1>
             <p className="text-xl max-w-3xl mx-auto text-center" style={{ color: 'var(--nk-text-muted)' }}>
-              FM, CE 등 글로벌 인증을 보유한 최고의 품질. 감지부터 소화까지 완벽한 방호 시스템을 구성하는 제품들입니다.
+              감지부터 소화까지 방호 시스템을 구성하는 제품 라인업입니다. 제품별 보유 인증은 상세 페이지에서 확인해 주세요.
             </p>
           </AnimateOnScroll>
         </div>
