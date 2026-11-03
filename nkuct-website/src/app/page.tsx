@@ -50,12 +50,7 @@ export default function Home() {
       {/* Stats Section - Framed Boundary Bar */}
       <section
         className="py-12 relative z-20"
-        style={{
-          background: 'linear-gradient(90deg, #00154C 0%, #0A2B7A 50%, #00154C 100%)',
-          borderTop: '3px solid #4A90D9',
-          borderBottom: '3px solid #4A90D9',
-          boxShadow: '0 10px 30px rgba(0, 27, 94, 0.18)',
-        }}
+        style={{ background: 'transparent' }}
       >
         <div className="container-custom">
           <div className="glass-panel grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0" style={{ background: 'rgba(255, 255, 255, 0.96)', borderColor: 'var(--nk-border)' }}>
@@ -72,7 +67,7 @@ export default function Home() {
               <div className="stat-label">보유 인증 (FM · CE)</div>
             </div>
             <div className="stat-card">
-              <CountUp end={3} suffix="개국" className="stat-value" />
+              <CountUp end={6} suffix="개국+" className="stat-value" />
               <div className="stat-label">납품 국가</div>
             </div>
           </div>

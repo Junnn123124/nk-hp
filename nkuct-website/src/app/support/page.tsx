@@ -160,8 +160,8 @@ export default function Support() {
 
           <div className="max-w-4xl mx-auto flex flex-col gap-8">
 
-            <AnimateOnScroll delay={200} className="w-full lg:w-2/3 mx-auto">
-              <div className="glass-panel p-8 md:p-10 border border-blue-900/30 text-left">
+            <AnimateOnScroll delay={200} className="w-full mx-auto">
+              <div className="glass-panel border border-blue-900/30 text-left" style={{ padding: '2.5rem' }}>
                 <h3 className="text-2xl font-bold mb-8 flex items-center gap-2">
                   <FileText size={24} style={{ color: 'var(--nk-accent)' }} /> 
                   온라인 문의 폼
@@ -177,7 +177,7 @@ export default function Support() {
                     <button onClick={() => setSubmitStatus({ type: null, message: '' })} className="mt-6 btn-primary">새로운 문의 작성하기</button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="contact-form flex flex-col gap-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex flex-col gap-2">
                         <label htmlFor="company" className="text-sm font-bold" style={{ color: 'var(--nk-text-dim)' }}>회사명 *</label>
@@ -221,16 +221,14 @@ export default function Support() {
                       <textarea id="message" name="message" required rows={5} value={formData.message} onChange={handleInputChange} className="p-3 border rounded-lg bg-white/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none" placeholder="문의하실 내용을 상세히 적어주시면 더 정확한 답변이 가능합니다." style={{ borderColor: 'var(--nk-border)' }}></textarea>
                     </div>
 
-                    <div className="p-4 rounded-lg border text-sm" style={{ background: 'var(--nk-surface-light)', borderColor: 'var(--nk-border)' }}>
-                      <p className="font-bold mb-2" style={{ color: 'var(--nk-text)' }}>개인정보 수집·이용 안내</p>
-                      <ul className="list-disc pl-5 mb-3" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.7 }}>
-                        <li>수집 항목: 회사명, 담당자 성함, 연락처, 이메일, 문의 내용</li>
-                        <li>이용 목적: 문의 확인 및 답변, 견적·기술 상담</li>
-                        <li>보유 기간: 문의 접수일로부터 3년 후 파기</li>
-                        <li>동의를 거부할 수 있으나, 거부 시 문의 접수가 제한됩니다.</li>
-                      </ul>
-                      <label className="flex items-start gap-2 cursor-pointer">
-                        <input type="checkbox" required checked={privacyConsent} onChange={(e) => setPrivacyConsent(e.target.checked)} className="mt-1" />
+                    <div className="pt-2 text-sm" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
+                      <p style={{ color: 'var(--nk-text)', fontWeight: 700, marginBottom: '0.5rem' }}>개인정보 수집·이용 안내</p>
+                      <p>수집 항목: 회사명, 담당자 성함, 연락처, 이메일, 문의 내용</p>
+                      <p>이용 목적: 문의 확인 및 답변, 견적·기술 상담</p>
+                      <p>보유 기간: 문의 접수일로부터 3년 후 파기</p>
+                      <p style={{ marginBottom: '0.75rem' }}>동의를 거부할 수 있으나, 거부 시 문의 접수가 제한됩니다.</p>
+                      <label className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" required checked={privacyConsent} onChange={(e) => setPrivacyConsent(e.target.checked)} className="shrink-0" />
                         <span style={{ color: 'var(--nk-text)' }}>
                           [필수] 개인정보 수집·이용에 동의합니다. (
                           <Link href="/privacy" target="_blank" className="underline" style={{ color: 'var(--nk-accent)' }}>개인정보처리방침 보기</Link>

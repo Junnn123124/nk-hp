@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { geoOrthographic, geoPath, geoGraticule10, geoDistance } from 'd3-geo';
+import { geoOrthographic, geoPath, geoContains, geoDistance } from 'd3-geo';
 import { feature } from 'topojson-client';
 import landTopology from 'world-atlas/land-110m.json';
 
@@ -12,14 +12,16 @@ export interface GlobeSite {
   lon: number;
   lat: number;
   color: string;
+  side: 'left' | 'right'; // 라벨 위치 (겹침 방지)
+  dy: number;
 }
 
 // 지사/거점 정보 — 위치(경도·위도)와 명칭은 여기서 수정하세요.
 export const GLOBE_SITES: GlobeSite[] = [
-  { id: 'kr', name: '대한민국', role: 'NK UCT', lon: 126.98, lat: 37.57, color: '#2E6DB8' },
-  { id: 'jp', name: '일본', role: 'Hatsuta (본사)', lon: 139.69, lat: 35.69, color: '#E53E3E' },
-  { id: 'us', name: '미국', role: 'NKuct America, Inc. (자회사)', lon: -97.74, lat: 30.27, color: '#F59E0B' },
-  { id: 'cn', name: '중국', role: 'NK-HATSUTA 상하이 합작법인', lon: 121.47, lat: 31.23, color: '#10B981' },
+  { id: 'kr', name: '대한민국', role: 'NK UCT', lon: 126.98, lat: 37.57, color: '#2E6DB8', side: 'left', dy: -28 },
+  { id: 'jp', name: '일본', role: 'Hatsuta (본사)', lon: 139.69, lat: 35.69, color: '#E53E3E', side: 'right', dy: -26 },
+  { id: 'us', name: '미국', role: 'NKuct America, Inc. (자회사)', lon: -97.74, lat: 30.27, color: '#F59E0B', side: 'right', dy: -24 },
+  { id: 'cn', name: '중국', role: 'NK-HATSUTA 상하이 합작법인', lon: 121.47, lat: 31.23, color: '#10B981', side: 'left', dy: 6 },
 ];
 
 const HOME = GLOBE_SITES[0];
@@ -37,7 +39,15 @@ export default function GlobeNetwork() {
     const ctx = canvas.getContext('2d')!;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const land = feature(landTopology as any, (landTopology as any).objects.land) as any;
-    const graticule = geoGraticule10();
+    // 단순화된 점(dot) 지도: 육지를 점으로만 표현하여 국경선·지명·세부 해안선을 표시하지 않음
+    const dots: [number, number][] = [];
+    const step = 2.8;
+    for (let lat = -56; lat <= 82; lat += step) {
+      const lonStep = step / Math.max(Math.cos((lat * Math.PI) / 180), 0.2);
+      for (let lon = -180; lon < 180; lon += lonStep) {
+        if (geoContains(land, [lon, lat])) dots.push([lon, lat]);
+      }
+    }
 
     let size = 400;
     let dpr = 1;
@@ -94,21 +104,19 @@ export default function GlobeNetwork() {
       path({ type: 'Sphere' });
       ctx.fill();
 
-      // 경위선
-      ctx.strokeStyle = 'rgba(147,197,253,0.18)';
-      ctx.lineWidth = 0.6;
+      // 육지 (점 지도)
+      const viewCenter: [number, number] = [-rotation[0], -rotation[1]];
+      const dotR = Math.max(1.1, (size / 260) * 1.25);
+      ctx.fillStyle = 'rgba(225,236,252,0.9)';
       ctx.beginPath();
-      path(graticule);
-      ctx.stroke();
-
-      // 육지
-      ctx.fillStyle = '#DCE8FA';
-      ctx.strokeStyle = 'rgba(0,27,94,0.55)';
-      ctx.lineWidth = 0.5;
-      ctx.beginPath();
-      path(land);
+      for (const d of dots) {
+        if (geoDistance(d, viewCenter) > Math.PI / 2 - 0.02) continue;
+        const q = projection(d);
+        if (!q) continue;
+        ctx.moveTo(q[0] + dotR, q[1]);
+        ctx.arc(q[0], q[1], dotR, 0, Math.PI * 2);
+      }
       ctx.fill();
-      ctx.stroke();
 
       // 한국 본사 ↔ 각 거점 연결선
       ctx.setLineDash([4, 4]);
@@ -153,8 +161,8 @@ export default function GlobeNetwork() {
         ctx.font = '600 12px Inter, Pretendard, sans-serif';
         const label = s.name;
         const w = ctx.measureText(label).width + 14;
-        const lx = p[0] + 10;
-        const ly = p[1] - 22;
+        const lx = s.side === 'left' ? p[0] - 10 - w : p[0] + 10;
+        const ly = p[1] + s.dy;
         ctx.fillStyle = 'rgba(255,255,255,0.95)';
         ctx.strokeStyle = s.color;
         ctx.lineWidth = 1.2;

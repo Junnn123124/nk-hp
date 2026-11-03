@@ -160,8 +160,7 @@ export default function Solutions() {
                         {solution.desc}
                       </p>
                       
-                      <div className="mb-8 w-full p-6 rounded-xl border" style={{ background: 'var(--nk-surface)', borderColor: 'var(--nk-border-light)' }}>
-                        <h4 className="text-sm font-bold uppercase tracking-wider mb-4" style={{ color: 'var(--nk-primary)' }}>주요 특징</h4>
+                      <div className="mb-8 w-full p-6 rounded-xl border" style={{ background: '#FFFFFF', borderColor: 'var(--nk-border-light)' }}>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left w-full">
                           {solution.features.map((feature, idx) => (
                             <li key={idx} className="flex items-center justify-center gap-3 bg-white p-3 rounded-lg border" style={{ borderColor: 'var(--nk-border-light)' }}>

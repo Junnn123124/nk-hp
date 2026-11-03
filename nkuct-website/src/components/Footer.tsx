@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Shield, Award, CheckCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'linear-gradient(180deg, #E3EEFC 0%, #D6E5F9 100%)', borderTop: '3px solid var(--nk-primary)' }}>
+    <footer style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(214, 229, 249, 0.85) 100%)' }}>
       <div className="container-custom" style={{ padding: '4rem 1.5rem 2rem' }}>
         {/* Main Footer Grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
