@@ -306,39 +306,39 @@ export default function GlobeNetwork() {
 
         const markerR = 5.6;
 
-        // 협력업체이면서 수출국인 경우(한국·중국·일본·미국): 마커를 대각선(/)으로 파란색 / 빨간색 반반 분할
+        // 협력업체이면서 수출국인 경우: 상단은 빨간색, 하단은 파란색으로 반반 분할
         if (s.isPartner && s.isExport) {
           const auraR = 7 + pulse * 6 + (isActive ? 3 : 0);
-          // 좌상단 파란색 오라
+          // 상단 빨간색 오라
           ctx.beginPath();
           ctx.moveTo(p[0], p[1]);
           ctx.arc(p[0], p[1], auraR, Math.PI * 0.75, Math.PI * 1.75);
           ctx.closePath();
-          ctx.fillStyle = PARTNER_BLUE + '38';
+          ctx.fillStyle = EXPORT_RED + '38';
           ctx.fill();
 
-          // 우하단 빨간색 오라
+          // 하단 파란색 오라
           ctx.beginPath();
           ctx.moveTo(p[0], p[1]);
           ctx.arc(p[0], p[1], auraR, Math.PI * 1.75, Math.PI * 0.75);
           ctx.closePath();
-          ctx.fillStyle = EXPORT_RED + '38';
+          ctx.fillStyle = PARTNER_BLUE + '38';
           ctx.fill();
 
-          // 좌상단 파란색 반원 (중간 구분선 없이 파란색·빨간색만 맞닿게 표현)
+          // 상단 빨간색 반원 (중간 구분선 없이 빨간색·파란색만 맞닿게 표현)
           ctx.beginPath();
           ctx.moveTo(p[0], p[1]);
           ctx.arc(p[0], p[1], markerR, Math.PI * 0.75, Math.PI * 1.75);
           ctx.closePath();
-          ctx.fillStyle = PARTNER_BLUE;
+          ctx.fillStyle = EXPORT_RED;
           ctx.fill();
 
-          // 우하단 빨간색 반원
+          // 하단 파란색 반원
           ctx.beginPath();
           ctx.moveTo(p[0], p[1]);
           ctx.arc(p[0], p[1], markerR, Math.PI * 1.75, Math.PI * 0.75);
           ctx.closePath();
-          ctx.fillStyle = EXPORT_RED;
+          ctx.fillStyle = PARTNER_BLUE;
           ctx.fill();
 
           // 외곽 흰색 테두리만 유지 (중간 흰색 대각선 제거)
