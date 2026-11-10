@@ -571,9 +571,9 @@ section {
   }
 }
 
-/* ===== Space-to-Earth Scroll Journey (우주 → 대기권 → 하늘 → 지상의 땅) ===== */
+/* ===== Space-to-Sky Scroll Journey (우주 → 대기권 → 연한 하늘색 유지) ===== */
 .space-to-earth-journey {
-  /* 상단 우주의 깊은 밤하늘에서 대기권, 푸른 하늘, 지평선, 따뜻한 대지(땅)로 자연스럽게 이어지는 배경 */
+  /* 상단 우주의 깊은 밤하늘에서 대기권을 거쳐 아래 끝까지 맑고 연한 하늘색으로 자연스럽게 유지 */
   background: linear-gradient(
     180deg,
     #020617 0%,
@@ -583,13 +583,11 @@ section {
     #2557A7 27%,
     #5A92D8 31%,
     #A8CBF2 35%,
-    #DCEBFA 39%,
-    #EAF3FC 50%,
-    #F1F6FA 62%,
-    #F5F4EE 74%,
-    #EFECE2 85%,
-    #E6DEC8 93%,
-    #D8CBB0 100%
+    #DCEBFA 40%,
+    #E6F0FC 52%,
+    #EEF5FD 66%,
+    #E7F1FC 82%,
+    #EDF4FD 100%
   );
 }
 

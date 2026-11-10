@@ -267,10 +267,10 @@ export default function Home() {
                   <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gradient-warm" style={{ marginBottom: '1.25rem' }}>
                     미국에 공장이나 장비 진출을 준비 중이신가요?<br />NK UCT에 문의해 주십시오
                   </h3>
-                  <p className="text-base md:text-lg mb-5" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
+                  <p className="text-base md:text-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8, marginBottom: '1rem' }}>
                     미국에서는 공장 설립이나 설비 반입 시 현지 소방당국과 보험사 기준에 따라 <strong>FM 인증(FM Approved) 등 승인을 받은 자동소화설비</strong>가 요구되는 경우가 많습니다. 구체적인 요건은 지역·시설·보험사마다 달라 사전 확인이 필요합니다.
                   </p>
-                  <p className="text-base md:text-lg mb-5" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
+                  <p className="text-base md:text-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8, marginBottom: '1rem' }}>
                     반도체 장비사뿐만 아니라 <strong>광학 장비, 디스플레이 장비, 클린룸 환경의 공장 장비, 미국에 공장을 진출하려는 일반 제조 기업</strong>의 문의도 받고 있습니다.
                   </p>
                   <p className="text-base md:text-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8 }}>
@@ -278,7 +278,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: 'var(--nk-border-light)' }}>
+                <div className="border-t flex flex-wrap items-center justify-between gap-4" style={{ borderColor: 'var(--nk-border-light)', marginTop: '1.5rem', paddingTop: '1.25rem' }}>
                   <div className="text-sm font-semibold" style={{ color: 'var(--nk-primary)' }}>
                     미국 진출 소방 기준·FM 인증 설비 적용이 궁금하시면 편하게 문의해 주세요.
                   </div>
