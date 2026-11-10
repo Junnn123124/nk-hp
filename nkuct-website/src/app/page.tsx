@@ -52,7 +52,7 @@ export default function Home() {
         style={{ background: 'transparent' }}
       >
         <div className="container-custom">
-          <div className="glass-panel grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0" style={{ background: 'rgba(255, 255, 255, 0.96)', borderColor: 'var(--nk-border)' }}>
+          <div className="stats-grid">
             <div className="stat-card">
               <CountUp end={25} suffix="+" className="stat-value" />
               <div className="stat-label">업력 (년)</div>
@@ -282,26 +282,26 @@ export default function Home() {
             <SectionHeader badge="PARTNERSHIP" title="글로벌 기술 및 미국 현지 파트너십" subtitle="한·미·일 협력 네트워크를 바탕으로 국내 설계부터 미국 현지 설치 지원까지 상담해 드립니다." />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
             <AnimateOnScroll delay={100}>
-              <div className="glass-card p-10 text-center h-full flex flex-col items-center justify-center">
-                <div className="text-3xl font-black mb-4 tracking-wider" style={{ color: '#E53E3E' }}>HATSUTA</div>
-                <h4 className="text-xl font-bold mb-4">Hatsuta Seisakusho (Japan) · 본사</h4>
-                <p style={{ color: 'var(--nk-text-muted)' }}>NK UCT의 본사인 일본의 산업용 자동소화 시스템 제조사입니다.</p>
+              <div className="glass-card text-center h-full flex flex-col items-center justify-center" style={{ padding: '2rem 1.35rem' }}>
+                <div className="text-3xl font-black tracking-wider" style={{ color: '#E53E3E', marginBottom: '0.6rem' }}>HATSUTA</div>
+                <h4 className="font-bold" style={{ fontSize: 'clamp(0.95rem, 3.8vw, 1.15rem)', marginBottom: '0.75rem', wordBreak: 'keep-all', lineHeight: 1.4 }}>Hatsuta Seisakusho (Japan) · 본사</h4>
+                <p style={{ color: 'var(--nk-text-muted)', fontSize: 'clamp(0.86rem, 3.4vw, 0.96rem)', lineHeight: 1.68, wordBreak: 'keep-all', maxWidth: '21rem' }}>NK UCT의 본사인 일본의 산업용 자동소화 시스템 제조사입니다.</p>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll delay={200}>
-              <div className="glass-card p-10 text-center h-full flex flex-col items-center justify-center">
-                <div className="text-3xl font-black mb-4 tracking-wider text-gradient">NKT</div>
-                <h4 className="text-xl font-bold mb-4">NKT Engineering (Korea)</h4>
-                <p style={{ color: 'var(--nk-text-muted)' }}>반도체·디스플레이 라인 등을 대상으로 한 엔지니어링 및 현장 맞춤형 설계·시공 기업</p>
+              <div className="glass-card text-center h-full flex flex-col items-center justify-center" style={{ padding: '2rem 1.35rem' }}>
+                <div className="text-3xl font-black tracking-wider text-gradient" style={{ marginBottom: '0.6rem' }}>NKT</div>
+                <h4 className="font-bold" style={{ fontSize: 'clamp(0.95rem, 3.8vw, 1.15rem)', marginBottom: '0.75rem', wordBreak: 'keep-all', lineHeight: 1.4 }}>NKT Engineering (Korea)</h4>
+                <p style={{ color: 'var(--nk-text-muted)', fontSize: 'clamp(0.86rem, 3.4vw, 0.96rem)', lineHeight: 1.68, wordBreak: 'keep-all', maxWidth: '21rem' }}>반도체·디스플레이 라인 등을 대상으로 한 엔지니어링 및 현장 맞춤형 설계·시공 기업입니다.</p>
               </div>
             </AnimateOnScroll>
             <AnimateOnScroll delay={300}>
-              <div className="glass-card p-10 text-center h-full flex flex-col items-center justify-center">
-                <div className="text-3xl font-black mb-4 tracking-wider" style={{ color: 'var(--nk-primary-light)' }}>NKuct USA</div>
-                <h4 className="text-xl font-bold mb-4">NKuct America, Inc. (USA) · 미국 자회사</h4>
-                <p style={{ color: 'var(--nk-text-muted)' }}>NK UCT의 미국 자회사로, 미국 현지 협력 소방회사와 협력하여 공장·장비의 미국 진출 상담 및 연계를 지원합니다.</p>
+              <div className="glass-card text-center h-full flex flex-col items-center justify-center" style={{ padding: '2rem 1.35rem' }}>
+                <div className="text-3xl font-black tracking-wider" style={{ color: 'var(--nk-primary-light)', marginBottom: '0.6rem' }}>NKuct USA</div>
+                <h4 className="font-bold" style={{ fontSize: 'clamp(0.92rem, 3.6vw, 1.15rem)', marginBottom: '0.75rem', wordBreak: 'keep-all', lineHeight: 1.4 }}>NKuct America, Inc. (USA) · 미국 자회사</h4>
+                <p style={{ color: 'var(--nk-text-muted)', fontSize: 'clamp(0.85rem, 3.3vw, 0.95rem)', lineHeight: 1.68, wordBreak: 'keep-all', maxWidth: '20.5rem' }}>NK UCT의 미국 자회사로서 현지 협력 소방회사와 함께 공장·장비의 미국 진출 상담 및 연계를 지원합니다.</p>
               </div>
             </AnimateOnScroll>
           </div>

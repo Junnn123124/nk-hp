@@ -55,6 +55,8 @@ body {
   background: linear-gradient(180deg, #E6EFFC 0%, #F2F6FC 30%, #E9F1FC 60%, #F2F6FC 80%, #E3EDFB 100%);
   color: var(--nk-text);
   line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -371,10 +373,48 @@ section {
   background: linear-gradient(90deg, transparent, var(--nk-border), transparent);
 }
 
-/* ===== Stat Card ===== */
+/* ===== Stat Card & Unified Stats Grid ===== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.5px solid var(--nk-border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 27, 94, 0.06);
+}
+
+.stats-grid > .stat-card {
+  border-color: var(--nk-border);
+  border-style: solid;
+  border-width: 0;
+}
+
+/* 모바일 2x2 격자: 가로·세로 중앙 구분선을 외곽선과 동일한 색상·두께로 통일 */
+.stats-grid > .stat-card:nth-child(odd) {
+  border-right-width: 1.5px;
+}
+.stats-grid > .stat-card:nth-child(1),
+.stats-grid > .stat-card:nth-child(2) {
+  border-bottom-width: 1.5px;
+}
+
+@media (min-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .stats-grid > .stat-card {
+    border-bottom-width: 0 !important;
+    border-right-width: 1.5px !important;
+  }
+  .stats-grid > .stat-card:last-child {
+    border-right-width: 0 !important;
+  }
+}
+
 .stat-card {
   text-align: center;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.25rem;
 }
 
 .stat-value {

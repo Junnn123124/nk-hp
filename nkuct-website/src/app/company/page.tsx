@@ -48,26 +48,24 @@ export default function Company() {
       <section id="ceo" className="section-padding bg-section-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="glass-card p-8 md:p-12 max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-center">
-              <div className="flex-shrink-0 w-48 h-48 rounded-full flex items-center justify-center border-4" style={{ borderColor: 'var(--nk-primary-light)', background: 'var(--nk-surface-lighter)' }}>
-                <User size={80} style={{ color: 'var(--nk-text-dim)' }} />
+            <div className="glass-card max-w-5xl mx-auto flex flex-col md:flex-row gap-8 md:gap-10 items-center" style={{ padding: '2rem 1.5rem' }}>
+              <div className="flex-shrink-0 w-40 h-40 md:w-48 md:h-48 rounded-full flex items-center justify-center border-4" style={{ borderColor: 'var(--nk-primary-light)', background: 'var(--nk-surface-lighter)' }}>
+                <User size={72} style={{ color: 'var(--nk-text-dim)' }} />
               </div>
               <div className="text-mobile-center" style={{ width: '100%' }}>
-                <h2 className="text-2xl md:text-3xl font-bold mb-6">CEO 인사말</h2>
-                <div className="space-y-4 mb-8" style={{ color: 'var(--nk-text-muted)' }}>
+                <h2 className="text-2xl md:text-3xl font-bold" style={{ marginBottom: '1.25rem' }}>CEO 인사말</h2>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.95rem', marginBottom: '1.5rem', color: 'var(--nk-text-muted)', fontSize: 'clamp(0.875rem, 3.4vw, 1rem)', lineHeight: 1.75, wordBreak: 'keep-all' }}>
                   <p>
                     안녕하십니까? 저희 홈페이지를 방문해 주셔서 감사합니다.
                   </p>
                   <p>
-                    저희 회사는 육상·해상에 사용되는 자동, 수동 소화설비 전문기업입니다.<br />
-                    주력 제품으로는 옥내·옥외용 수동식소화설비, 팩케이지형 자동소화설비, 선박용 소화설비,<br />
-                    휴대용 화재 감지시험기, 휴대용 분말 소화기 등이 있습니다.
+                    저희 회사는 육상·해상에 사용되는 자동·수동 소화설비 전문기업입니다. 주력 제품으로는 옥내·옥외용 수동식 소화설비, 패키지형 자동소화설비, 선박용 소화설비, 휴대용 화재 감지시험기, 휴대용 분말 소화기 등이 있습니다.
                   </p>
                   <p>
-                    이러한 제품개발을 완료하여 시판중이며, 국내 소방안전 시스템의 초석을 다지기 위해 점차 사업 영역을 확대해 나가고 있습니다. 그의 일환으로 체계적인 품질경영관리시스템 도입의 필요성을 인식하여 2002년 8월 ‘ISO 9001 품질경영시스템’을 인증받아 해외시장 확대를 위한 기반을 구축하였습니다.
+                    이러한 제품 개발을 완료하여 시판 중이며, 국내 소방안전 시스템의 초석을 다지기 위해 점차 사업 영역을 확대해 나가고 있습니다. 그 일환으로 체계적인 품질경영관리시스템 도입의 필요성을 인식하여 2002년 8월 ‘ISO 9001 품질경영시스템’을 인증받아 해외시장 확대를 위한 기반을 구축하였습니다.
                   </p>
                   <p>
-                    국내 전문소방업체로 ‘소방안전인식을 확산시키고 인명과 재산, 환경보존의 소중함을 최우선으로 생각한다’는 소명아래 설립이후 부단한 노력과 개발을 해 왔습니다. 이러한 마음가짐을 토대로 더욱 신뢰받는 소방업체로 거듭나기 위하여 더욱 노력하겠습니다.
+                    국내 전문 소방업체로서 ‘소방안전 인식을 확산시키고 인명과 재산, 환경 보존의 소중함을 최우선으로 생각한다’는 소명 아래 설립 이후 부단한 노력과 기술 개발을 이어왔습니다. 앞으로도 더욱 신뢰받는 소방 전문기업으로 거듭나기 위해 최선을 다하겠습니다.
                   </p>
                 </div>
                 <div>
@@ -87,10 +85,10 @@ export default function Company() {
             <SectionHeader badge="HISTORY" title="회사 연혁" subtitle="지속적인 혁신과 도전의 발자취" />
           </AnimateOnScroll>
 
-          <div className="relative max-w-4xl mx-auto mt-16">
+          <div className="relative max-w-4xl mx-auto" style={{ marginTop: '2.5rem' }}>
             <div className="timeline-line hidden md:block"></div>
             
-            <div className="space-y-8 md:space-y-0">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {timelineEvents.map((event, index) => (
                 <AnimateOnScroll 
                   key={event.year} 
@@ -99,12 +97,10 @@ export default function Company() {
                 >
                   <div className="md:w-5/12"></div>
                   <div className="timeline-dot hidden md:block z-10"></div>
-                  <div className="md:w-5/12 glass-panel p-6 ml-6 md:ml-0 relative">
-                    {/* 모바일 타임라인 점 */}
-                    <div className="absolute top-8 -left-8 w-4 h-4 rounded-full border-2 border-surface bg-accent md:hidden" style={{ borderColor: 'var(--nk-surface)', background: 'var(--nk-accent)' }}></div>
-                    <div className="text-2xl font-black text-gradient mb-2">{event.year}</div>
-                    <h4 className="text-lg font-bold mb-2">{event.title}</h4>
-                    <p className="text-sm" style={{ color: 'var(--nk-text-muted)' }}>{event.desc}</p>
+                  <div className="md:w-5/12 glass-panel relative" style={{ padding: '1.25rem 1.35rem', wordBreak: 'keep-all' }}>
+                    <div className="text-xl md:text-2xl font-black text-gradient" style={{ marginBottom: '0.35rem' }}>{event.year}</div>
+                    <h4 className="font-bold" style={{ fontSize: 'clamp(0.95rem, 3.8vw, 1.1rem)', lineHeight: 1.5, wordBreak: 'keep-all' }}>{event.title}</h4>
+                    {event.desc && <p className="text-sm" style={{ color: 'var(--nk-text-muted)', marginTop: '0.35rem' }}>{event.desc}</p>}
                   </div>
                 </AnimateOnScroll>
               ))}
@@ -122,22 +118,22 @@ export default function Company() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <AnimateOnScroll delay={100}>
-              <div className="glass-card p-8 h-full flex flex-col items-center text-center">
-                <Shield size={48} className="mb-6" style={{ color: '#FCA5A5' }} />
-                <h3 className="text-xl font-bold mb-3">FM Approved</h3>
-                <span className="badge badge-fm mb-4">인증 보유</span>
-                <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)' }}>
+              <div className="glass-card h-full flex flex-col items-center text-center" style={{ padding: '2rem 1.5rem' }}>
+                <Shield size={48} style={{ color: '#FCA5A5', marginBottom: '1rem' }} />
+                <h3 className="text-xl font-bold" style={{ marginBottom: '0.5rem' }}>FM Approved</h3>
+                <span className="badge badge-fm" style={{ marginBottom: '0.85rem' }}>인증 보유</span>
+                <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.65, wordBreak: 'keep-all' }}>
                   미국 Factory Mutual(FM)의 시험·평가를 통과한 제품에 부여되는 인증입니다. 인증은 일부 제품에 한하며, 보험 조건은 보험사 기준에 따릅니다.
                 </p>
               </div>
             </AnimateOnScroll>
             
             <AnimateOnScroll delay={200}>
-              <div className="glass-card p-8 h-full flex flex-col items-center text-center">
-                <Award size={48} className="mb-6" style={{ color: '#93C5FD' }} />
-                <h3 className="text-xl font-bold mb-3">CE 인증</h3>
-                <span className="badge badge-ce mb-4">인증 보유</span>
-                <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)' }}>
+              <div className="glass-card h-full flex flex-col items-center text-center" style={{ padding: '2rem 1.5rem' }}>
+                <Award size={48} style={{ color: '#93C5FD', marginBottom: '1rem' }} />
+                <h3 className="text-xl font-bold" style={{ marginBottom: '0.5rem' }}>CE 인증</h3>
+                <span className="badge badge-ce" style={{ marginBottom: '0.85rem' }}>인증 보유</span>
+                <p className="text-sm flex-grow" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.65, wordBreak: 'keep-all' }}>
                   유럽 연합(EU) 시장에 유통되는 제품이 해당 안전·보건·환경 규정을 충족함을 나타내는 표시입니다. 적용 제품은 제품 정보를 확인해 주세요.
                 </p>
               </div>

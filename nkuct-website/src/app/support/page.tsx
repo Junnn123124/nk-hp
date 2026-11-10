@@ -92,7 +92,7 @@ export default function Support() {
     },
     {
       q: '자동소화설비 설치에 얼마나 걸리나요?',
-      a: '장비와 현장 조건에 따라 다르며, 장비 1대 기준 3~4일 내외가 소요되는 경우가 많습니다. 현장 실사 후 정확한 일정을 안내해 드립니다.'
+      a: '장비와 현장 조건에 따라 다르며, 장비 1대 기준 3~5일 내외가 소요되는 경우가 많습니다. 현장 실사 후 정확한 일정을 안내해 드립니다.'
     },
     {
       q: 'FM 인증이란 무엇인가요?',
@@ -114,8 +114,16 @@ export default function Support() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-snug text-center">
               무엇을 <span className="text-gradient pb-2 inline-block">도와드릴까요?</span>
             </h1>
-            <p className="text-xl max-w-3xl mx-auto text-center" style={{ color: 'var(--nk-text-muted)' }}>
-              기술 문의부터 맞춤형 견적 요청까지, NK UCT의 담당자가 성실하게 답변해 드리겠습니다.
+            <p
+              className="max-w-3xl mx-auto text-center"
+              style={{
+                color: 'var(--nk-text-muted)',
+                fontSize: 'clamp(0.95rem, 3.8vw, 1.2rem)',
+                lineHeight: 1.65,
+                wordBreak: 'keep-all',
+              }}
+            >
+              기술 문의부터 맞춤형 견적 요청까지,<br className="md:hidden" /> NK UCT의 담당자가 성실하게 답변해 드리겠습니다.
             </p>
           </AnimateOnScroll>
         </div>
@@ -294,40 +302,69 @@ export default function Support() {
       <section id="downloads" className="py-20 relative overflow-hidden bg-section-gradient border-t" style={{ borderColor: 'var(--nk-border)' }}>
         <div className="container-custom relative z-10 text-center max-w-4xl mx-auto">
           <AnimateOnScroll>
-            <h2 className="text-3xl font-bold mb-6">제품 카탈로그 다운로드</h2>
-            <p className="text-lg mb-12" style={{ color: 'var(--nk-text-muted)' }}>
-              NK UCT의 주요 제품군에 대한 상세 설명서 및 카탈로그를 PDF 형식으로 제공합니다.
+            <h2 className="text-3xl font-bold mb-6" style={{ marginBottom: '0.85rem' }}>제품 카탈로그 다운로드</h2>
+            <p
+              className="mb-12"
+              style={{
+                color: 'var(--nk-text-muted)',
+                fontSize: 'clamp(0.925rem, 3.6vw, 1.125rem)',
+                lineHeight: 1.65,
+                marginBottom: '2rem',
+                wordBreak: 'keep-all',
+              }}
+            >
+              NK UCT의 주요 제품군에 대한 상세 설명서 및<br className="md:hidden" /> 카탈로그를 PDF 형식으로 제공합니다.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ gap: '1rem' }}>
               {/* 카탈로그 1: 국문 종합 카탈로그 */}
-              <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
-                <div className="flex items-center gap-4 text-left">
-                  <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
-                    <FileText size={24} />
+              <div
+                className="glass-card flex items-center justify-between hover:bg-blue-900/10 transition-colors"
+                style={{ padding: '1.25rem 1.25rem', gap: '0.75rem' }}
+              >
+                <div className="flex items-center gap-3 md:gap-4 text-left" style={{ minWidth: 0 }}>
+                  <div className="rounded-full bg-blue-100 flex-shrink-0 flex items-center justify-center" style={{ color: 'var(--nk-accent)', width: '44px', height: '44px' }}>
+                    <FileText size={22} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg">CABINEX 시리즈 종합 카탈로그</h3>
+                  <div style={{ minWidth: 0 }}>
+                    <h3 className="font-bold text-base md:text-lg" style={{ lineHeight: 1.35, wordBreak: 'keep-all', marginBottom: '0.2rem' }}>
+                      CABINEX 시리즈<br />종합 카탈로그
+                    </h3>
                     <p className="text-sm text-slate-500">PDF, 11.8MB</p>
                   </div>
                 </div>
-                <a href="/downloads/cabinex-catalog-kr.pdf" download="CABINEX_시리즈_종합_카탈로그.pdf" className="btn-secondary px-4 py-2 text-sm">
+                <a
+                  href="/downloads/cabinex-catalog-kr.pdf"
+                  download="CABINEX_시리즈_종합_카탈로그.pdf"
+                  className="btn-secondary text-sm"
+                  style={{ padding: '0.55rem 1rem', whiteSpace: 'nowrap', flexShrink: 0 }}
+                >
                   다운로드
                 </a>
               </div>
 
               {/* 카탈로그 2: 영문 종합 카탈로그 (NEW) */}
-              <div className="glass-card p-6 flex items-center justify-between hover:bg-blue-900/10 transition-colors">
-                <div className="flex items-center gap-4 text-left">
-                  <div className="p-3 rounded-full bg-blue-100" style={{ color: 'var(--nk-accent)' }}>
-                    <FileText size={24} />
+              <div
+                className="glass-card flex items-center justify-between hover:bg-blue-900/10 transition-colors"
+                style={{ padding: '1.25rem 1.25rem', gap: '0.75rem' }}
+              >
+                <div className="flex items-center gap-3 md:gap-4 text-left" style={{ minWidth: 0 }}>
+                  <div className="rounded-full bg-blue-100 flex-shrink-0 flex items-center justify-center" style={{ color: 'var(--nk-accent)', width: '44px', height: '44px' }}>
+                    <FileText size={22} />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg">CABINEX 영문 카탈로그 (English)</h3>
+                  <div style={{ minWidth: 0 }}>
+                    <h3 className="font-bold text-base md:text-lg" style={{ lineHeight: 1.35, wordBreak: 'keep-all', marginBottom: '0.2rem' }}>
+                      CABINEX 영문 카탈로그<br />(English)
+                    </h3>
                     <p className="text-sm text-slate-500">PDF, 9.7MB</p>
                   </div>
                 </div>
-                <a href="/downloads/cabinex-catalog-en.pdf" download="CABINEX_English_Catalog.pdf" className="btn-secondary px-4 py-2 text-sm">
+                <a
+                  href="/downloads/cabinex-catalog-en.pdf"
+                  download="CABINEX_English_Catalog.pdf"
+                  className="btn-secondary text-sm"
+                  style={{ padding: '0.55rem 1rem', whiteSpace: 'nowrap', flexShrink: 0 }}
+                >
                   다운로드
                 </a>
               </div>

@@ -53,7 +53,7 @@ export default function GlobeNetwork() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resize = () => {
-      size = Math.max(260, Math.min(wrap.clientWidth, 520));
+      size = Math.max(280, Math.min(wrap.clientWidth, 560));
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = size * dpr;
       canvas.height = size * dpr;
@@ -71,20 +71,24 @@ export default function GlobeNetwork() {
       if (!dragging && !reduceMotion && now - lastInteract > 1500 && !activeRef.current) {
         rotation[0] += dt * 0.012;
       }
-      const r = size / 2 - 6;
+      // 캔버스 사각형 경계에 그림자(glow)와 국가 라벨이 잘리지 않도록 충분한 여백(pad) 확보
+      const pad = Math.max(36, Math.round(size * 0.085));
+      const r = size / 2 - pad;
+      const glowRadius = r + pad - 2;
       projection.translate([size / 2, size / 2]).scale(r).rotate([rotation[0], rotation[1]]);
       const path = geoPath(projection, ctx);
 
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, size, size);
 
-      // 대기 glow
-      const glow = ctx.createRadialGradient(size / 2, size / 2, r * 0.95, size / 2, size / 2, r * 1.12);
-      glow.addColorStop(0, 'rgba(74,144,217,0.35)');
+      // 대기 glow (캔버스 반경 안쪽에서 자연스럽게 0으로 감쇠하여 사각형 잘림 현상 완전 제거)
+      const glow = ctx.createRadialGradient(size / 2, size / 2, r * 0.96, size / 2, size / 2, glowRadius);
+      glow.addColorStop(0, 'rgba(74,144,217,0.34)');
+      glow.addColorStop(0.55, 'rgba(74,144,217,0.14)');
       glow.addColorStop(1, 'rgba(74,144,217,0)');
       ctx.fillStyle = glow;
       ctx.beginPath();
-      ctx.arc(size / 2, size / 2, r * 1.12, 0, Math.PI * 2);
+      ctx.arc(size / 2, size / 2, glowRadius, 0, Math.PI * 2);
       ctx.fill();
 
       // 바다
@@ -155,8 +159,9 @@ export default function GlobeNetwork() {
         ctx.font = '600 12px Inter, Pretendard, sans-serif';
         const label = s.name;
         const w = ctx.measureText(label).width + 14;
-        const lx = s.side === 'left' ? p[0] - 10 - w : p[0] + 10;
-        const ly = p[1] + s.dy;
+        const rawLx = s.side === 'left' ? p[0] - 10 - w : p[0] + 10;
+        const lx = Math.max(4, Math.min(size - w - 4, rawLx));
+        const ly = Math.max(4, Math.min(size - 24, p[1] + s.dy));
         ctx.fillStyle = 'rgba(255,255,255,0.95)';
         ctx.strokeStyle = s.color;
         ctx.lineWidth = 1.2;
