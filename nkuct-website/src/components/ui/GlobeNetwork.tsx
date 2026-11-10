@@ -86,8 +86,8 @@ export const GLOBE_SITES: GlobeSite[] = [
   {
     id: 'in',
     name: '인도',
-    globeLabel: '인도 · 준비 중',
-    partnerRole: '준비 중',
+    globeLabel: '인도 · 협력업체 (준비 중)',
+    partnerRole: '협력업체 (준비 중)',
     isPartner: true,
     isExport: false,
     lon: 77.21,
@@ -97,7 +97,7 @@ export const GLOBE_SITES: GlobeSite[] = [
   },
   {
     id: 'eu',
-    name: '유럽 등',
+    name: '유럽',
     globeLabel: '유럽 · 협력업체',
     partnerRole: '협력업체',
     isPartner: true,
@@ -116,7 +116,7 @@ const PARTNER_LIST = [
   { id: 'us', country: '미국', label: 'NKUSA' },
   { id: 'sg', country: '싱가포르', label: '협력업체' },
   { id: 'eu', country: '유럽', label: '협력업체' },
-  { id: 'in', country: '인도', label: '준비 중' },
+  { id: 'in', country: '인도', label: '협력업체 (준비 중)' },
 ];
 
 const EXPORT_LIST = [
@@ -125,7 +125,7 @@ const EXPORT_LIST = [
   { id: 'kr', label: '한국' },
   { id: 'cn', label: '중국' },
   { id: 'sg', label: '싱가포르' },
-  { id: 'eu', label: '유럽 등' },
+  { id: 'eu', label: '유럽' },
 ];
 
 const HOME = GLOBE_SITES[0];
