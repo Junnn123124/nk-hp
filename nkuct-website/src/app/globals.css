@@ -571,6 +571,16 @@ section {
   }
 }
 
+/* ===== Hero Text Alignment ===== */
+.hero-text-col {
+  padding-top: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .hero-text-col {
+    padding-top: 5.5rem;
+  }
+}
+
 /* ===== Export Section Custom Classes ===== */
 .export-grid-container {
   margin: 2rem auto 0;
