@@ -203,14 +203,59 @@ export default function GlobeNetwork() {
       ctx.fill();
       ctx.stroke();
 
-      // 한국 본사 ↔ 각 거점 연결선 (협력업체: 파란색 점선, 수출 거점: 빨간색 점선)
+      // 두 지점 사이 곡선 좌표 생성 (동일 구간에 파란선·빨간선 2줄을 나란히 그리기 위한 헬퍼)
+      const buildCurvedLine = (
+        from: [number, number],
+        to: [number, number],
+        offsetSign: number
+      ): [number, number][] => {
+        const dLon = ((to[0] - from[0] + 540) % 360) - 180;
+        const dLat = to[1] - from[1];
+        const dist = Math.hypot(dLon, dLat) || 1;
+        const nx = -dLat / dist;
+        const ny = dLon / dist;
+        const offsetMag = Math.max(1.8, Math.min(6.2, dist * 0.085)) * offsetSign;
+        const steps = 20;
+        const coords: [number, number][] = [];
+        for (let i = 0; i <= steps; i++) {
+          const t = i / steps;
+          const bulge = Math.sin(Math.PI * t);
+          const lon = from[0] + dLon * t + nx * offsetMag * bulge;
+          const lat = Math.max(-85, Math.min(85, from[1] + dLat * t + ny * offsetMag * bulge));
+          coords.push([lon, lat]);
+        }
+        return coords;
+      };
+
+      // 한국 본사 ↔ 각 거점 연결선
+      // 협력업체+수출국 동시 해당 시 파란색 점선과 빨간색 점선 2줄로 분리 표시
       ctx.setLineDash([4, 4]);
-      ctx.lineWidth = 1.25;
+      ctx.lineWidth = 1.35;
       GLOBE_SITES.filter((s) => s.id !== HOME.id).forEach((s) => {
-        ctx.strokeStyle = s.isPartner ? 'rgba(147, 197, 253, 0.85)' : 'rgba(252, 165, 165, 0.85)';
-        ctx.beginPath();
-        path({ type: 'LineString', coordinates: [[HOME.lon, HOME.lat], [s.lon, s.lat]] });
-        ctx.stroke();
+        if (s.isPartner && s.isExport) {
+          // 1) 협력업체 연결선 (파란색 점선)
+          ctx.strokeStyle = 'rgba(59, 130, 246, 0.95)';
+          ctx.beginPath();
+          path({
+            type: 'LineString',
+            coordinates: buildCurvedLine([HOME.lon, HOME.lat], [s.lon, s.lat], 1),
+          });
+          ctx.stroke();
+
+          // 2) 수출국 연결선 (빨간색 점선)
+          ctx.strokeStyle = 'rgba(239, 68, 68, 0.95)';
+          ctx.beginPath();
+          path({
+            type: 'LineString',
+            coordinates: buildCurvedLine([HOME.lon, HOME.lat], [s.lon, s.lat], -1),
+          });
+          ctx.stroke();
+        } else {
+          ctx.strokeStyle = s.isPartner ? 'rgba(59, 130, 246, 0.92)' : 'rgba(239, 68, 68, 0.92)';
+          ctx.beginPath();
+          path({ type: 'LineString', coordinates: [[HOME.lon, HOME.lat], [s.lon, s.lat]] });
+          ctx.stroke();
+        }
       });
       ctx.setLineDash([]);
 
@@ -233,8 +278,6 @@ export default function GlobeNetwork() {
         const isActive = activeRef.current?.id === s.id;
         const activeMode = activeRef.current?.id === s.id ? activeRef.current.mode : null;
 
-        // 기본 색상: 협력업체는 파란색, 수출 전용 거점(싱가포르·유럽)은 빨간색
-        // 단, 사용자가 '수출 국가(빨간색)' 버튼을 클릭해 활성화한 경우 빨간색으로 강조
         const primaryColor =
           activeMode === 'export'
             ? EXPORT_RED
@@ -244,69 +287,151 @@ export default function GlobeNetwork() {
             ? PARTNER_BLUE
             : EXPORT_RED;
 
-        // 협력업체이면서 수출국인 경우(한국·중국·일본·미국) 바깥쪽 빨간 오라(링)도 함께 표시
+        const markerR = 5.6;
+
+        // 협력업체이면서 수출국인 경우(한국·중국·일본·미국): 마커를 대각선(/)으로 파란색 / 빨간색 반반 분할
         if (s.isPartner && s.isExport) {
+          const auraR = 7 + pulse * 6 + (isActive ? 3 : 0);
+          // 좌상단 파란색 오라
           ctx.beginPath();
-          ctx.arc(p[0], p[1], 8 + pulse * 6 + (isActive ? 3 : 0), 0, Math.PI * 2);
-          ctx.fillStyle = (activeMode === 'export' ? EXPORT_RED : PARTNER_BLUE) + '38';
+          ctx.moveTo(p[0], p[1]);
+          ctx.arc(p[0], p[1], auraR, Math.PI * 0.75, Math.PI * 1.75);
+          ctx.closePath();
+          ctx.fillStyle = PARTNER_BLUE + '38';
           ctx.fill();
 
-          // 수출국 표시용 외곽 레드 링
+          // 우하단 빨간색 오라
           ctx.beginPath();
-          ctx.arc(p[0], p[1], 7, 0, Math.PI * 2);
-          ctx.strokeStyle = EXPORT_RED;
-          ctx.lineWidth = 1.6;
+          ctx.moveTo(p[0], p[1]);
+          ctx.arc(p[0], p[1], auraR, Math.PI * 1.75, Math.PI * 0.75);
+          ctx.closePath();
+          ctx.fillStyle = EXPORT_RED + '38';
+          ctx.fill();
+
+          // 좌상단 파란색 반원
+          ctx.beginPath();
+          ctx.moveTo(p[0], p[1]);
+          ctx.arc(p[0], p[1], markerR, Math.PI * 0.75, Math.PI * 1.75);
+          ctx.closePath();
+          ctx.fillStyle = PARTNER_BLUE;
+          ctx.fill();
+
+          // 우하단 빨간색 반원
+          ctx.beginPath();
+          ctx.moveTo(p[0], p[1]);
+          ctx.arc(p[0], p[1], markerR, Math.PI * 1.75, Math.PI * 0.75);
+          ctx.closePath();
+          ctx.fillStyle = EXPORT_RED;
+          ctx.fill();
+
+          // 외곽 흰색 테두리 및 중앙 '/' 대각선 구분선
+          ctx.beginPath();
+          ctx.arc(p[0], p[1], markerR, 0, Math.PI * 2);
+          ctx.lineWidth = 1.4;
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.stroke();
+
+          const diag = markerR * Math.SQRT1_2;
+          ctx.beginPath();
+          ctx.moveTo(p[0] - diag, p[1] + diag);
+          ctx.lineTo(p[0] + diag, p[1] - diag);
+          ctx.lineWidth = 1.3;
+          ctx.strokeStyle = '#FFFFFF';
           ctx.stroke();
         } else {
           ctx.beginPath();
           ctx.arc(p[0], p[1], 6 + pulse * 7 + (isActive ? 3 : 0), 0, Math.PI * 2);
           ctx.fillStyle = primaryColor + '40';
           ctx.fill();
-        }
 
-        // 중심 마커 점
-        ctx.beginPath();
-        ctx.arc(p[0], p[1], 4.8, 0, Math.PI * 2);
-        ctx.fillStyle = primaryColor;
-        ctx.fill();
-        ctx.lineWidth = 1.4;
-        ctx.strokeStyle = '#fff';
-        ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(p[0], p[1], 5, 0, Math.PI * 2);
+          ctx.fillStyle = primaryColor;
+          ctx.fill();
+          ctx.lineWidth = 1.4;
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.stroke();
+        }
 
         // 라벨 박스
         ctx.font = '600 11.5px Inter, Pretendard, sans-serif';
         const label = s.globeLabel;
-        const dotSpace = s.isPartner && s.isExport ? 22 : 12;
+        const slashWidth = s.isPartner && s.isExport ? ctx.measureText('/').width + 6 : 0;
+        const dotSpace = s.isPartner && s.isExport ? 20 + slashWidth : 12;
         const w = ctx.measureText(label).width + 14 + dotSpace;
         const rawLx = s.side === 'left' ? p[0] - 10 - w : p[0] + 10;
         const lx = Math.max(4, Math.min(size - w - 4, rawLx));
         const ly = Math.max(4, Math.min(size - 24, p[1] + s.dy));
 
+        // 라벨 배경 채우기
         ctx.fillStyle = 'rgba(255,255,255,0.96)';
-        ctx.strokeStyle = primaryColor;
-        ctx.lineWidth = isActive ? 2 : 1.3;
         ctx.beginPath();
         ctx.roundRect(lx, ly, w, 21, 10.5);
         ctx.fill();
-        ctx.stroke();
 
-        // 라벨 내부 색상 점 (파란색=협력업체, 빨간색=수출국)
-        let textOffsetX = lx + 8;
-        if (s.isPartner) {
+        // 라벨 테두리: 두 가지 모두 해당 시 좌측은 파란색, 우측은 빨간색으로 분할
+        if (s.isPartner && s.isExport && !activeMode) {
+          const midX = lx + w / 2;
+          ctx.save();
           ctx.beginPath();
-          ctx.arc(textOffsetX + 3, ly + 10.5, 3.2, 0, Math.PI * 2);
+          ctx.rect(lx - 2, ly - 2, w / 2 + 2, 25);
+          ctx.clip();
+          ctx.beginPath();
+          ctx.roundRect(lx, ly, w, 21, 10.5);
+          ctx.strokeStyle = PARTNER_BLUE;
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+          ctx.restore();
+
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(midX, ly - 2, w / 2 + 2, 25);
+          ctx.clip();
+          ctx.beginPath();
+          ctx.roundRect(lx, ly, w, 21, 10.5);
+          ctx.strokeStyle = EXPORT_RED;
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
+          ctx.restore();
+        } else {
+          ctx.beginPath();
+          ctx.roundRect(lx, ly, w, 21, 10.5);
+          ctx.strokeStyle = primaryColor;
+          ctx.lineWidth = isActive ? 2 : 1.4;
+          ctx.stroke();
+        }
+
+        // 라벨 내부 색상 점 (동일 국가에 두 가지 다 있는 경우 '● / ●' 형태로 표현)
+        let textOffsetX = lx + 8;
+        if (s.isPartner && s.isExport) {
+          // 파란 점
+          ctx.beginPath();
+          ctx.arc(textOffsetX + 3.2, ly + 10.5, 3.2, 0, Math.PI * 2);
           ctx.fillStyle = PARTNER_BLUE;
           ctx.fill();
-          textOffsetX += 9;
-        }
-        if (s.isExport) {
+          textOffsetX += 8.5;
+
+          // '/' 구분자
+          ctx.fillStyle = '#64748B';
+          ctx.font = '700 10.5px Inter, Pretendard, sans-serif';
+          ctx.fillText('/', textOffsetX, ly + 14);
+          textOffsetX += slashWidth - 1;
+
+          // 빨간 점
           ctx.beginPath();
-          ctx.arc(textOffsetX + 3, ly + 10.5, 3.2, 0, Math.PI * 2);
+          ctx.arc(textOffsetX + 3.2, ly + 10.5, 3.2, 0, Math.PI * 2);
           ctx.fillStyle = EXPORT_RED;
+          ctx.fill();
+          textOffsetX += 9.5;
+        } else {
+          ctx.beginPath();
+          ctx.arc(textOffsetX + 3.2, ly + 10.5, 3.2, 0, Math.PI * 2);
+          ctx.fillStyle = s.isPartner ? PARTNER_BLUE : EXPORT_RED;
           ctx.fill();
           textOffsetX += 10;
         }
 
+        ctx.font = '600 11.5px Inter, Pretendard, sans-serif';
         ctx.fillStyle = '#001245';
         ctx.fillText(label, textOffsetX + 1, ly + 14.5);
       });
