@@ -19,8 +19,8 @@ export default function Home() {
               <h1 className="text-4xl md:text-6xl font-black leading-tight" style={{ marginBottom: '1.25rem' }}>
                 <span className="text-gradient">초기 화재</span> 감지·소화
               </h1>
-              <p className="text-xl md:text-2xl font-bold" style={{ color: 'var(--nk-text)', marginBottom: '1rem', lineHeight: 1.45 }}>
-                반도체·디스플레이·클린룸 설비 및 미국 진출 공장을 위한 자동소화설비 시스템
+              <p className="text-xl md:text-2xl font-bold" style={{ color: 'var(--nk-text)', marginBottom: '1rem', lineHeight: 1.45, wordBreak: 'keep-all' }}>
+                반도체·디스플레이·배터리(ESS)·클린룸 설비 및 미국 진출 공장을 위한 자동소화설비 시스템
               </p>
               <p className="text-lg max-w-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8, marginBottom: '2rem' }}>
                 <strong>FM 인증(FM Approved)</strong>과 CE 인증을 보유한 자동소화설비를 공급합니다. 일본 본사 Hatsuta의 기술력과 <strong>미국 현지 협력 소방회사</strong> 연계를 바탕으로 국내외 장비·설비의 화재 안전을 지원합니다.
