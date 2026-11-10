@@ -74,8 +74,9 @@ export const GLOBE_SITES: GlobeSite[] = [
   {
     id: 'sg',
     name: '싱가포르',
-    globeLabel: '싱가포르',
-    isPartner: false,
+    globeLabel: '싱가포르 · 협력업체',
+    partnerRole: '협력업체',
+    isPartner: true,
     isExport: true,
     lon: 103.82,
     lat: 1.35,
@@ -83,10 +84,23 @@ export const GLOBE_SITES: GlobeSite[] = [
     dy: -12,
   },
   {
+    id: 'in',
+    name: '인도',
+    globeLabel: '인도 · 협력업체',
+    partnerRole: '협력업체',
+    isPartner: true,
+    isExport: false,
+    lon: 77.21,
+    lat: 28.61,
+    side: 'left',
+    dy: -20,
+  },
+  {
     id: 'eu',
     name: '유럽 등',
-    globeLabel: '유럽',
-    isPartner: false,
+    globeLabel: '유럽 · 협력업체',
+    partnerRole: '협력업체',
+    isPartner: true,
     isExport: true,
     lon: 10.45,
     lat: 51.16,
@@ -100,6 +114,9 @@ const PARTNER_LIST = [
   { id: 'cn', country: '중국', label: 'NK-Hatsuta 상하이' },
   { id: 'jp', country: '일본', label: 'HATSUTA' },
   { id: 'us', country: '미국', label: 'NKUSA' },
+  { id: 'sg', country: '싱가포르', label: '협력업체' },
+  { id: 'eu', country: '유럽', label: '협력업체' },
+  { id: 'in', country: '인도', label: '협력업체' },
 ];
 
 const EXPORT_LIST = [
