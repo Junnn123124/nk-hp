@@ -571,6 +571,99 @@ section {
   }
 }
 
+/* ===== Space-to-Earth Scroll Journey (우주 → 대기권 → 하늘 → 지상의 땅) ===== */
+.space-to-earth-journey {
+  /* 상단 우주의 깊은 밤하늘에서 대기권, 푸른 하늘, 지평선, 따뜻한 대지(땅)로 자연스럽게 이어지는 배경 */
+  background: linear-gradient(
+    180deg,
+    #020617 0%,
+    #040D26 8%,
+    #081A47 16%,
+    #123173 22%,
+    #2557A7 27%,
+    #5A92D8 31%,
+    #A8CBF2 35%,
+    #DCEBFA 39%,
+    #EAF3FC 50%,
+    #F1F6FA 62%,
+    #F5F4EE 74%,
+    #EFECE2 85%,
+    #E6DEC8 93%,
+    #D8CBB0 100%
+  );
+}
+
+.space-to-earth-journey .bg-section-white,
+.space-to-earth-journey .bg-section-gradient,
+.space-to-earth-journey .bg-section-highlight {
+  background: transparent;
+}
+
+.hero-space-section {
+  background:
+    radial-gradient(circle at 50% 56%, rgba(59, 130, 246, 0.28) 0%, rgba(15, 23, 42, 0) 52%),
+    radial-gradient(ellipse 80% 50% at 50% 15%, rgba(30, 58, 138, 0.35) 0%, transparent 70%);
+}
+
+/* 별이 빛나는 우주 배경 (다중 크기의 별자리 패턴) */
+.space-stars-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 8% 12%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1px 1px at 16% 28%, rgba(224, 242, 254, 0.8), transparent),
+    radial-gradient(2px 2px at 24% 8%, rgba(186, 230, 253, 0.95), transparent),
+    radial-gradient(1.2px 1.2px at 33% 22%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.5px 1.5px at 42% 14%, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 55% 9%, rgba(224, 242, 254, 0.85), transparent),
+    radial-gradient(2px 2px at 67% 18%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1.2px 1.2px at 78% 10%, rgba(186, 230, 253, 0.85), transparent),
+    radial-gradient(1.6px 1.6px at 88% 24%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 94% 14%, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1.4px 1.4px at 6% 42%, rgba(224, 242, 254, 0.85), transparent),
+    radial-gradient(2px 2px at 14% 56%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 22% 48%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 76% 46%, rgba(224, 242, 254, 0.85), transparent),
+    radial-gradient(2px 2px at 86% 52%, rgba(255, 255, 255, 0.95), transparent),
+    radial-gradient(1.2px 1.2px at 92% 38%, rgba(186, 230, 253, 0.8), transparent),
+    radial-gradient(1px 1px at 11% 72%, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.5px 1.5px at 19% 66%, rgba(224, 242, 254, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 82% 68%, rgba(224, 242, 254, 0.7), transparent),
+    radial-gradient(1px 1px at 91% 74%, rgba(255, 255, 255, 0.6), transparent);
+  background-size: 100% 100%;
+  /* 아래쪽 대기권 경계로 갈수록 별이 서서히 사라지도록 마스크 처리 */
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 68%, rgba(0, 0, 0, 0) 96%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.9) 68%, rgba(0, 0, 0, 0) 96%);
+}
+
+/* 은은하게 반짝이는 별빛 레이어 */
+@keyframes twinkleStars {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.95; }
+}
+
+.space-twinkle-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2.2px 2.2px at 12% 20%, #FFFFFF, transparent),
+    radial-gradient(2px 2px at 29% 15%, #93C5FD, transparent),
+    radial-gradient(2.2px 2.2px at 48% 6%, #FFFFFF, transparent),
+    radial-gradient(2px 2px at 72% 26%, #BAE6FD, transparent),
+    radial-gradient(2.4px 2.4px at 84% 16%, #FFFFFF, transparent),
+    radial-gradient(2px 2px at 9% 60%, #BAE6FD, transparent),
+    radial-gradient(2.2px 2.2px at 90% 58%, #FFFFFF, transparent);
+  animation: twinkleStars 4s ease-in-out infinite;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0) 92%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.85) 65%, rgba(0, 0, 0, 0) 92%);
+}
+
+.globe-spotlight-wrap {
+  position: relative;
+}
+
 /* ===== Hero Text Alignment ===== */
 .hero-text-col {
   padding-top: 1.25rem;

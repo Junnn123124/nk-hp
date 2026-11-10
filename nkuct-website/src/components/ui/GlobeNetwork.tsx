@@ -33,7 +33,7 @@ export const GLOBE_SITES: GlobeSite[] = [
     lon: 126.98,
     lat: 37.57,
     side: 'left',
-    dy: -30,
+    dy: -32,
   },
   {
     id: 'cn',
@@ -45,7 +45,7 @@ export const GLOBE_SITES: GlobeSite[] = [
     lon: 121.47,
     lat: 31.23,
     side: 'left',
-    dy: 8,
+    dy: -4,
   },
   {
     id: 'jp',
@@ -93,7 +93,7 @@ export const GLOBE_SITES: GlobeSite[] = [
     lon: 77.21,
     lat: 28.61,
     side: 'left',
-    dy: -20,
+    dy: 18,
   },
   {
     id: 'eu',
@@ -157,7 +157,7 @@ export default function GlobeNetwork() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const resize = () => {
-      size = Math.max(280, Math.min(wrap.clientWidth, 560));
+      size = Math.max(300, Math.min(wrap.clientWidth, 620));
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = size * dpr;
       canvas.height = size * dpr;
@@ -185,11 +185,11 @@ export default function GlobeNetwork() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, size, size);
 
-      // 대기 glow (캔버스 반경 안쪽에서 자연스럽게 0으로 감쇠하여 사각형 잘림 현상 완전 제거)
-      const glow = ctx.createRadialGradient(size / 2, size / 2, r * 0.96, size / 2, size / 2, glowRadius);
-      glow.addColorStop(0, 'rgba(74,144,217,0.34)');
-      glow.addColorStop(0.55, 'rgba(74,144,217,0.14)');
-      glow.addColorStop(1, 'rgba(74,144,217,0)');
+      // 대기 glow (우주 배경에서 푸른 지구 대기권이 입체적으로 빛나도록 표현)
+      const glow = ctx.createRadialGradient(size / 2, size / 2, r * 0.94, size / 2, size / 2, glowRadius);
+      glow.addColorStop(0, 'rgba(96, 165, 250, 0.58)');
+      glow.addColorStop(0.5, 'rgba(59, 130, 246, 0.24)');
+      glow.addColorStop(1, 'rgba(59, 130, 246, 0)');
       ctx.fillStyle = glow;
       ctx.beginPath();
       ctx.arc(size / 2, size / 2, glowRadius, 0, Math.PI * 2);
@@ -489,18 +489,18 @@ export default function GlobeNetwork() {
         role="img"
         style={{ cursor: 'grab', touchAction: 'none', maxWidth: '100%' }}
       />
-      <p className="text-xs" style={{ color: 'var(--nk-text-dim)', marginTop: '0.35rem' }}>
+      <p className="text-xs font-medium" style={{ color: '#DBEAFE', marginTop: '0.35rem', textShadow: '0 1px 4px rgba(0, 0, 0, 0.45)' }}>
         마우스로 끌어서 지구본을 돌려보세요 (항목 클릭 시 해당 위치로 이동)
       </p>
 
       {/* 두 가지 섹션: 1. 협력업체 (파란색) / 2. 수출 및 이력 국가 (빨간색) */}
       <div
-        className="w-full max-w-lg"
+        className="w-full max-w-2xl"
         style={{
           display: 'flex',
           flexDirection: 'column',
           gap: '0.75rem',
-          marginTop: '0.85rem',
+          marginTop: '1rem',
         }}
       >
         {/* 섹션 1: 협력업체 (파란색) */}

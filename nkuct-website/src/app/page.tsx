@@ -9,37 +9,110 @@ import GlobeNetwork from '@/components/ui/GlobeNetwork';
 
 export default function Home() {
   return (
-    <>
-      {/* Hero Section */}
-      <section className="bg-hero-gradient relative" style={{ minHeight: 'calc(100vh - var(--nav-height))', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '1.5rem 0 2.5rem' }}>
-        <div className="bg-grid-pattern absolute inset-0 opacity-70"></div>
-        <div className="container-custom relative z-10 py-20" style={{ width: '100%' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <AnimateOnScroll animation="slide-in-left" className="hero-text-col">
-              <h1 className="text-4xl md:text-6xl font-black leading-tight" style={{ marginBottom: '1.25rem' }}>
-                <span className="text-gradient">초기 화재</span> 감지·소화
+    <div className="space-to-earth-journey">
+      {/* Hero Section — 별이 빛나는 우주(Space) + 상단 타이틀 + 중앙 대형 3D 지구본 */}
+      <section
+        className="hero-space-section relative"
+        style={{
+          minHeight: 'calc(100vh - var(--nav-height))',
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden',
+          padding: '3.5rem 0 4rem',
+        }}
+      >
+        {/* 별이 빛나는 우주 배경 레이어 */}
+        <div className="space-stars-layer" aria-hidden="true"></div>
+        <div className="space-twinkle-layer" aria-hidden="true"></div>
+
+        <div className="container-custom relative z-10" style={{ width: '100%' }}>
+          <div className="flex flex-col items-center text-center">
+            {/* 1. 최상단: 초기 화재 감지·소화 타이틀 및 소개 */}
+            <AnimateOnScroll animation="fade-in-up" className="max-w-4xl mx-auto">
+              <h1
+                className="text-4xl md:text-6xl font-black leading-tight"
+                style={{ marginBottom: '1.15rem', color: '#FFFFFF', textShadow: '0 4px 24px rgba(59, 130, 246, 0.35)' }}
+              >
+                <span
+                  style={{
+                    background: 'linear-gradient(135deg, #60A5FA, #93C5FD, #E0F2FE)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  초기 화재
+                </span>{' '}
+                감지·소화
               </h1>
-              <p className="text-xl md:text-2xl font-bold" style={{ color: 'var(--nk-text)', marginBottom: '1rem', lineHeight: 1.45, wordBreak: 'keep-all' }}>
-                반도체·디스플레이·배터리(ESS)·클린룸 설비 및 미국 진출 공장을 위한 자동소화설비 시스템
+              <p
+                className="text-xl md:text-2xl font-bold"
+                style={{
+                  color: '#F1F5F9',
+                  marginBottom: '1rem',
+                  lineHeight: 1.5,
+                  wordBreak: 'keep-all',
+                  textShadow: '0 2px 12px rgba(0, 0, 0, 0.4)',
+                }}
+              >
+                반도체·디스플레이·배터리·ESS·클린룸 설비 및 미국 진출 공장을 위한 자동소화설비 시스템
               </p>
-              <p className="text-lg max-w-lg" style={{ color: 'var(--nk-text-muted)', lineHeight: 1.8, marginBottom: '2rem' }}>
-                <strong>FM 인증(FM Approved)</strong>과 CE 인증을 보유한 자동소화설비를 공급합니다. 일본 본사 Hatsuta의 기술력과 <strong>미국 현지 협력 소방회사</strong> 연계를 바탕으로 국내외 장비·설비의 화재 안전을 지원합니다.
+              <p
+                className="text-base md:text-lg max-w-2xl mx-auto"
+                style={{
+                  color: '#CBD5E1',
+                  lineHeight: 1.8,
+                  marginBottom: '1.75rem',
+                  wordBreak: 'keep-all',
+                }}
+              >
+                <strong style={{ color: '#FFFFFF' }}>FM 인증(FM Approved)</strong>과 CE 인증을 보유한 자동소화설비를 공급합니다. 일본 본사 Hatsuta의 기술력과 <strong style={{ color: '#FFFFFF' }}>미국 현지 협력 소방회사</strong> 연계를 바탕으로 국내외 장비·설비의 화재 안전을 지원합니다.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/solutions" className="btn-primary">
+              <div className="flex flex-wrap justify-center gap-4" style={{ marginBottom: '2rem' }}>
+                <Link
+                  href="/solutions"
+                  className="btn-primary"
+                  style={{
+                    background: 'linear-gradient(135deg, #2563EB, #3B82F6)',
+                    borderColor: 'rgba(147, 197, 253, 0.5)',
+                    boxShadow: '0 8px 28px rgba(37, 99, 235, 0.45)',
+                  }}
+                >
                   솔루션 살펴보기 <ArrowRight size={18} />
                 </Link>
-                <Link href="/support#contact-form" className="btn-secondary" style={{ background: 'rgba(255, 255, 255, 0.8)' }}>
+                <Link
+                  href="/support#contact-form"
+                  className="btn-secondary"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.12)',
+                    color: '#FFFFFF',
+                    borderColor: 'rgba(147, 197, 253, 0.55)',
+                    backdropFilter: 'blur(8px)',
+                  }}
+                >
                   미국 진출·견적 문의
                 </Link>
               </div>
             </AnimateOnScroll>
-            
-            <AnimateOnScroll animation="slide-in-right" delay={200}>
-              <GlobeNetwork />
-              <div className="flex justify-center gap-2" style={{ marginTop: '0.85rem' }}>
-                <span className="badge badge-fm">FM Approved</span>
-                <span className="badge badge-ce">CE 인증</span>
+
+            {/* 2. 그 아래: 부각된 3D 지구본 및 글로벌 거점 네트워크 */}
+            <AnimateOnScroll animation="fade-in-up" delay={150} className="w-full flex flex-col items-center">
+              <div className="globe-spotlight-wrap w-full flex flex-col items-center">
+                <GlobeNetwork />
+              </div>
+              <div className="flex justify-center gap-2" style={{ marginTop: '1rem' }}>
+                <span
+                  className="badge badge-fm"
+                  style={{ background: 'rgba(255, 255, 255, 0.92)', borderColor: 'rgba(220, 38, 38, 0.45)' }}
+                >
+                  FM Approved
+                </span>
+                <span
+                  className="badge badge-ce"
+                  style={{ background: 'rgba(255, 255, 255, 0.92)', borderColor: 'rgba(37, 99, 235, 0.45)' }}
+                >
+                  CE 인증
+                </span>
               </div>
             </AnimateOnScroll>
           </div>
@@ -334,7 +407,7 @@ export default function Home() {
           </AnimateOnScroll>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
