@@ -308,7 +308,7 @@ export default function GlobeNetwork() {
           ctx.fillStyle = EXPORT_RED + '38';
           ctx.fill();
 
-          // 좌상단 파란색 반원
+          // 좌상단 파란색 반원 (중간 구분선 없이 파란색·빨간색만 맞닿게 표현)
           ctx.beginPath();
           ctx.moveTo(p[0], p[1]);
           ctx.arc(p[0], p[1], markerR, Math.PI * 0.75, Math.PI * 1.75);
@@ -324,18 +324,10 @@ export default function GlobeNetwork() {
           ctx.fillStyle = EXPORT_RED;
           ctx.fill();
 
-          // 외곽 흰색 테두리 및 중앙 '/' 대각선 구분선
+          // 외곽 흰색 테두리만 유지 (중간 흰색 대각선 제거)
           ctx.beginPath();
           ctx.arc(p[0], p[1], markerR, 0, Math.PI * 2);
           ctx.lineWidth = 1.4;
-          ctx.strokeStyle = '#FFFFFF';
-          ctx.stroke();
-
-          const diag = markerR * Math.SQRT1_2;
-          ctx.beginPath();
-          ctx.moveTo(p[0] - diag, p[1] + diag);
-          ctx.lineTo(p[0] + diag, p[1] - diag);
-          ctx.lineWidth = 1.3;
           ctx.strokeStyle = '#FFFFFF';
           ctx.stroke();
         } else {
@@ -353,55 +345,29 @@ export default function GlobeNetwork() {
           ctx.stroke();
         }
 
-        // 라벨 박스
+        // 라벨 박스 (테두리는 모두 흰색으로 통일)
         ctx.font = '600 11.5px Inter, Pretendard, sans-serif';
         const label = s.globeLabel;
-        const slashWidth = s.isPartner && s.isExport ? ctx.measureText('/').width + 6 : 0;
-        const dotSpace = s.isPartner && s.isExport ? 20 + slashWidth : 12;
+        const dotSpace = s.isPartner && s.isExport ? 21 : 12;
         const w = ctx.measureText(label).width + 14 + dotSpace;
         const rawLx = s.side === 'left' ? p[0] - 10 - w : p[0] + 10;
         const lx = Math.max(4, Math.min(size - w - 4, rawLx));
         const ly = Math.max(4, Math.min(size - 24, p[1] + s.dy));
 
-        // 라벨 배경 채우기
-        ctx.fillStyle = 'rgba(255,255,255,0.96)';
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 18, 69, 0.22)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 2;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.96)';
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.roundRect(lx, ly, w, 21, 10.5);
         ctx.fill();
+        ctx.stroke();
+        ctx.restore();
 
-        // 라벨 테두리: 두 가지 모두 해당 시 좌측은 파란색, 우측은 빨간색으로 분할
-        if (s.isPartner && s.isExport && !activeMode) {
-          const midX = lx + w / 2;
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(lx - 2, ly - 2, w / 2 + 2, 25);
-          ctx.clip();
-          ctx.beginPath();
-          ctx.roundRect(lx, ly, w, 21, 10.5);
-          ctx.strokeStyle = PARTNER_BLUE;
-          ctx.lineWidth = 1.4;
-          ctx.stroke();
-          ctx.restore();
-
-          ctx.save();
-          ctx.beginPath();
-          ctx.rect(midX, ly - 2, w / 2 + 2, 25);
-          ctx.clip();
-          ctx.beginPath();
-          ctx.roundRect(lx, ly, w, 21, 10.5);
-          ctx.strokeStyle = EXPORT_RED;
-          ctx.lineWidth = 1.4;
-          ctx.stroke();
-          ctx.restore();
-        } else {
-          ctx.beginPath();
-          ctx.roundRect(lx, ly, w, 21, 10.5);
-          ctx.strokeStyle = primaryColor;
-          ctx.lineWidth = isActive ? 2 : 1.4;
-          ctx.stroke();
-        }
-
-        // 라벨 내부 색상 점 (동일 국가에 두 가지 다 있는 경우 '● / ●' 형태로 표현)
+        // 라벨 내부 색상 점 (중간 구분선 없이 파란색·빨간색 점으로만 깔끔하게 표현)
         let textOffsetX = lx + 8;
         if (s.isPartner && s.isExport) {
           // 파란 점
@@ -410,12 +376,6 @@ export default function GlobeNetwork() {
           ctx.fillStyle = PARTNER_BLUE;
           ctx.fill();
           textOffsetX += 8.5;
-
-          // '/' 구분자
-          ctx.fillStyle = '#64748B';
-          ctx.font = '700 10.5px Inter, Pretendard, sans-serif';
-          ctx.fillText('/', textOffsetX, ly + 14);
-          textOffsetX += slashWidth - 1;
 
           // 빨간 점
           ctx.beginPath();
