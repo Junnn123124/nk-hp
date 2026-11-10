@@ -37,7 +37,7 @@ export default function Home() {
             
             <AnimateOnScroll animation="slide-in-right" delay={200}>
               <GlobeNetwork />
-              <div className="mt-5 flex justify-center gap-2">
+              <div className="flex justify-center gap-2" style={{ marginTop: '0.85rem' }}>
                 <span className="badge badge-fm">FM Approved</span>
                 <span className="badge badge-ce">CE 인증</span>
               </div>
@@ -156,7 +156,10 @@ export default function Home() {
 
           {/* Target Industry Pills */}
           <AnimateOnScroll delay={100}>
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <div
+              className="flex flex-wrap justify-center"
+              style={{ gap: '0.85rem', marginTop: '1.5rem', marginBottom: '2.5rem' }}
+            >
               {[
                 '✓ 반도체 제조 장비',
                 '✓ 광학 장비 (Optical Equipment)',
@@ -167,8 +170,9 @@ export default function Home() {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-2 rounded-full text-sm font-bold shadow-sm"
+                  className="rounded-full text-sm font-bold shadow-sm inline-flex items-center justify-center"
                   style={{
+                    padding: '0.65rem 1.4rem',
                     background: '#FFFFFF',
                     color: 'var(--nk-primary)',
                     border: '1.5px solid rgba(0, 27, 94, 0.25)',

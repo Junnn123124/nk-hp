@@ -37,7 +37,7 @@ export default function References() {
       nameEn: 'LG Display',
       icon: <Monitor size={32} />,
       desc: 'LCD 및 OLED 패널 생산라인 내 장비 자동소화 시스템 납품',
-      location: '구미 캠퍼스',
+      location: '구미 캠퍼스, 파주 공장 / CA공장, CO공장',
       stats: [
         { label: '라인 수', value: '50+' },
         { label: '납품 시작', value: '2010년' },
