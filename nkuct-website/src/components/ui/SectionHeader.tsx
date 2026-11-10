@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 
 interface SectionHeaderProps {
   badge?: string;
-  title: string;
-  subtitle?: string;
+  title: ReactNode;
+  subtitle?: ReactNode;
   centered?: boolean;
   className?: string;
   children?: ReactNode;
@@ -18,7 +18,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={`${centered ? 'text-center' : ''} mb-16 ${className}`}>
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-4" style={{ lineHeight: 1.35, wordBreak: 'keep-all' }}>
         {title}
       </h2>
       <div

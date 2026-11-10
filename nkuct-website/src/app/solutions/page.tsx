@@ -85,7 +85,7 @@ export default function Solutions() {
           <AnimateOnScroll>
             <SectionHeader
               badge="US MARKET ENTRY SUPPORT"
-              title="미국 진출 기업 소방 설비 상담 지원"
+              title={<>미국 진출 기업<br className="md:hidden" /> 소방 설비 상담 지원</>}
               subtitle="미국에서는 FM 인증 등 승인 제품이 요구되는 경우가 많습니다. NK UCT는 FM 인증 설비 공급과 미국 현지 협력 소방회사 연계를 통해 귀사의 미국 진출 준비를 지원합니다."
             />
           </AnimateOnScroll>

@@ -606,6 +606,11 @@ section {
 }
 
 /* ===== Navbar Responsive Classes ===== */
+.navbar-logo {
+  height: 75px;
+  width: auto;
+  display: block;
+}
 .desktop-nav {
   display: none !important;
 }
@@ -637,7 +642,35 @@ section {
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 767px) {
+  .timeline-mobile-wrapper {
+    margin-top: 2rem;
+  }
+  .timeline-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+  }
+  .timeline-mobile-card {
+    padding: 1.15rem 1.25rem;
+    word-break: keep-all;
+  }
+  .timeline-mobile-card > .text-gradient {
+    font-size: 1.35rem;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-mobile-card > h4 {
+    font-size: 0.98rem;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+}
+
 @media (max-width: 768px) {
+  .navbar-logo {
+    height: 50px;
+  }
+
   .container-custom {
     padding: 0 1rem;
   }

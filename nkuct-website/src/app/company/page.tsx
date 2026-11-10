@@ -85,10 +85,10 @@ export default function Company() {
             <SectionHeader badge="HISTORY" title="회사 연혁" subtitle="지속적인 혁신과 도전의 발자취" />
           </AnimateOnScroll>
 
-          <div className="relative max-w-4xl mx-auto" style={{ marginTop: '2.5rem' }}>
+          <div className="relative max-w-4xl mx-auto mt-16 timeline-mobile-wrapper">
             <div className="timeline-line hidden md:block"></div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div className="space-y-8 md:space-y-0 timeline-mobile-list">
               {timelineEvents.map((event, index) => (
                 <AnimateOnScroll 
                   key={event.year} 
@@ -97,10 +97,12 @@ export default function Company() {
                 >
                   <div className="md:w-5/12"></div>
                   <div className="timeline-dot hidden md:block z-10"></div>
-                  <div className="md:w-5/12 glass-panel relative" style={{ padding: '1.25rem 1.35rem', wordBreak: 'keep-all' }}>
-                    <div className="text-xl md:text-2xl font-black text-gradient" style={{ marginBottom: '0.35rem' }}>{event.year}</div>
-                    <h4 className="font-bold" style={{ fontSize: 'clamp(0.95rem, 3.8vw, 1.1rem)', lineHeight: 1.5, wordBreak: 'keep-all' }}>{event.title}</h4>
-                    {event.desc && <p className="text-sm" style={{ color: 'var(--nk-text-muted)', marginTop: '0.35rem' }}>{event.desc}</p>}
+                  <div className="md:w-5/12 glass-panel p-6 ml-6 md:ml-0 relative timeline-mobile-card">
+                    {/* 모바일 타임라인 점 */}
+                    <div className="absolute top-8 -left-8 w-4 h-4 rounded-full border-2 border-surface bg-accent md:hidden" style={{ borderColor: 'var(--nk-surface)', background: 'var(--nk-accent)' }}></div>
+                    <div className="text-2xl font-black text-gradient mb-2">{event.year}</div>
+                    <h4 className="text-lg font-bold mb-2">{event.title}</h4>
+                    <p className="text-sm" style={{ color: 'var(--nk-text-muted)' }}>{event.desc}</p>
                   </div>
                 </AnimateOnScroll>
               ))}
