@@ -150,7 +150,12 @@ export default function Home() {
       <section className="section-padding bg-section-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <SectionHeader badge="SOLUTIONS" title="산업별 맞춤 방재 솔루션" subtitle="반도체·디스플레이·클린룸 설비부터 ESS 및 일반 제조 공장까지 각 현장에 맞는 자동소화 시스템을 설계·구축합니다." />
+            <SectionHeader
+              light
+              badge="SOLUTIONS"
+              title="산업별 맞춤 방재 솔루션"
+              subtitle="반도체·디스플레이·클린룸 설비부터 ESS 및 일반 제조 공장까지 각 현장에 맞는 자동소화 시스템을 설계·구축합니다."
+            />
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -163,13 +168,29 @@ export default function Home() {
               { icon: <Building2 />, title: '미국 진출 공장·산업설비 방재', desc: '미국 공장·설비 진출 시 FM 인증 자동소화설비 적용 상담과 미국 현지 협력 소방회사 연계를 지원합니다.' },
             ].map((sol, i) => (
               <AnimateOnScroll key={i} delay={i * 100}>
-                <Link href="/solutions" className="glass-card p-8 h-full flex flex-col group block text-inherit no-underline">
-                  <div className="h-14 w-14 rounded-xl flex items-center justify-center mb-6 transition-colors border" style={{ background: 'linear-gradient(135deg, rgba(0, 27, 94, 0.08), rgba(74, 144, 217, 0.18))', borderColor: 'rgba(46, 109, 184, 0.25)', color: 'var(--nk-primary)' }}>
+                <Link
+                  href="/solutions"
+                  className="glass-card h-full flex flex-col group block text-inherit no-underline"
+                  style={{ padding: '1.75rem 1.5rem' }}
+                >
+                  <div
+                    className="h-14 w-14 rounded-xl flex items-center justify-center transition-colors border"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(0, 27, 94, 0.08), rgba(74, 144, 217, 0.18))',
+                      borderColor: 'rgba(46, 109, 184, 0.25)',
+                      color: 'var(--nk-primary)',
+                      marginBottom: '1.15rem',
+                    }}
+                  >
                     {sol.icon}
                   </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-blue-600 transition-colors">{sol.title}</h3>
-                  <p className="mb-6 flex-grow" style={{ color: 'var(--nk-text-muted)' }}>{sol.desc}</p>
-                  <div className="flex items-center text-sm font-semibold mt-auto pt-4 border-t" style={{ color: 'var(--nk-accent)', borderColor: 'var(--nk-border-light)' }}>
+                  <h3 className="text-xl font-bold group-hover:text-blue-600 transition-colors" style={{ marginBottom: '0.6rem', wordBreak: 'keep-all' }}>
+                    {sol.title}
+                  </h3>
+                  <p className="flex-grow" style={{ color: 'var(--nk-text-muted)', marginBottom: '1.25rem', lineHeight: 1.65, wordBreak: 'keep-all' }}>
+                    {sol.desc}
+                  </p>
+                  <div className="flex items-center text-sm font-semibold mt-auto border-t" style={{ color: 'var(--nk-accent)', borderColor: 'var(--nk-border-light)', paddingTop: '0.9rem' }}>
                     자세히 보기 <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
